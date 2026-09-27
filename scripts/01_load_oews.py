@@ -21,6 +21,13 @@ NUM = ["tot_emp", "emp_prse", "h_mean", "a_mean", "mean_prse",
        "a_pct10", "a_pct25", "a_median", "a_pct75", "a_pct90"]
 
 
+# Values in BLS's own files that are errors, set to missing (documented in DATASETS.md).
+KNOWN_ERRORS = [
+    # May 2013 U.S. Hunters and Trappers shows 99,999 jobs; 2012 and 2014 show a few hundred.
+    dict(year=2013, area="99", occ_code="45-3021", field="tot_emp"),
+]
+
+
 def year_of(path):
     m = re.search(r"(20\d\d)", os.path.basename(path))
     return int(m.group(1))
@@ -46,6 +53,11 @@ def load(path):
         df[c + "_flag"] = raw.where(raw.isin(["*", "**", "#", "~"]))
         df[c] = pd.to_numeric(raw.str.replace(",", ""), errors="coerce")
     df["area_type"] = pd.to_numeric(df["area_type"], errors="coerce").astype("Int64")
+    for e in KNOWN_ERRORS:
+        if e["year"] == yr:
+            hit = (df.area == e["area"]) & (df.occ_code == e["occ_code"])
+            assert hit.sum() == 1, f"known error not found: {e}"
+            df.loc[hit, e["field"]] = float("nan"); df.loc[hit, e["field"] + "_flag"] = "error"
     df.insert(0, "year", yr)
     df.to_parquet(os.path.join(OUT, f"oews_{yr}.parquet"), index=False)
     return yr, len(df), df["area"].nunique()

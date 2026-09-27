@@ -127,6 +127,37 @@ band here comes from 300 draws perturbing each cell by its RSE, treated as
 independent (an approximation). Median 1 SD: U.S. well under 0.001, states
 0.0013, metros 0.0038 before 2021 and 0.0018 after.
 
+**Errors and counting changes found in BLS's files** (checked by scanning every
+occupation group, nationally and by state, for one-year jumps; each May estimate
+pools three years of surveys, so real change phases in):
+- *May 2013, U.S., Hunters and Trappers (45-3021): 99,999 jobs*, against a few
+  hundred in 2012 and 2014. Treated as missing (`KNOWN_ERRORS` in
+  `scripts/01_load_oews.py`). Effect on the U.S. Gini: 0.0001; no verdict changed.
+- *California, home health and personal care aides, May 2016 to May 2017:*
+  170,220 to 545,840 jobs statewide (Los Angeles 63,500 to 229,880). The UC
+  Berkeley Labor Center (Thomason and Bernhardt, "California's Homecare Crisis,"
+  November 2017) reported 558,000 such aides in California in 2014, 410,000 of
+  them In-Home Supportive Services providers; OEWS counted 136,800 that year.
+  Our inference: OEWS began counting most IHSS caregivers in May 2017. BLS's
+  May 2017 occupation page has no note on it. Effect: all 26 California history
+  verdicts hold with the aide group removed from both years (the change made
+  California's narrowing look smaller). The viz notes it for California places.
+  Any national growth figure for this occupation should exclude California or
+  start at May 2019.
+- *Texas, same group, May 2014:* 45,930 jobs between about 230,000 and 250,000
+  on either side; a one-year gap, very likely suppression. Not a comparison year.
+- *May 2021:* several groups jump (fast food cooks, manicurists, data
+  scientists), matching the full switch to the 2018 SOC and the new estimation
+  method. Not a comparison year.
+- *Denver, May 2023, athletes: average wage $1,805,790.* Plausible (major-league
+  teams); kept.
+
+**Partial groups.** When one code inside a combined group is not published for
+a place in a given year, that group's total for the year is incomplete (for
+example, Grants Pass 2016 has Personal Care Aides but no Home Health Aides row).
+This is ordinary suppression and is counted in coverage; single-occupation
+findings require every member code to be published in both years.
+
 **Revisions.** OEWS does not revise past May estimates.
 
 **Units and rounding.** Employment rounded to tens; annual wages in nominal

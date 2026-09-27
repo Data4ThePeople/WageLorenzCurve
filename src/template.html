@@ -851,6 +851,7 @@
     let note = 'Dotted line: May ' + first + '. Codes BLS split or merged are combined so all years match, so the Gini can differ from the May 2025 view by about 0.001.';
     if (F.boundary_change) note += ' Boundaries changed slightly (' + fmtPct(F.boundary_change) + ' of jobs); tested, small effect.';
     if (F.area_title !== a.title) note += ' Called ' + F.area_title + ' in ' + first + '.';
+    if (a.hist_caveat) note += ' ' + a.hist_caveat;
     n.textContent = note;
   }
 

@@ -120,6 +120,17 @@ for a in areas:
     rows = inc[(inc.area == a["id"]) & inc.complete]
     a["income"] = {str(r.year): [int(round(r[c] / 1000)) for c in INC_COLS] for _, r in rows.iterrows()} or None
 
+# California: OEWS counts of home health and personal care aides jumped between May 2016
+# and May 2017 (170,220 -> 545,840 statewide), very likely when In-Home Supportive Services
+# caregivers began to be counted. Shown in the change-over-time view for California places
+# whose history starts before 2017. Verdicts hold without the aide group (see DATASETS.md).
+for a in areas:
+    a["hist_caveat"] = None
+    if a["id"] in history and (a["title"] == "California" or a["title"].endswith(", CA")) and min(int(y) for y in history[a["id"]]) < 2017:
+        a["hist_caveat"] = ("California: BLS counts of home health and personal care aides roughly tripled between May 2016 and May 2017, "
+                            "very likely because caregivers paid through the state\u2019s In-Home Supportive Services program began to be counted. "
+                            "That bubble\u2019s growth here is partly a counting change. The verdict above holds with that group left out.")
+
 out = {"meta": {"latest_year": 2025, "frames": [2013, 2016, 2019, 2022, 2025],
                 "source": "U.S. Bureau of Labor Statistics, Occupational Employment and Wage Statistics, May 2013-May 2025",
                 "income_cols": ["personal_income", "wages", "supplements", "proprietors", "dividends_interest_rent", "transfers"],
