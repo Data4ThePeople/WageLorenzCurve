@@ -127,7 +127,7 @@ for a in areas:
 for a in areas:
     a["hist_caveat"] = None
     if a["id"] in history and (a["title"] == "California" or a["title"].endswith(", CA")) and min(int(y) for y in history[a["id"]]) < 2017:
-        a["hist_caveat"] = ("California: BLS counts of home health and personal care aides roughly tripled between May 2016 and May 2017, "
+        a["hist_caveat"] = ("California: BLS counts of home health and personal care aides rose 221% between May 2016 and May 2017, "
                             "very likely because caregivers paid through the state\u2019s In-Home Supportive Services program began to be counted. "
                             "That bubble\u2019s growth here is partly a counting change. The verdict above holds with that group left out.")
 

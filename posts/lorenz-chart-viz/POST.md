@@ -1,6 +1,6 @@
 ---
 title: "Occupational Pay Gaps by Place: An Interactive Lorenz Curve for Every U.S. State and Metro Area"
-subtitle: A free, interactive chart of how payroll wages are split across occupations in 585 places, with how that split has changed since 2013 and the income it leaves out.
+subtitle: A free, interactive chart of how payroll wages are split across occupations in 585 places, with how that split has changed since 2013 for states and since 2016 for most metro areas, and the income it leaves out.
 slug: lorenz-chart-viz
 date: 2026-02-04
 updated: 2026-09-28
@@ -29,7 +29,7 @@ dividers: false
 :::
 
 ::: blurb Updated September 28, 2026
-We rebuilt this chart on the newest data, May 2025. It now shows how each place has changed since 2013, lets you compare two places, and shows the income the chart leaves out. The first version, published February 4, 2026, used May 2024 data in Tableau. [Its method is saved here](https://github.com/Data4ThePeople/WageLorenzCurve/blob/main/Visualizing%20Wage%20Dispersion%20and%20Occupational%20Pay%20Inequality.pdf).
+We rebuilt this chart on the newest data, May 2025. It now shows how states have changed since 2013 and most metro areas since 2016, lets you compare two places, and shows the income the chart leaves out. The first version, published February 4, 2026, used May 2024 data in Tableau. [Its method is saved here](https://github.com/Data4ThePeople/WageLorenzCurve/blob/main/Visualizing%20Wage%20Dispersion%20and%20Occupational%20Pay%20Inequality.pdf).
 :::
 
 ## Purpose
@@ -38,7 +38,7 @@ We rebuilt this chart on the newest data, May 2025. It now shows how each place 
 
 This chart shows how the pay from payroll jobs is split across occupations in each place in the United States. Pick a state, a metro area or a rural region, and you can see how much of the area's wages go to its lowest-paid workers, how much go to its highest-paid workers, and which occupations sit where.
 
-We first published this chart on February 4, 2026, built in Tableau from May 2024 data. This version is rebuilt from scratch on the newest data, May 2025, and adds three things. It shows how each place has changed since 2013. It lets you compare any two places. And it shows the income the chart leaves out.
+We first published this chart on February 4, 2026, built in Tableau from May 2024 data. This version is rebuilt from scratch on the newest data, May 2025, and adds three things. It shows how the U.S. and every state have changed since 2013, and most metro areas since 2016. It lets you compare any two places. And it shows the income the chart leaves out.
 
 ::: blurb Read this first
 This chart covers payroll (W-2) wages only. It leaves out business owners, the self-employed, and income from investments such as dividends, interest, rent and capital gains. That is where most of the very highest incomes are. So this chart can tell you how pay is split among people who draw a paycheck. It cannot tell you whether overall income inequality in a place rose or fell. The "What this chart can't see" tab shows how much of each place's income falls outside the chart.
@@ -60,9 +60,9 @@ This chart covers payroll (W-2) wages only. It leaves out business owners, the s
 
 **6. Light up a job group.** Every occupation belongs to one of 22 larger groups, such as "Healthcare Support" or "Management." The bubble colors show the groups. Click a group's name in the "Major groups" list to highlight it on the curve. Click it again to turn it off. You can light up as many groups as you like.
 
-**7. Compare two places.** Type a second place in "Compare with." Its curve appears as a dashed black line, and its numbers appear next to the first place's. Click the × in the box to remove it.
+**7. Compare two places.** Type a second place in "Compare with." Its curve appears as a dashed line, and its numbers appear next to the first place's. Click the × in the box to remove it.
 
-**8. Watch it change over time.** Click "Change over time," then click Play. The chart moves through May 2013, 2016, 2019, 2022 and 2025. The dotted line stays behind to show where the curve started. Under the chart, a short verdict says whether the gap narrowed, widened, or showed no clear change. You can also click any year to jump to it.
+**8. Watch it change over time.** Click "Change over time," then click Play. The chart moves through May 2013, 2016, 2019, 2022 and 2025 (metro areas start at 2016). The dotted line stays behind to show where the curve started. Under the chart, a short verdict says whether the gap narrowed, widened, or showed no clear change. You can also click any year to jump to it.
 
 **9. See what the chart leaves out.** Click the "What this chart can't see" tab. It shows how much of the place's total income comes from wages and how much comes from other sources, such as business profits and investments.
 
@@ -81,7 +81,7 @@ In May 2025, across the whole U.S., the lowest-paid half of payroll workers earn
 
 Among the 393 metro areas, San Jose-Sunnyvale-Santa Clara, CA had the largest gap (Gini 0.3321), and New York-Newark-Jersey City, NY-NJ had the second largest (0.3171). In the New York metro, the lowest-paid half of workers earned 27.4% of wages.
 
-Nationally, the gap between occupations has narrowed since 2013. At the same time, the share of U.S. personal income that comes from wages fell from 50.5% in 2013 to 49.7% in 2024, and the share from dividends, interest and rent rose from 18.2% to 21.0%. Both are true, and the chart shows both.
+Nationally, the gap between occupations has narrowed since 2013. Since 2022, states and metro areas are mixed: 11 states and 56 metro areas widened while 15 states and 108 metro areas narrowed. At the same time, the share of U.S. personal income that comes from wages fell from 50.5% in 2013 to 49.7% in 2024, and the share from dividends, interest and rent rose from 18.2% to 21.0%.
 
 Tomorrow: five takeaways from the chart, including how home health and personal care aides grew to become the largest occupation in the New York metro.
 
@@ -95,13 +95,13 @@ Every chart we publish should be something you can check, question and rebuild y
 
 ::: spacer
 
-**Occupational Employment and Wage Statistics (OEWS), U.S. Bureau of Labor Statistics.** A survey of about 1.1 million employers that reports how many people work in each occupation and what they are paid, for the U.S., every state, every metro area and every nonmetro area. We use the May "All data" file for each year from 2011 to 2025. For each place and occupation we use two numbers: the number of jobs and the average (mean) annual wage.
+**Occupational Employment and Wage Statistics (OEWS), U.S. Bureau of Labor Statistics.** A survey of about 1.1 million workplaces that reports how many people work in each occupation and what they are paid, for the U.S., every state, every metro area and every nonmetro area. We use the May "All data" file for each year from 2011 to 2025. For each place and occupation we use two numbers: the number of jobs and the average (mean) annual wage.
 
 **Personal income by county (CAINC4), U.S. Bureau of Economic Analysis.** BEA's estimate of all income received by the people who live in each county, split by source: wages and salaries, employer-paid benefits, business owners' income, dividends, interest and rent, and government transfers such as Social Security. We use 2013 through 2024. It feeds the "What this chart can't see" tab only.
 
 **Quarterly Census of Employment and Wages (QCEW), U.S. Bureau of Labor Statistics.** A count of jobs in every county, from employers' unemployment insurance filings. We use the 2024 annual average only to measure how much metro area boundaries changed.
 
-**BLS reference files.** The official crosswalks between occupation codes (2000, 2010 and 2018 versions of the Standard Occupational Classification, or SOC), and the OEWS lists of which counties make up each metro and nonmetro area in 2016, 2019, 2022 and 2024.
+**BLS reference files.** The official crosswalks between occupation codes (the 2010 and 2018 versions of the Standard Occupational Classification, or SOC, plus BLS's tables for its 2011 and 2019 mixed code lists), and the OEWS lists of which counties make up each metro and nonmetro area in 2016, 2019, 2022 and 2024.
 
 ## How we built it
 
@@ -147,7 +147,7 @@ States do not change. Metro areas do. BLS redrew them in 2015 and again starting
 
 For a few metro areas that lost whole counties to a new metro area, we rebuilt the old boundary by adding the new area back in. New York lost Dutchess and Orange counties, 2.9% of jobs. Rebuilding its old boundary moves its 2025 Gini by 0.0009, so New York keeps its history, with a note.
 
-In all, 305 of 393 metro areas have history from 2016. Nonmetro areas were redrawn in both 2018 and 2024, and territories have too little comparable data, so they show May 2025 only. Metro history starts in 2016 because county lists for earlier years are not available.
+In all, 305 of 393 metro areas have history from 2016. Nonmetro areas were redrawn in both 2018 and 2024, and we did not build history for territories, so both show May 2025 only. Metro history starts in 2016 because county lists for earlier years are not available.
 
 ### Step 6: Decide what counts as a clear change
 
@@ -161,9 +161,9 @@ If any test fails, the chart says "No clear change."
 
 ### Step 7: Fix what we found in BLS's files
 
-We checked every occupation in every year for one-year jumps that are too large to be real, since real change phases in over the three pooled years. Two affect this chart:
+We checked every occupation, nationally and in every state, in every year for one-year jumps that are too large to be real, since real change phases in over the three pooled years. Two affect this chart:
 
-- The May 2013 national file lists 99,999 hunters and trappers. The years before and after show a few hundred. We treat it as missing. It moved the U.S. Gini by 0.0001.
+- The May 2013 national file lists 99,999 hunters and trappers. BLS did not publish this occupation nationally in 2012 or 2014, and exactly 99,999 is very likely a placeholder. We treat it as missing. It moved the U.S. Gini by 0.0001.
 - In California, BLS's count of home health and personal care aides went from 170,220 in May 2016 to 545,840 in May 2017. A November 2017 UC Berkeley Labor Center report found 558,000 such aides in California in 2014, 410,000 of them paid through the state's In-Home Supportive Services program, while OEWS counted 136,800 that year. We believe OEWS began counting most of those caregivers in 2017. BLS does not note it. With this group left out of both years, every California verdict still holds. The chart notes it for California places.
 
 ### Step 8: Add what the chart can't see
@@ -172,13 +172,13 @@ For the "What this chart can't see" tab, we added up BEA's county figures into t
 
 ### Step 9: Check the numbers
 
-Before publishing, a script recomputes every number the page shows two ways, once in Python from BLS's files and once with the page's own code, and compares them for every place and year. They match. It also re-runs the February check from Step 1, and checks the BEA figures against BEA's own U.S. and state totals.
+Before publishing, a script recomputes the page's main numbers (the Gini, the lowest-paid half's share, the top-paid 10%'s share and the average wage) two ways, once in Python from BLS's files and once with the page's own code, and compares them for every place and year. They match. It also re-runs the February check from Step 1, and checks the BEA figures against BEA's own U.S. and state totals.
 
 ## Updating
 
 ::: spacer
 
-BLS publishes new OEWS estimates each spring, and BEA publishes county income once a year. We plan to add May 2026 when BLS releases it. Every number on the chart and on this page comes from the build scripts, with nothing typed in by hand.
+BLS publishes new OEWS estimates each spring, and BEA publishes county income once a year. We plan to add May 2026 when BLS releases it. Every number on the chart is computed by the build scripts, and every number on this page comes from their output.
 
 ## Honest notes and limitations
 
@@ -230,7 +230,7 @@ Those figures usually measure all income, for households or individuals. This on
 
 ### Does this chart show that inequality is falling?
 
-It shows that the gap in payroll wages between occupations has narrowed in most places since 2013. It does not show whether overall inequality fell, because it leaves out business and investment income. Over the same years, the share of U.S. personal income that comes from dividends, interest and rent rose from 18.2% to 21.0%.
+Over the long run, it shows the gap in payroll wages between occupations narrowing: in 49 of 51 states since 2013, and in 229 of 305 metro areas since 2016. Since 2022 the picture is mixed. Among states, 15 narrowed, 11 widened and 25 show no clear change. Among 307 metro areas, 108 narrowed, 56 widened and 143 show no clear change. Either way, it does not show whether overall inequality fell, because it leaves out business and investment income. Over the same years, the share of U.S. personal income that comes from dividends, interest and rent rose from 18.2% to 21.0%.
 
 ### Why can't I see change over time for some places?
 
@@ -238,7 +238,7 @@ Metro area boundaries changed in 2024. If more than 2% of a metro area's jobs ar
 
 ### Why does the home health aide bubble jump in California?
 
-BLS's count of home health and personal care aides in California roughly tripled between May 2016 and May 2017, very likely because caregivers paid through the state's In-Home Supportive Services program began to be counted. Part of that bubble's growth in California is a counting change. Our verdicts for California hold with that group left out.
+BLS's count of home health and personal care aides in California rose 221% between May 2016 and May 2017, very likely because caregivers paid through the state's In-Home Supportive Services program began to be counted. Part of that bubble's growth in California is a counting change. Our verdicts for California hold with that group left out.
 
 ### Are the dollars adjusted for inflation?
 
