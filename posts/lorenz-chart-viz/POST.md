@@ -41,8 +41,13 @@ This chart shows how the pay from payroll jobs is split across occupations in ea
 We first published this chart on February 4, 2026, built in Tableau from May 2024 data. This version is rebuilt from scratch on the newest data, May 2025, and adds three things. It shows how the U.S. and every state have changed since 2013, and most metro areas since 2016. It lets you compare any two places. And it shows the income the chart leaves out.
 
 ::: blurb Read this first
-This chart covers payroll (W-2) wages only. It leaves out business owners, the self-employed, and income from investments such as dividends, interest, rent and capital gains. That is where most of the very highest incomes are. So this chart can tell you how pay is split among people who draw a paycheck. It cannot tell you whether overall income inequality in a place rose or fell. The "What this chart can't see" tab shows how much of each place's income falls outside the chart.
+This chart covers payroll (W-2) wages only. It leaves out business owners, the self-employed, and income from investments such as dividends, interest, rent and capital gains. That is where most of the very highest incomes are. On 2023 tax returns reporting $10 million or more, wages were 17.0% of total income, and capital gains, dividends, interest and partnership income made up 76.4% ([IRS](https://www.irs.gov/statistics/soi-tax-stats-individual-statistical-tables-by-size-of-adjusted-gross-income)). Across all returns, wages were 66.1%. So this chart can tell you how pay is split among people who draw a paycheck. It cannot tell you whether overall income inequality in a place rose or fell. The "What this chart can't see" tab shows how much of each place's income falls outside the chart.
 :::
+
+The chart below shows why this matters. It uses IRS data on 2023 federal tax returns, grouped by how much income each return reported. On returns under $500,000, wages were 69% to 80% of total income. On returns of $10 million or more, they were 17%, and capital gains, dividends, interest and partnership income made up most of the rest.
+
+![Stacked bar chart titled Where income comes from, by size of income. Each bar shows the share of total income by source on 2023 federal tax returns, by adjusted gross income. Wages are 80% of income on returns under $50,000, 72% on returns of $100,000 to $200,000, 59% on returns of $500,000 to $1 million, 26% on returns of $5 million to $10 million and 17% on returns of $10 million or more, where capital gains are 39%. Across all returns, wages are 66%.](images/01-income-sources-by-income.png)
+*Source: IRS Statistics of Income, Table 1.4, tax year 2023, all returns. Built by Data 4 The People.*
 
 ## Using the visualization
 
@@ -101,6 +106,8 @@ Every chart we publish should be something you can check, question and rebuild y
 
 **Quarterly Census of Employment and Wages (QCEW), U.S. Bureau of Labor Statistics.** A count of jobs in every county, from employers' unemployment insurance filings. We use the 2024 annual average only to measure how much metro area boundaries changed.
 
+**Individual income tax returns (Statistics of Income, Table 1.4), Internal Revenue Service.** Income by source for all 2023 federal tax returns, grouped by adjusted gross income. It is used only for the chart of where income comes from, above.
+
 **BLS reference files.** The official crosswalks between occupation codes (the 2010 and 2018 versions of the Standard Occupational Classification, or SOC, plus BLS's tables for its 2011 and 2019 mixed code lists), and the OEWS lists of which counties make up each metro and nonmetro area in 2016, 2019, 2022 and 2024.
 
 ## How we built it
@@ -131,9 +138,15 @@ We use the average wage rather than the median or other percentiles because BLS 
 
 ### Step 3: Make occupations match across years
 
-BLS changed its occupation codes several times between 2011 and 2025. Some occupations were split, others were merged. For example, "Home Health Aides" and "Personal Care Aides" became one occupation starting with May 2019 data.
+BLS names and numbers occupations with the Standard Occupational Classification (SOC). The SOC was revised in 2010 and again in 2018, and OEWS phased in each revision over a few years, with mixed code lists in 2011 and in 2019 and 2020. Along the way, some occupations were split into several codes, some were merged into one, and some moved to a different major group.
 
-For the change-over-time view, we linked every code through BLS's own crosswalks and combined any codes that were split or merged into one group. This turns about 830 codes a year into 753 to 755 groups that mean the same thing in every year. Because jobs and total wages add up, combining codes needs no guesswork. Every detailed code in every year matched a group.
+Home health and personal care aides are an example of a merge. Through May 2018, BLS published them as two separate occupations in two different major groups: Home Health Aides (31-1011), under Healthcare Support, and Personal Care Aides (39-9021), under Personal Care and Service. Starting with May 2019, OEWS publishes one combined occupation, Home Health and Personal Care Aides (31-1120), under Healthcare Support. This was not just a name change. Two occupations became one.
+
+BLS publishes crosswalk files that show how each old code maps to each new one. We used those files to link every code across all 15 years. When codes were split or merged, all of the codes involved become one group. For home health and personal care aides, the 2013 and 2016 bubbles are the two old occupations added together, and the 2019 through 2025 bubbles are the combined code, so the bubble counts the same jobs in every year. Because jobs and total wages add up, a group's average wage is simply its total wages divided by its total jobs. The group keeps one color, Healthcare Support, in every year.
+
+This turns about 830 codes a year into 753 to 755 groups that mean the same thing in every year. Every detailed code in every year matched a group.
+
+One limit: if BLS withheld one of the old codes for a place in an earlier year, that year's group includes only the other code. This happens mostly in small metro areas. The change tests in Step 6 treat it like any other withheld number, and the May 2025 view is not affected, because it uses BLS's codes as published.
 
 Combining codes lowers the U.S. Gini by 0.0007 to 0.0015, by about the same amount each year. That is why the Gini in the change-over-time view can differ slightly from the May 2025 view.
 
@@ -214,7 +227,7 @@ The code, the build steps and the published files are at [github.com/Data4ThePeo
 
 ### Does this include business owners, the self-employed or investment income?
 
-No. The chart covers payroll (W-2) wages only. It leaves out business owners, the self-employed, and income from dividends, interest, rent and capital gains. That is where most of the very highest incomes are, so this chart cannot tell you whether overall income inequality rose or fell. The "What this chart can't see" tab shows how much of each place's income comes from outside payroll wages.
+No. The chart covers payroll (W-2) wages only. It leaves out business owners, the self-employed, and income from dividends, interest, rent and capital gains. That is where most of the very highest incomes are: on 2023 tax returns reporting $10 million or more, wages were 17.0% of total income. So this chart cannot tell you whether overall income inequality rose or fell. The "What this chart can't see" tab shows how much of each place's income comes from outside payroll wages.
 
 ### What is a Lorenz curve?
 

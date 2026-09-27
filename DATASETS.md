@@ -243,3 +243,35 @@ much income comes from each source, not who receives it. Values in thousands
 of current dollars. BEA revises these estimates in each annual release.
 
 **License.** U.S. government work, public domain.
+
+## 4. IRS Statistics of Income, Table 1.4, tax year 2023
+
+**What it is.** Income by source for all individual income tax returns filed
+for tax year 2023 (filing year 2024), grouped by size of adjusted gross income.
+Estimates from IRS's sample of returns; money amounts in thousands of dollars.
+File `23in14ar.xls` from
+`irs.gov/statistics/soi-tax-stats-individual-statistical-tables-by-size-of-adjusted-gross-income`,
+saved to `data/raw/irs/`.
+
+**Use here.** The post's chart "Where income comes from, by size of income"
+and the cited figures (returns of $10 million or more: wages 17.0% of total
+income; capital gains, dividends and interest, and partnership and S
+corporation income 76.4%; all returns: wages 66.1%). Built by
+`scripts/10_irs_income_sources.py`, output `data/build/irs_income_sources_2023.csv`.
+
+**Definitions used.** Shares are of "total income." Capital gains = capital
+gain distributions + Schedule D taxable net gain - taxable net loss.
+Partnership, S corporation and sole proprietor income are net income minus net
+loss. Dividends = ordinary dividends; interest = taxable interest.
+"Everything else" = total income minus those sources (pensions, IRA
+distributions, Social Security, rent, royalties, farm, other income, losses).
+Returns with no adjusted gross income are in "All returns" but not in any
+bracket. The script checks the header labels and that the bracket return
+counts add back to the published total.
+
+**Limits.** Tax-return income, not all income: it leaves out unrealized gains,
+most tax-exempt income and anything not reported. Capital gains swing with the
+stock market, so the top brackets' mix varies from year to year. The table
+counts returns, not people or households.
+
+**License.** U.S. government work, public domain.

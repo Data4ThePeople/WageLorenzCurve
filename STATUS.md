@@ -6,7 +6,7 @@ Process: ~/.claude/d4tp-process/PROCESS.md
 ## Current
 
 Post: lorenz-chart-viz (Day 1; replaces the February 4, 2026 post in place)
-Step: 2b (waiting to start)
+Step: 2b
 Since: 2026-09-27
 
 ## Steps
@@ -66,3 +66,7 @@ None.
 - 2026-09-27 Title confirmed by Eric: "Occupational Pay Gaps by Place: An Interactive
   Lorenz Curve for Every U.S. State and Metro Area" (replaces the February title).
 - 2026-09-27 Step 2a confirmed by Eric.
+- 2026-09-27 2b: Eric accepted look-over items 1-15. Added the IRS income-by-
+  source chart (images/01-income-sources-by-income.png, tax year 2023) after
+  "Read this first", expanded Step 3 on the crosswalk (home health aides
+  example), added IRS to data sources, DATASETS.md and the tie-out.

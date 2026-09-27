@@ -93,6 +93,13 @@ us_inc = [a for a in D["areas"] if a["type"] == "U.S."][0]["income"]
 for y in ("2013", "2024"):
     v = us_inc[y]; print(f"   U.S. {y}: wages {v[1]/v[0]:.1%}, employer benefits {v[2]/v[0]:.1%}, business owners {v[3]/v[0]:.1%}, dividends/interest/rent {v[4]/v[0]:.1%}, transfers {v[5]/v[0]:.1%}")
 
+print("2c. IRS income by source (post chart): recomputed from the IRS file by scripts/10_irs_income_sources.py")
+irs = pd.read_csv(os.path.join(ROOT, "data/build/irs_income_sources_2023.csv")).set_index("bracket")
+t = irs.loc["$10 million or more"]
+print(f"   $10M+ wages {t['Wages']*100:.1f}%; capital gains + dividends/interest + partnership/S corp "
+      f"{(t['Capital gains'] + t['Dividends and interest'] + t['Partnership and S corporation'])*100:.1f}%; "
+      f"all returns wages {irs.loc['All returns', 'Wages']*100:.1f}%  (post cites 17.0%, 76.4%, 66.1%)")
+
 print("3. Headline numbers")
 L = J["latest"]; A = {a: t for a, t in zip(d25.akey, d25.area_title)}
 TY = dict(zip(d25.akey, d25.area_type))
