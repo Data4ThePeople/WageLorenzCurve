@@ -6,7 +6,7 @@ Process: ~/.claude/d4tp-process/PROCESS.md
 ## Current
 
 Post: lorenz-chart-viz (Day 1; replaces the February 4, 2026 post in place)
-Step: 2c
+Step: 2d (waiting to start)
 Since: 2026-09-27
 
 ## Steps
@@ -16,7 +16,7 @@ Since: 2026-09-27
 | 1  | Exploration and analysis | 2026-09-27 | Viz live at data4thepeople.github.io/WageLorenzCurve; candidate findings in analysis/candidate_findings.md |
 | 2a | Draft with brackets resolved | 2026-09-27 | Claude-written draft at Eric's request; replaces the February post in place |
 | 2b | Eric's edit, Claude's look-over | 2026-09-27 | Items 1-15 accepted; IRS chart and crosswalk write-up added |
-| 2c | Slice markup | | |
+| 2c | Slice markup | 2026-09-27 | 129 blocks; spacers between blurbs |
 | 2d | Hero 1680x1080 + alt text | | |
 | 2e | SEO | | |
 | 2f | Pushed to Prismic (draft) | | |
@@ -71,3 +71,4 @@ None.
   "Read this first", expanded Step 3 on the crosswalk (home health aides
   example), added IRS to data sources, DATASETS.md and the tie-out.
 - 2026-09-27 Step 2b confirmed by Eric.
+- 2026-09-27 Step 2c confirmed by Eric.
