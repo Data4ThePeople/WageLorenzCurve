@@ -23,7 +23,7 @@ NUM = ["tot_emp", "emp_prse", "h_mean", "a_mean", "mean_prse",
 
 # Values in BLS's own files that are errors, set to missing (documented in DATASETS.md).
 KNOWN_ERRORS = [
-    # May 2013 U.S. Hunters and Trappers shows 99,999 jobs; 2012 and 2014 show a few hundred.
+    # May 2013 U.S. Hunters and Trappers shows exactly 99,999 jobs; the occupation is not published nationally in 2012 or 2014.
     dict(year=2013, area="99", occ_code="45-3021", field="tot_emp"),
 ]
 

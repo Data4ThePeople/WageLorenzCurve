@@ -96,7 +96,7 @@ w("- **California counting change, May 2017.** OEWS counts of home health and pe
   "reported 558,000 personal care and home health aides in California in 2014, 410,000 of them In-Home Supportive Services providers, while "
   f"OEWS counted {ANN.loc['6', 2014]:,.0f} that year. BLS's May 2017 occupation page has no note on it; this is our inference. "
   "Effect on the history verdicts: none. All 26 California verdicts hold with the aide group removed from both years.")
-w("- **BLS file error, May 2013.** U.S. Hunters and Trappers shows 99,999 jobs (a few hundred in 2012 and 2014). Treated as missing; "
+w("- **BLS file error, May 2013.** U.S. Hunters and Trappers shows exactly 99,999 jobs (not published nationally in 2012 or 2014). Treated as missing; "
   "it moved the U.S. Gini by 0.0001.\n")
 w("## 1. Home health and personal care aides (requested)\n")
 w("BLS merged Home Health Aides (31-1011) and Personal Care Aides (39-9021) into one code (31-1120) starting May 2019. "

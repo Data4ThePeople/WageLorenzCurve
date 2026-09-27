@@ -130,8 +130,9 @@ independent (an approximation). Median 1 SD: U.S. well under 0.001, states
 **Errors and counting changes found in BLS's files** (checked by scanning every
 occupation group, nationally and by state, for one-year jumps; each May estimate
 pools three years of surveys, so real change phases in):
-- *May 2013, U.S., Hunters and Trappers (45-3021): 99,999 jobs*, against a few
-  hundred in 2012 and 2014. Treated as missing (`KNOWN_ERRORS` in
+- *May 2013, U.S., Hunters and Trappers (45-3021): 99,999 jobs.* BLS did not
+  publish this occupation nationally in 2012 or 2014; exactly 99,999 is very
+  likely a placeholder. Treated as missing (`KNOWN_ERRORS` in
   `scripts/01_load_oews.py`). Effect on the U.S. Gini: 0.0001; no verdict changed.
 - *California, home health and personal care aides, May 2016 to May 2017:*
   170,220 to 545,840 jobs statewide (Los Angeles 63,500 to 229,880). The UC
