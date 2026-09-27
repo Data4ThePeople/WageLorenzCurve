@@ -1,10 +1,12 @@
 ---
 title: "Occupational Pay Gaps by Place: An Interactive Lorenz Curve for Every U.S. State and Metro Area"
 subtitle: A free, interactive chart of how payroll wages are split across occupations in 585 places, with how that split has changed since 2013 and the income it leaves out.
-slug: occupational-pay-gaps-by-place
-date: 2026-09-28
+slug: lorenz-chart-viz
+date: 2026-02-04
+updated: 2026-09-28
+prismic_id: aYJX3BAAACIAbrYU
 section: Visualization
-hero: images/occupational-pay-gaps-by-place-hero-1680x1080.png
+hero: images/lorenz-chart-viz-hero-1680x1080.png
 hero_alt:
 meta_title:
 description:
@@ -26,13 +28,17 @@ dividers: false
 **[Open the full visualization](https://data4thepeople.github.io/WageLorenzCurve/)** **for a larger chart, dark mode, and a link you can share to any place and year.**
 :::
 
+::: blurb Updated September 28, 2026
+We rebuilt this chart on the newest data, May 2025. It now shows how each place has changed since 2013, lets you compare two places, and shows the income the chart leaves out. The first version, published February 4, 2026, used May 2024 data in Tableau. [Its method is saved here](https://github.com/Data4ThePeople/WageLorenzCurve/blob/main/Visualizing%20Wage%20Dispersion%20and%20Occupational%20Pay%20Inequality.pdf).
+:::
+
 ## Purpose
 
 ::: spacer
 
 This chart shows how the pay from payroll jobs is split across occupations in each place in the United States. Pick a state, a metro area or a rural region, and you can see how much of the area's wages go to its lowest-paid workers, how much go to its highest-paid workers, and which occupations sit where.
 
-We first published this chart on [February 4, 2026](LINK-TO-FEB-4-POST), built in Tableau from May 2024 data. This version is rebuilt from scratch on the newest data, May 2025, and adds three things. It shows how each place has changed since 2013. It lets you compare any two places. And it shows the income the chart leaves out.
+We first published this chart on February 4, 2026, built in Tableau from May 2024 data. This version is rebuilt from scratch on the newest data, May 2025, and adds three things. It shows how each place has changed since 2013. It lets you compare any two places. And it shows the income the chart leaves out.
 
 ::: blurb Read this first
 This chart covers payroll (W-2) wages only. It leaves out business owners, the self-employed, and income from investments such as dividends, interest, rent and capital gains. That is where most of the very highest incomes are. So this chart can tell you how pay is split among people who draw a paycheck. It cannot tell you whether overall income inequality in a place rose or fell. The "What this chart can't see" tab shows how much of each place's income falls outside the chart.

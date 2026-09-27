@@ -5,7 +5,7 @@ Process: ~/.claude/d4tp-process/PROCESS.md
 
 ## Current
 
-Post: occupational-pay-gaps-by-place (Day 1, proposed slug)
+Post: lorenz-chart-viz (Day 1; replaces the February 4, 2026 post in place)
 Step: 2a
 Since: 2026-09-27
 
@@ -57,3 +57,9 @@ None.
   (proposed). At Eric's request Claude wrote the first draft (normally Eric
   provides it). Open items: link to the February 4, 2026 post; send date
   (draft assumes Monday, September 28, with Day 2 on Tuesday, September 29).
+- 2026-09-27 Decision: Day 1 replaces the February 4, 2026 post in place
+  (https://www.data4thepeople.com/p/lorenz-chart-viz, Prismic document
+  aYJX3BAAACIAbrYU). Draft moved to posts/lorenz-chart-viz; front matter keeps
+  date 2026-02-04, adds updated 2026-09-28 and prismic_id. The importer's
+  update replaces the page body and does not carry author or tags: at 2f,
+  re-set author and the Visualization tag in Prismic before publishing.
