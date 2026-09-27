@@ -1,0 +1,687 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Occupational Pay Inequality by Place</title>
+<meta name="description" content="Interactive Lorenz curve of pay by occupation for every U.S. state, metro area and nonmetro area, from BLS OEWS May 2025 data, with change over time since 2013. Built by Data 4 The People.">
+<style>
+  :root{ color-scheme: light; }
+  .wl{
+    --paper:#F7F5EF; --panel:#FFFFFF; --ink:#1F2A27; --ink-2:#4E5B57; --ink-3:#7E8A86; --line:#D9D5CC; --grid:#E8E4DB;
+    --gap:rgba(8,80,65,.07); --bubble:#5E6B67; --accent:#085041; --accent-ink:#F7F5EF;
+    --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a;
+    container-type:inline-size; background:var(--paper); color:var(--ink);
+    font:14px/1.4 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+    padding:12px 16px 10px; box-sizing:border-box; max-width:100%; overflow-x:hidden;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:where(:not([data-theme="light"])) .wl:not(.framed){ color-scheme:dark;
+      --paper:#181A1B; --panel:#202325; --ink:#E4E2DC; --ink-2:#BBBDC0; --ink-3:#8C9094; --line:#33373A; --grid:#2A2E31;
+      --gap:rgba(143,191,175,.08); --bubble:#9AA5A1; --accent:#8FBFAF; --accent-ink:#181A1B;
+      --s1:#3987e5; --s2:#d95926; --s3:#199e70; }
+  }
+  :root[data-theme="dark"] .wl:not(.framed){ color-scheme:dark;
+      --paper:#181A1B; --panel:#202325; --ink:#E4E2DC; --ink-2:#BBBDC0; --ink-3:#8C9094; --line:#33373A; --grid:#2A2E31;
+      --gap:rgba(143,191,175,.08); --bubble:#9AA5A1; --accent:#8FBFAF; --accent-ink:#181A1B;
+      --s1:#3987e5; --s2:#d95926; --s3:#199e70; }
+  body{margin:0; background:#F7F5EF}
+  @media (prefers-color-scheme: dark){ :root:where(:not([data-theme="light"])) body{background:#181A1B} }
+  :root[data-theme="dark"] body{background:#181A1B}
+  .wl [hidden]{display:none !important}
+  .wl *{box-sizing:border-box}
+  .wl button,.wl select,.wl input{font:inherit; color:inherit}
+  .hdr{display:flex; justify-content:space-between; align-items:flex-start; gap:12px}
+  .hdr > div:first-child{min-width:0}
+  .hdr h1{font-size:19px; line-height:1.2; margin:0}
+  .brand{flex:none}
+  .hdr .sub{margin:2px 0 0; color:var(--ink-2); font-size:13px}
+  .brand .logo{height:24px; width:auto; display:block}
+  .brand .logo-dark{display:none}
+  @media (prefers-color-scheme: dark){
+    :root:where(:not([data-theme="light"])) .wl:not(.framed) .brand .logo-light{display:none}
+    :root:where(:not([data-theme="light"])) .wl:not(.framed) .brand .logo-dark{display:block}
+  }
+  :root[data-theme="dark"] .wl:not(.framed) .brand .logo-light{display:none}
+  :root[data-theme="dark"] .wl:not(.framed) .brand .logo-dark{display:block}
+  .controls{display:flex; flex-wrap:wrap; gap:8px 12px; align-items:flex-end; margin:10px 0 8px}
+  .controls label{display:flex; flex-direction:column; font-size:11.5px; color:var(--ink-2); gap:2px}
+  .controls select,.controls input{background:var(--panel); border:1px solid var(--line); border-radius:6px; padding:5px 8px; font-size:13.5px; min-width:0}
+  .controls input{width:260px; max-width:100%}
+  .controls #cmp{width:200px}
+  .seg{display:inline-flex; border:1px solid var(--line); border-radius:6px; overflow:hidden; background:var(--panel)}
+  .seg button{border:0; background:none; padding:6px 11px; cursor:pointer; font-size:13px}
+  .seg button[aria-pressed="true"]{background:var(--accent); color:var(--accent-ink)}
+  .seg button:disabled{opacity:.45; cursor:not-allowed}
+  .main{display:grid; grid-template-columns:minmax(0,1fr); gap:10px}
+  .card{background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:10px 12px; min-width:0}
+  .card h2{font-size:13px; margin:0 0 6px; font-weight:600}
+  .chartcard{display:flex; flex-direction:column; min-height:0}
+  .plot{position:relative; width:100%; aspect-ratio:1/1; touch-action:manipulation}
+  .plot canvas{position:absolute; inset:0; width:100%; height:100%; outline:none; cursor:crosshair}
+  .plot canvas:focus-visible{box-shadow:0 0 0 2px var(--accent)}
+  .note{font-size:12px; color:var(--ink-2); margin:6px 0 0}
+  .timebar{display:flex; align-items:center; gap:10px; margin-top:6px}
+  .timebar button{border:1px solid var(--line); background:var(--panel); border-radius:6px; padding:4px 12px; cursor:pointer}
+  .timebar .years{flex:1; display:flex; justify-content:space-between; gap:4px}
+  .timebar .years button{flex:1; padding:4px 0; font-variant-numeric:tabular-nums}
+  .timebar .years button[aria-pressed="true"]{background:var(--accent); color:var(--accent-ink); border-color:var(--accent)}
+  .timebar .years button:disabled{opacity:.35; cursor:not-allowed}
+  .verdict{font-size:12.5px; margin:6px 0 0; color:var(--ink)}
+  .side{display:flex; flex-direction:column; gap:10px; min-height:0}
+  .reads{display:grid; grid-template-columns:1fr; gap:6px}
+  .reads.two{grid-template-columns:1fr 1fr}
+  .reads .col h3{font-size:12px; margin:0 0 4px; color:var(--ink-2); font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+  .stat{display:flex; align-items:baseline; gap:8px; margin:2px 0}
+  .stat b{font-size:20px; font-variant-numeric:tabular-nums; min-width:74px}
+  .stat span{font-size:12.5px; color:var(--ink-2)}
+  .cover{font-size:11.5px; color:var(--ink-3); margin:6px 0 0}
+  .rank svg,.trend svg{display:block; width:100%; overflow:visible}
+  .rankinfo{font-size:12px; color:var(--ink-2); min-height:17px}
+  .groups{display:flex; flex-direction:column; min-height:0}
+  .glegend{font-size:11.5px; color:var(--ink-2); margin:-2px 0 4px}
+  .glegend .kj{color:var(--ink-3); font-weight:600} .glegend .kw{color:var(--ink); font-weight:600}
+  .glist{overflow:auto; min-height:0; max-height:320px}
+  .grow{display:grid; grid-template-columns:minmax(0,1fr) 44%; gap:2px 8px; align-items:center; width:100%; border:0; background:none;
+        text-align:left; padding:3px 4px; border-radius:5px; cursor:pointer}
+  .grow:hover{background:var(--grid)}
+  .grow .gn{font-size:12px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; display:flex; align-items:center; gap:5px}
+  .grow .sw{width:10px; height:10px; border-radius:2px; flex:none; background:transparent; border:1px solid var(--line)}
+  .grow .bars{display:flex; flex-direction:column; gap:2px}
+  .grow .bar{height:5px; border-radius:0 3px 3px 0; min-width:1px}
+  .grow .bj{background:var(--ink-3); opacity:.55} .grow .bw{background:var(--ink)}
+  .grow .gv{grid-column:1 / -1; font-size:11px; color:var(--ink-3); margin-top:-2px}
+  .grow[aria-pressed="true"] .gn{font-weight:600}
+  .tip{position:absolute; z-index:5; pointer-events:none; background:var(--panel); border:1px solid var(--line); border-radius:8px;
+       box-shadow:0 4px 16px rgba(0,0,0,.14); padding:8px 10px; font-size:12px; width:max-content; max-width:280px}
+  .tip.pinned{pointer-events:auto}
+  .tip .tt{font-weight:600; font-size:13px; line-height:1.25}
+  .tip .tc{color:var(--ink-3); font-size:11px; margin-bottom:5px}
+  .tip dl{display:grid; grid-template-columns:auto auto; gap:1px 10px; margin:0}
+  .tip dt{color:var(--ink-2)} .tip dd{margin:0; text-align:right; font-weight:600; font-variant-numeric:tabular-nums}
+  .tip .tn{margin-top:5px; color:var(--ink-2); max-width:260px}
+  .foot{display:flex; justify-content:space-between; align-items:flex-end; gap:12px; margin-top:8px; font-size:11px; color:var(--ink-3)}
+  .foot p{margin:0}
+  .foot button{border:1px solid var(--line); background:var(--panel); border-radius:6px; padding:3px 9px; cursor:pointer; font-size:11.5px; white-space:nowrap}
+  .tablev{position:fixed; inset:4%; z-index:20; background:var(--panel); border:1px solid var(--line); border-radius:10px; display:flex; flex-direction:column; box-shadow:0 10px 40px rgba(0,0,0,.25)}
+  .tablev header{display:flex; justify-content:space-between; align-items:center; padding:10px 14px; border-bottom:1px solid var(--line)}
+  .tablev .scroll{overflow:auto; padding:0 14px 14px}
+  .tablev table{border-collapse:collapse; width:100%; font-size:12.5px}
+  .tablev th,.tablev td{padding:4px 8px; border-bottom:1px solid var(--grid); text-align:right; font-variant-numeric:tabular-nums}
+  .tablev th:first-child,.tablev td:first-child,.tablev th:nth-child(2),.tablev td:nth-child(2){text-align:left}
+  .tablev th{position:sticky; top:0; background:var(--panel)}
+  .loading{padding:40px; text-align:center; color:var(--ink-2)}
+  @container (max-width: 520px){
+    .controls label{flex:1 1 100%} .controls input,.controls #cmp{width:100%}
+    .brand .logo{height:18px} .hdr h1{font-size:17px}
+  }
+  @container (min-width: 760px){
+    .main{grid-template-columns:minmax(0,1.35fr) minmax(0,1fr); height:640px}
+    .chartcard{height:100%}
+    .plot{aspect-ratio:auto; flex:1; min-height:0}
+    .side{height:100%}
+    .groups{flex:1}
+    .glist{max-height:none; flex:1}
+  }
+  /* Prismic frame: fixed 780px height, light theme pinned */
+  .wl.framed{height:780px; display:flex; flex-direction:column; padding:8px 12px 6px}
+  .wl.framed .hdr .sub{font-size:12px}
+  .wl.framed .main{flex:1; min-height:0; height:auto}
+  .wl.framed .controls{margin:6px 0 6px}
+  @container (max-width: 759px){ .wl.framed{overflow-y:auto} .wl.framed .main{flex:none} }
+</style>
+</head>
+<body>
+<div class="wl" id="wl">
+  <header class="hdr">
+    <div>
+      <h1>Occupational Pay Inequality by Place</h1>
+      <p class="sub" id="sub">Loading…</p>
+    </div>
+    <div class="brand"><!--__LOGO_ON_LIGHT__--><!--__LOGO_ON_DARK__--></div>
+  </header>
+  <div class="controls">
+    <label>Place type <select id="type"></select></label>
+    <label>Place <input id="place" list="placeList" autocomplete="off" spellcheck="false" aria-label="Choose a place"><datalist id="placeList"></datalist></label>
+    <label>Compare with <input id="cmp" list="cmpList" autocomplete="off" spellcheck="false" placeholder="Any place (optional)"><datalist id="cmpList"></datalist></label>
+    <div class="seg" role="group" aria-label="View">
+      <button id="vLatest" aria-pressed="true">May 2025</button><button id="vHist" aria-pressed="false">Change over time</button>
+    </div>
+  </div>
+  <div class="main" id="main">
+    <section class="card chartcard">
+      <h2 id="ctitle"></h2>
+      <div class="plot" id="plot">
+        <canvas id="cv" tabindex="0" role="img" aria-label="Lorenz curve chart. Use the arrow keys to move between occupations."></canvas>
+        <div class="tip" id="tip" hidden></div>
+      </div>
+      <div class="timebar" id="timebar" hidden>
+        <button id="play" aria-label="Play the change over time">Play</button>
+        <div class="years" id="years"></div>
+      </div>
+      <p class="verdict" id="verdict"></p>
+      <p class="note" id="cnote"></p>
+    </section>
+    <aside class="side">
+      <section class="card">
+        <h2 id="rtitle">What the curve says</h2>
+        <div class="reads" id="reads"></div>
+        <p class="cover" id="cover"></p>
+      </section>
+      <section class="card rank" id="rankCard">
+        <h2 id="ktitle"></h2>
+        <svg id="rank" height="50" aria-label="Every place of this type as a dot, placed by its Gini"></svg>
+        <div class="rankinfo" id="rankinfo"></div>
+      </section>
+      <section class="card trend" id="trendCard" hidden>
+        <h2 id="ttitle"></h2>
+        <svg id="trend" height="92" aria-label="Gini in each comparison year with its noise range"></svg>
+      </section>
+      <section class="card groups">
+        <h2>Share of jobs vs. share of wages, by major group</h2>
+        <div class="glegend">Top bar: <span class="kj">share of jobs</span>. Bottom bar: <span class="kw">share of wages</span>. Click up to three groups to color them on the curve.</div>
+        <div class="glist" id="groups"></div>
+      </section>
+    </aside>
+  </div>
+  <footer class="foot">
+    <p id="source">Source: U.S. Bureau of Labor Statistics, Occupational Employment and Wage Statistics (OEWS), May 2025; change over time uses May 2013, 2016, 2019 and 2022. Payroll (W-2) jobs only; the self-employed are not included. The Gini here measures gaps between occupations' average pay, not between individual workers. Built by Data 4 The People.</p>
+    <button id="tableBtn">View as table</button>
+  </footer>
+  <div class="tablev" id="tablev" hidden role="dialog" aria-label="Table view">
+    <header><strong id="tabletitle"></strong><button id="tableClose">Close</button></header>
+    <div class="scroll"><table id="table"></table></div>
+  </div>
+</div>
+<script>
+/*__CORE__*/
+/*__DATA__*/
+(async function () {
+  const root = document.getElementById('wl');
+  const $ = id => document.getElementById(id);
+  let framed = false;
+  try { framed = window.self !== window.top; } catch (e) { framed = true; }
+  if (/(^|[#&])embed=1\b/.test(location.hash)) framed = true;
+  if (framed) { root.classList.add('framed'); document.documentElement.setAttribute('data-theme', 'light'); }
+
+  if (!('DecompressionStream' in window)) {
+    $('sub').textContent = 'This browser cannot read the chart data. Please use a current version of Chrome, Safari, Firefox or Edge.';
+    return;
+  }
+  const bin = atob(DATA_B64), bytes = new Uint8Array(bin.length);
+  for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+  const text = await new Response(new Blob([bytes]).stream().pipeThrough(new DecompressionStream('gzip'))).text();
+  const D = JSON.parse(text);
+
+  const AREA = new Map(D.areas.map(a => [a.id, a]));
+  const TYPES = ['U.S.', 'State', 'Metro area', 'Nonmetro area', 'Territory'];
+  const PLURAL = { 'U.S.': 'states', 'State': 'states', 'Metro area': 'metro areas', 'Nonmetro area': 'nonmetro areas', 'Territory': 'territories' };
+  const LATEST = D.meta.latest_year;
+  const fmtPct = (v, d = 1) => (v * 100).toFixed(d) + '%';
+  const fmtInt = v => Math.round(v).toLocaleString('en-US');
+  const fmtUsd = v => '$' + Math.round(v).toLocaleString('en-US');
+  const fmtJobs = v => v >= 1e6 ? (v / 1e6).toFixed(1) + ' million' : fmtInt(v);
+  const shortMajor = t => t.replace(/ Occupations$/, '').replace(/^Office and Administrative Support$/, 'Office and admin support');
+  const css = n => getComputedStyle(root).getPropertyValue(n).trim();
+
+  // Gini for every place in May 2025 (ranking strip); recomputed here, not stored
+  const latestCurve = new Map();
+  const curveLatest = id => { if (!latestCurve.has(id)) latestCurve.set(id, lorenz(latestRows(D, id))); return latestCurve.get(id); };
+  for (const a of D.areas) curveLatest(a.id);
+  const histCache = new Map();
+  const curveHist = (id, y) => { const k = id + '|' + y; if (!histCache.has(k)) histCache.set(k, lorenz(historyRows(D, id, y))); return histCache.get(k); };
+  const framesFor = id => D.history[id] ? D.meta.frames.filter(y => y === LATEST || D.history[id][String(y)]) : [LATEST];
+
+  // ---------- state ----------
+  const S = { type: 'Metro area', id: '35620', cmp: null, view: 'latest', frame: LATEST, highlight: [], hover: null, pinned: false, anim: null };
+  const hp = new URLSearchParams(location.hash.slice(1));
+  if (hp.get('area') && AREA.has(hp.get('area'))) S.id = hp.get('area');
+  if (hp.get('cmp') && AREA.has(hp.get('cmp'))) S.cmp = hp.get('cmp');
+  if (hp.get('view') === 'history' && D.history[S.id]) S.view = 'history';
+  S.type = AREA.get(S.id).type;
+  const saveHash = () => {
+    const p = new URLSearchParams(location.hash.slice(1));
+    p.set('area', S.id); S.cmp ? p.set('cmp', S.cmp) : p.delete('cmp'); S.view === 'history' ? p.set('view', 'history') : p.delete('view');
+    try { history.replaceState(null, '', '#' + p.toString()); } catch (e) {}
+  };
+
+  // ---------- controls ----------
+  const typeSel = $('type');
+  for (const t of TYPES) { const o = document.createElement('option'); o.value = t; o.textContent = t; typeSel.appendChild(o); }
+  const label = a => a.title;
+  function fillPlaces() {
+    const dl = $('placeList'); dl.textContent = '';
+    D.areas.filter(a => a.type === S.type).sort((a, b) => a.title.localeCompare(b.title))
+      .forEach(a => { const o = document.createElement('option'); o.value = label(a); dl.appendChild(o); });
+  }
+  (function fillCmp() {
+    const dl = $('cmpList');
+    D.areas.slice().sort((a, b) => TYPES.indexOf(a.type) - TYPES.indexOf(b.type) || a.title.localeCompare(b.title))
+      .forEach(a => { const o = document.createElement('option'); o.value = label(a); o.label = a.type; dl.appendChild(o); });
+  })();
+  const byLabel = (txt, type) => D.areas.find(a => label(a) === txt && (!type || a.type === type));
+  typeSel.addEventListener('change', () => {
+    S.type = typeSel.value; fillPlaces();
+    const first = D.areas.filter(a => a.type === S.type).sort((a, b) => a.title.localeCompare(b.title))[0];
+    choose(S.type === 'U.S.' ? D.areas.find(a => a.type === 'U.S.').id : first.id);
+  });
+  $('place').addEventListener('change', e => { const a = byLabel(e.target.value, S.type) || byLabel(e.target.value); if (a) choose(a.id); else e.target.value = AREA.get(S.id).title; });
+  $('place').addEventListener('focus', e => e.target.select());
+  $('cmp').addEventListener('change', e => { const a = byLabel(e.target.value); S.cmp = a && a.id !== S.id ? a.id : null; if (!a) e.target.value = ''; saveHash(); render(); });
+  $('vLatest').addEventListener('click', () => setView('latest'));
+  $('vHist').addEventListener('click', () => setView('history'));
+  function choose(id) {
+    S.id = id; S.type = AREA.get(id).type; S.hover = null; S.pinned = false; stopAnim();
+    if (S.view === 'history' && !D.history[id]) S.view = 'latest';
+    S.frame = LATEST; saveHash(); render();
+  }
+  function setView(v) {
+    if (v === 'history' && !D.history[S.id]) return;
+    S.view = v; S.frame = LATEST; S.hover = null; S.pinned = false; stopAnim(); saveHash(); render();
+    if (v === 'history') play();
+  }
+
+  // ---------- time controls ----------
+  function buildYears() {
+    const box = $('years'); box.textContent = '';
+    const avail = framesFor(S.id);
+    for (const y of D.meta.frames) {
+      const b = document.createElement('button'); b.textContent = y; b.disabled = !avail.includes(y);
+      b.setAttribute('aria-pressed', String(y === S.frame));
+      b.addEventListener('click', () => { stopAnim(); tweenTo(y, 450); });
+      box.appendChild(b);
+    }
+  }
+  $('play').addEventListener('click', () => S.anim ? stopAnim() : play());
+  function play() {
+    const fr = framesFor(S.id); if (fr.length < 2) return;
+    stopAnim();
+    let i = 0; S.frame = fr[0]; S.tw = null; render();
+    $('play').textContent = 'Pause';
+    const step = () => {
+      if (!S.anim) return;
+      i++;
+      if (i >= fr.length) { stopAnim(); return; }
+      tweenTo(fr[i], 1100, () => { S.anim = setTimeout(step, 700); });
+    };
+    S.anim = setTimeout(step, 700);
+  }
+  function stopAnim() { if (S.anim) clearTimeout(S.anim); S.anim = null; $('play').textContent = 'Play'; }
+  function tweenTo(y, ms, done) {
+    const from = S.frame; if (from === y) { done && done(); return; }
+    const t0 = performance.now();
+    const tick = now => {
+      const t = Math.min(1, (now - t0) / ms), e = t < .5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
+      S.tw = { from, to: y, t: e };
+      if (t < 1) { drawPlot(); requestAnimationFrame(tick); }
+      else { S.tw = null; S.frame = y; render(); done && done(); }
+    };
+    requestAnimationFrame(tick);
+  }
+
+  // ---------- plot ----------
+  const cv = $('cv'), plot = $('plot'), ctx = cv.getContext('2d');
+  let G = null;           // geometry + drawn bubbles for hit testing
+  const M = { l: 46, r: 18, t: 10, b: 38 };
+  function curveFor(id, year) { return S.view === 'history' ? curveHist(id, year) : curveLatest(id); }
+  function sampleCurve(c, n = 120) { const out = []; for (let i = 0; i <= n; i++) out.push([i / n, wageShareAt(c, i / n)]); return out; }
+  function hlColor(major) { const i = S.highlight.indexOf(major); return i < 0 ? null : css(['--s1', '--s2', '--s3'][i]); }
+
+  function drawPlot() {
+    const W = plot.clientWidth, H = plot.clientHeight; if (!W || !H) return;
+    const dpr = window.devicePixelRatio || 1;
+    if (cv.width !== Math.round(W * dpr) || cv.height !== Math.round(H * dpr)) { cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr); }
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, W, H);
+    const side = Math.max(120, Math.min(W - M.l - M.r, H - M.t - M.b));
+    const x0 = M.l + Math.max(0, (W - M.l - M.r - side) / 2), y0 = M.t, sx = v => x0 + v * side, sy = v => y0 + (1 - v) * side;
+    const ink = css('--ink'), ink2 = css('--ink-2'), ink3 = css('--ink-3'), grid = css('--grid'), paper = css('--panel');
+    ctx.font = '11px -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif';
+    // grid + ticks
+    ctx.lineWidth = 1; ctx.strokeStyle = grid; ctx.fillStyle = ink3;
+    for (let v = 0; v <= 1.0001; v += 0.2) {
+      ctx.beginPath(); ctx.moveTo(sx(v), sy(0)); ctx.lineTo(sx(v), sy(1)); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(sx(0), sy(v)); ctx.lineTo(sx(1), sy(v)); ctx.stroke();
+      ctx.textAlign = 'center'; ctx.textBaseline = 'top'; ctx.fillText(Math.round(v * 100) + '%', sx(v), sy(0) + 4);
+      ctx.textAlign = 'right'; ctx.textBaseline = 'middle'; ctx.fillText(Math.round(v * 100) + '%', sx(0) - 5, sy(v));
+    }
+    ctx.fillStyle = ink2; ctx.textAlign = 'center'; ctx.textBaseline = 'bottom';
+    ctx.fillText(side < 420 ? 'Share of workers, lowest to highest paid' : 'Share of workers, occupations ordered from lowest to highest average pay', sx(0.5), H - 1);
+    ctx.save(); ctx.translate(11, sy(0.5)); ctx.rotate(-Math.PI / 2); ctx.textBaseline = 'middle'; ctx.fillText('Share of total wages', 0, 0); ctx.restore();
+
+    // current curve (possibly between two frames)
+    let cA, cB = null, t = 0;
+    if (S.view === 'history' && S.tw) { cA = curveFor(S.id, S.tw.from); cB = curveFor(S.id, S.tw.to); t = S.tw.t; }
+    else cA = curveFor(S.id, S.frame);
+    const sA = sampleCurve(cA), sB = cB ? sampleCurve(cB) : null;
+    const line = sA.map((p, i) => [p[0], sB ? p[1] + (sB[i][1] - p[1]) * t : p[1]]);
+    // gap between equality line and curve
+    ctx.beginPath(); ctx.moveTo(sx(0), sy(0)); ctx.lineTo(sx(1), sy(1));
+    for (let i = line.length - 1; i >= 0; i--) ctx.lineTo(sx(line[i][0]), sy(line[i][1]));
+    ctx.closePath(); ctx.fillStyle = css('--gap'); ctx.fill();
+    // equality line
+    ctx.setLineDash([5, 4]); ctx.strokeStyle = ink3; ctx.lineWidth = 1.5;
+    ctx.beginPath(); ctx.moveTo(sx(0), sy(0)); ctx.lineTo(sx(1), sy(1)); ctx.stroke(); ctx.setLineDash([]);
+    ctx.save(); ctx.translate(sx(0.78), sy(0.78)); ctx.rotate(-Math.atan2(side, side)); ctx.fillStyle = ink3; ctx.textAlign = 'center'; ctx.textBaseline = 'bottom';
+    ctx.fillText('Equal pay line', 0, -4); ctx.restore();
+
+    // first-frame outline in history view
+    if (S.view === 'history') {
+      const first = framesFor(S.id)[0];
+      if (first !== LATEST && (S.tw || S.frame !== first)) {
+        const g = sampleCurve(curveFor(S.id, first));
+        ctx.setLineDash([2, 3]); ctx.strokeStyle = ink2; ctx.lineWidth = 1.5; ctx.beginPath();
+        g.forEach((p, i) => i ? ctx.lineTo(sx(p[0]), sy(p[1])) : ctx.moveTo(sx(p[0]), sy(p[1]))); ctx.stroke(); ctx.setLineDash([]);
+        const px = 0.62, py = wageShareAt(curveFor(S.id, first), px);
+        ctx.fillStyle = ink2; ctx.textAlign = 'left'; ctx.textBaseline = 'top'; ctx.fillText('May ' + first, sx(px) + 6, sy(py) + 4);
+      }
+    }
+    // comparison place (latest view only)
+    if (S.cmp && S.view === 'latest') {
+      const c = sampleCurve(curveLatest(S.cmp));
+      ctx.setLineDash([7, 4]); ctx.strokeStyle = ink; ctx.lineWidth = 1.5; ctx.beginPath();
+      c.forEach((p, i) => i ? ctx.lineTo(sx(p[0]), sy(p[1])) : ctx.moveTo(sx(p[0]), sy(p[1]))); ctx.stroke(); ctx.setLineDash([]);
+    }
+    // the curve
+    ctx.strokeStyle = ink2; ctx.lineWidth = 2; ctx.beginPath();
+    line.forEach((p, i) => i ? ctx.lineTo(sx(p[0]), sy(p[1])) : ctx.moveTo(sx(p[0]), sy(p[1]))); ctx.stroke();
+
+    // bubbles
+    const all = [cA, cB].filter(Boolean);
+    let eMax = 0;
+    const scaleCurves = S.view === 'history' ? framesFor(S.id).map(y => curveFor(S.id, y)) : [cA];
+    for (const c of scaleCurves) for (const q of c.pts) eMax = Math.max(eMax, q.row.e / c.jobs);
+    const rMax = Math.max(8, Math.min(26, side * 0.042));
+    const rad = (q, c) => Math.max(1.8, rMax * Math.sqrt((q.row.e / c.jobs) / eMax));
+    const mapB = cB ? new Map(cB.pts.map(q => [q.row.key, q])) : null;
+    const mapA = new Map(cA.pts.map(q => [q.row.key, q]));
+    const drawn = [];
+    for (const q of cA.pts) {
+      const b = mapB ? mapB.get(q.row.key) : null;
+      if (mapB && !b) drawn.push({ q, c: cA, x: sx(q.x), y: sy(q.y), r: rad(q, cA), a: 1 - t });
+      else if (b) drawn.push({ q: t < .5 ? q : b, c: t < .5 ? cA : cB, x: sx(q.x + (b.x - q.x) * t), y: sy(q.y + (b.y - q.y) * t), r: rad(q, cA) + (rad(b, cB) - rad(q, cA)) * t, a: 1 });
+      else drawn.push({ q, c: cA, x: sx(q.x), y: sy(q.y), r: rad(q, cA), a: 1 });
+    }
+    if (mapB) for (const b of cB.pts) if (!mapA.has(b.row.key)) drawn.push({ q: b, c: cB, x: sx(b.x), y: sy(b.y), r: rad(b, cB), a: t });
+    drawn.sort((a, b) => b.r - a.r);
+    const neutral = css('--bubble'), anyHl = S.highlight.length > 0;
+    for (const d of drawn) {
+      const hc = hlColor(d.q.row.major);
+      ctx.globalAlpha = d.a * (hc ? 0.88 : anyHl ? 0.18 : 0.5);
+      ctx.beginPath(); ctx.arc(d.x, d.y, d.r, 0, Math.PI * 2); ctx.fillStyle = hc || neutral; ctx.fill();
+      ctx.globalAlpha = d.a * (anyHl && !hc ? 0.3 : 0.9); ctx.lineWidth = 1; ctx.strokeStyle = paper; ctx.stroke();
+    }
+    ctx.globalAlpha = 1;
+    // highlighted bubbles drawn again on top so they are never hidden by grey ones
+    if (anyHl) for (const d of drawn) { const hc = hlColor(d.q.row.major); if (!hc) continue;
+      ctx.globalAlpha = d.a * 0.9; ctx.beginPath(); ctx.arc(d.x, d.y, d.r, 0, Math.PI * 2); ctx.fillStyle = hc; ctx.fill(); ctx.strokeStyle = paper; ctx.stroke(); }
+    ctx.globalAlpha = 1;
+    // annotation: lowest-paid half
+    const half = line[Math.round((line.length - 1) / 2)];
+    const hy = S.tw ? half[1] : wageShareAt(cA, 0.5);
+    ctx.setLineDash([2, 3]); ctx.strokeStyle = ink; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(sx(0.5), sy(0)); ctx.lineTo(sx(0.5), sy(hy)); ctx.lineTo(sx(0), sy(hy)); ctx.stroke(); ctx.setLineDash([]);
+    ctx.fillStyle = ink; ctx.textAlign = 'left'; ctx.textBaseline = 'bottom'; ctx.font = '600 11.5px -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif';
+    ctx.fillText('Lowest-paid half of workers: ' + fmtPct(hy) + ' of wages', sx(0) + 6, sy(hy) - 4);
+    if (S.cmp && S.view === 'latest') {
+      const cc = curveLatest(S.cmp), px = 0.72, py = wageShareAt(cc, px);
+      ctx.font = '11px -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif'; ctx.textAlign = 'left'; ctx.textBaseline = 'top';
+      ctx.fillText(AREA.get(S.cmp).title + ' (dashed)', sx(px) + 8, sy(py) + 6);
+    }
+    // hover ring
+    if (S.hover) { const d = drawn.find(z => z.q.row.key === S.hover); if (d) { ctx.lineWidth = 2; ctx.strokeStyle = ink; ctx.beginPath(); ctx.arc(d.x, d.y, d.r + 2, 0, Math.PI * 2); ctx.stroke(); } }
+    G = { drawn, sx, sy, side, x0, y0, W, H };
+  }
+
+  // ---------- tooltip ----------
+  const tip = $('tip');
+  function nearest(px, py) {
+    if (!G) return null; let best = null, bd = Infinity;
+    for (const d of G.drawn) { if (d.a < 0.5) continue; const dist = Math.hypot(d.x - px, d.y - py) - d.r; if (dist < bd) { bd = dist; best = d; } }
+    return bd <= 10 ? best : null;
+  }
+  function add(dl, k, v) { const dt = document.createElement('dt'); dt.textContent = k; const dd = document.createElement('dd'); dd.textContent = v; dl.append(dt, dd); }
+  function showTip(d) {
+    const q = d.q, c = d.c, r = q.row, hist = S.view === 'history';
+    tip.textContent = '';
+    const g = hist ? D.groups[r.group] : null, o = hist ? null : D.occs[r.occ];
+    const tt = document.createElement('div'); tt.className = 'tt';
+    tt.textContent = hist ? (g.codes.length > 1 ? g.title.split(' / ')[0] + ' and related' : g.title) : o.title;
+    const tc = document.createElement('div'); tc.className = 'tc';
+    tc.textContent = (hist ? g.codes.join(', ') : o.code) + ' · ' + D.majors[r.major].title;
+    const dl = document.createElement('dl');
+    const year = hist ? (S.tw ? (S.tw.t < .5 ? S.tw.from : S.tw.to) : S.frame) : LATEST;
+    add(dl, 'Jobs', fmtInt(r.e));
+    add(dl, 'Average annual wage', fmtUsd(r.w));
+    const rel = r.w / c.avgWage - 1;
+    add(dl, 'vs. place average', (Math.abs(rel) < 0.005 ? 'about the same' : fmtPct(Math.abs(rel), 0) + (rel > 0 ? ' above' : ' below')));
+    add(dl, 'Share of jobs', fmtPct(q.jobShare, 2));
+    add(dl, 'Share of wages', fmtPct(q.wageShare, 2));
+    add(dl, 'Workers up to here', fmtPct(q.x));
+    add(dl, 'Wages up to here', fmtPct(q.y));
+    add(dl, 'Data', 'May ' + year);
+    tip.append(tt, tc, dl);
+    const n = document.createElement('div'); n.className = 'tn';
+    n.textContent = 'The lowest-paid ' + fmtPct(q.x) + ' of workers, up to and including this occupation, earn ' + fmtPct(q.y) + ' of wages.';
+    tip.append(n);
+    if (hist) {
+      const first = framesFor(S.id)[0];
+      if (first !== year) {
+        const f = curveFor(S.id, first).pts.find(z => z.row.key === r.key);
+        const n2 = document.createElement('div'); n2.className = 'tn';
+        n2.textContent = f ? 'In May ' + first + ': average wage ' + fmtUsd(f.row.w) + '; ' + fmtPct(f.x) + ' of workers up to here earned ' + fmtPct(f.y) + ' of wages.'
+                           : 'Not published for this place in May ' + first + '.';
+        tip.append(n2);
+      }
+      if (g.codes.length > 1) {
+        const n3 = document.createElement('div'); n3.className = 'tn';
+        const t = g.title.split(' / ');
+        n3.textContent = 'Combined so every year uses the same list (BLS split or merged these codes): ' + t.slice(0, 5).join('; ') + (t.length > 5 ? '; and ' + (t.length - 5) + ' more' : '') + '.';
+        tip.append(n3);
+      }
+    }
+    tip.hidden = false;
+    const pw = plot.clientWidth, ph = plot.clientHeight, tw = tip.offsetWidth, th = tip.offsetHeight;
+    let x = d.x + d.r + 10; if (x + tw > pw - 4) x = d.x - d.r - 10 - tw; x = Math.max(4, Math.min(x, pw - tw - 4));
+    let y = d.y - th / 2; y = Math.max(4, Math.min(y, ph - th - 4));
+    tip.style.left = x + 'px'; tip.style.top = y + 'px';
+  }
+  function hideTip() { tip.hidden = true; tip.classList.remove('pinned'); }
+  const localXY = e => { const r = cv.getBoundingClientRect(); return [e.clientX - r.left, e.clientY - r.top]; };
+  cv.addEventListener('pointermove', e => {
+    if (e.pointerType !== 'mouse' || S.pinned) return;
+    const d = nearest(...localXY(e));
+    const k = d ? d.q.row.key : null;
+    if (k !== S.hover) { S.hover = k; drawPlot(); }
+    d ? showTip(d) : hideTip();
+  });
+  cv.addEventListener('pointerleave', e => { if (e.pointerType === 'mouse' && !S.pinned) { S.hover = null; hideTip(); drawPlot(); } });
+  cv.addEventListener('click', e => {
+    const d = nearest(...localXY(e));
+    if (!d || (S.pinned && S.hover === d.q.row.key)) { S.pinned = false; S.hover = null; hideTip(); drawPlot(); return; }
+    S.pinned = e.pointerType !== 'mouse'; S.hover = d.q.row.key; drawPlot(); showTip(d); if (S.pinned) tip.classList.add('pinned');
+  });
+  cv.addEventListener('keydown', e => {
+    if (!G) return;
+    const order = G.drawn.filter(d => d.a >= .5).sort((a, b) => a.q.x - b.q.x);
+    if (e.key === 'Escape') { S.hover = null; hideTip(); drawPlot(); return; }
+    if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+    e.preventDefault();
+    let i = order.findIndex(d => d.q.row.key === S.hover);
+    i = i < 0 ? 0 : Math.max(0, Math.min(order.length - 1, i + (e.key === 'ArrowRight' ? 1 : -1)));
+    S.hover = order[i].q.row.key; drawPlot(); showTip(G.drawn.find(d => d.q.row.key === S.hover));
+  });
+
+  // ---------- readouts ----------
+  function readCol(title, c, sd) {
+    const col = document.createElement('div'); col.className = 'col';
+    if (title) { const h = document.createElement('h3'); h.textContent = title; h.title = title; col.appendChild(h); }
+    const R = readouts(c);
+    const rows = [[R.gini.toFixed(4), 'Gini' + (sd ? ' (noise range ±' + (2 * sd).toFixed(3) + ')' : '')],
+                  [fmtPct(R.bottomHalf), 'of wages go to the lowest-paid half of workers'],
+                  [fmtPct(R.top10), 'of wages go to the top-paid 10% of workers'],
+                  [fmtUsd(R.avgWage), 'average annual wage']];
+    for (const [v, l] of rows) { const s = document.createElement('div'); s.className = 'stat'; const b = document.createElement('b'); b.textContent = v; const sp = document.createElement('span'); sp.textContent = l; s.append(b, sp); col.appendChild(s); }
+    return col;
+  }
+  function renderReads(c) {
+    const box = $('reads'); box.textContent = ''; const a = AREA.get(S.id);
+    const hist = S.view === 'history', yr = hist ? S.frame : LATEST;
+    const sd = hist && yr !== LATEST ? D.history[S.id][String(yr)].gini_sd : a.gini_sd;
+    $('rtitle').textContent = 'What the curve says, May ' + yr;
+    if (S.cmp && !hist) { box.classList.add('two'); box.append(readCol(a.title, c, sd), readCol(AREA.get(S.cmp).title, curveLatest(S.cmp), AREA.get(S.cmp).gini_sd)); }
+    else { box.classList.remove('two'); box.append(readCol('', c, sd)); }
+    if (hist && yr !== LATEST) {
+      const F = D.history[S.id][String(yr)];
+      $('cover').textContent = 'Covers ' + fmtPct(c.jobs / F.total_jobs, 0) + ' of ' + (F.area_title === a.title ? 'the area’s ' : F.area_title + '’s ') + fmtJobs(F.total_jobs) + ' payroll jobs in May ' + yr + '. Occupations BLS did not publish for this place are left out.';
+    } else {
+      const cov = c.jobs / a.total_jobs;
+      $('cover').textContent = 'Covers ' + fmtPct(cov, 0) + ' of the area’s ' + fmtJobs(a.total_jobs) + ' payroll jobs. Left out: occupations BLS did not publish for this place'
+        + (a.jobs_topcoded ? ', and ' + fmtInt(a.jobs_topcoded) + ' jobs in occupations paid above BLS’s top-code limit' : '') + '.';
+    }
+  }
+
+  // ---------- ranking strip ----------
+  const svgNS = 'http://www.w3.org/2000/svg';
+  const el = (n, attrs, parent) => { const e = document.createElementNS(svgNS, n); for (const k in attrs) e.setAttribute(k, attrs[k]); parent && parent.appendChild(e); return e; };
+  const ordinal = n => n + (n % 100 >= 11 && n % 100 <= 13 ? 'th' : ({ 1: 'st', 2: 'nd', 3: 'rd' }[n % 10] || 'th'));
+  function renderRank() {
+    const card = $('rankCard'), svg = $('rank');
+    card.hidden = S.view === 'history'; if (card.hidden) return;
+    svg.textContent = '';
+    const type = S.type === 'U.S.' ? 'State' : S.type;
+    const pool = D.areas.filter(a => a.type === type).map(a => ({ a, g: curveLatest(a.id).gini })).sort((x, y) => x.g - y.g);
+    $('ktitle').textContent = 'Gini for all ' + pool.length + ' ' + PLURAL[type] + ', May ' + LATEST;
+    const W = svg.clientWidth || 300, H = 50, pad = 6, top = 6, bot = 30;
+    const lo = pool[0].g, hi = pool[pool.length - 1].g, xs = v => pad + (v - lo) / (hi - lo || 1) * (W - 2 * pad);
+    const ink3 = css('--ink-3');
+    for (const p of pool) el('line', { x1: xs(p.g), x2: xs(p.g), y1: top + 4, y2: bot - 4, stroke: ink3, 'stroke-opacity': 0.45 }, svg);
+    for (const v of [lo, hi]) { const t = el('text', { x: xs(v), y: H - 4, 'text-anchor': v === lo ? 'start' : 'end', 'font-size': 11, fill: ink3 }, svg); t.textContent = v.toFixed(3) + (v === lo ? ' more equal' : ' less equal'); }
+    if (S.cmp && AREA.get(S.cmp).type === type) { const g = curveLatest(S.cmp).gini; el('line', { x1: xs(g), x2: xs(g), y1: top, y2: bot, stroke: css('--ink'), 'stroke-width': 2, 'stroke-dasharray': '3 2' }, svg); }
+    const selG = curveLatest(S.id).gini;
+    el('line', { x1: xs(selG), x2: xs(selG), y1: 0, y2: bot + 2, stroke: css('--s1'), 'stroke-width': 3 }, svg);
+    const hov = el('line', { x1: 0, x2: 0, y1: top, y2: bot, stroke: css('--ink'), 'stroke-width': 2, visibility: 'hidden' }, svg);
+    const near = e => { const r = svg.getBoundingClientRect(), x = e.clientX - r.left; let best = pool[0]; for (const p of pool) if (Math.abs(xs(p.g) - x) < Math.abs(xs(best.g) - x)) best = p; return best; };
+    svg.onpointermove = e => { const p = near(e); hov.setAttribute('x1', xs(p.g)); hov.setAttribute('x2', xs(p.g)); hov.setAttribute('visibility', 'visible');
+      $('rankinfo').textContent = p.a.title + ': ' + p.g.toFixed(4) + '. Click to open.'; };
+    svg.onpointerleave = () => { hov.setAttribute('visibility', 'hidden'); rankInfo(pool); };
+    svg.onclick = e => choose(near(e).a.id);
+    svg.style.cursor = 'pointer';
+    rankInfo(pool);
+  }
+  function rankInfo(pool) {
+    const i = pool.findIndex(p => p.a.id === S.id);
+    $('rankinfo').textContent = S.type === 'U.S.' ? 'Blue: the U.S. as a whole (' + curveLatest(S.id).gini.toFixed(4) + '). Grey ticks: the states. Hover or click to open one.'
+      : 'Blue: ' + AREA.get(S.id).title + ', the ' + ordinal(pool.length - i) + ' least equal of ' + pool.length + '. Hover or click a tick to open another.';
+  }
+
+  // ---------- Gini over time ----------
+  function renderTrend() {
+    const card = $('trendCard'), svg = $('trend');
+    card.hidden = S.view !== 'history'; if (card.hidden) return;
+    svg.textContent = '';
+    const fr = framesFor(S.id), pts = fr.map(y => ({ y, g: curveHist(S.id, y).gini, sd: y === LATEST ? AREA.get(S.id).gini_sd : D.history[S.id][String(y)].gini_sd }));
+    $('ttitle').textContent = 'Gini in each comparison year, ' + AREA.get(S.id).title + ' (bars: noise range)';
+    const W = svg.clientWidth || 300, H = 92, pl = 40, pr = 12, pt = 8, pb = 18;
+    let lo = Math.min(...pts.map(p => p.g - 2 * p.sd)), hi = Math.max(...pts.map(p => p.g + 2 * p.sd)); const padv = (hi - lo) * 0.15 || 0.005; lo -= padv; hi += padv;
+    const xs = y => pl + (D.meta.frames.indexOf(y)) / (D.meta.frames.length - 1) * (W - pl - pr), ys = v => pt + (hi - v) / (hi - lo) * (H - pt - pb);
+    const ink3 = css('--ink-3'), ink = css('--ink');
+    for (const v of [lo + padv, (lo + hi) / 2, hi - padv]) { el('line', { x1: pl, x2: W - pr, y1: ys(v), y2: ys(v), stroke: css('--grid') }, svg); const t = el('text', { x: pl - 4, y: ys(v) + 4, 'text-anchor': 'end', 'font-size': 10.5, fill: ink3 }, svg); t.textContent = v.toFixed(3); }
+    for (const y of D.meta.frames) { const t = el('text', { x: xs(y), y: H - 3, 'text-anchor': 'middle', 'font-size': 10.5, fill: fr.includes(y) ? ink3 : css('--line') }, svg); t.textContent = y; }
+    el('polyline', { points: pts.map(p => xs(p.y) + ',' + ys(p.g)).join(' '), fill: 'none', stroke: css('--ink-2'), 'stroke-width': 2 }, svg);
+    for (const p of pts) {
+      el('line', { x1: xs(p.y), x2: xs(p.y), y1: ys(p.g - 2 * p.sd), y2: ys(p.g + 2 * p.sd), stroke: ink3, 'stroke-width': 1.5 }, svg);
+      const on = p.y === S.frame;
+      const c = el('circle', { cx: xs(p.y), cy: ys(p.g), r: on ? 5.5 : 4, fill: on ? css('--s1') : css('--panel'), stroke: on ? css('--panel') : ink, 'stroke-width': on ? 1.5 : 1.5 }, svg);
+      const tt = el('title', {}, c); tt.textContent = 'May ' + p.y + ': ' + p.g.toFixed(4) + ' (±' + (2 * p.sd).toFixed(3) + ')';
+    }
+  }
+
+  // ---------- major groups ----------
+  function renderGroups(c) {
+    const box = $('groups'); box.textContent = '';
+    const sh = majorShares(c, D.majors.length).filter(s => s.jobs > 0)
+      .sort((a, b) => b.wages / b.jobs - a.wages / a.jobs);
+    const mx = Math.max(...sh.map(s => Math.max(s.jobs, s.wages)));
+    for (const s of sh) {
+      const b = document.createElement('button'); b.className = 'grow'; b.setAttribute('aria-pressed', String(S.highlight.includes(s.major)));
+      const hc = hlColor(s.major);
+      const gn = document.createElement('span'); gn.className = 'gn';
+      const sw = document.createElement('span'); sw.className = 'sw'; if (hc) { sw.style.background = hc; sw.style.borderColor = hc; }
+      const nm = document.createElement('span'); nm.textContent = shortMajor(D.majors[s.major].title); nm.style.overflow = 'hidden'; nm.style.textOverflow = 'ellipsis';
+      gn.append(sw, nm);
+      const bars = document.createElement('span'); bars.className = 'bars';
+      const bj = document.createElement('span'); bj.className = 'bar bj'; bj.style.width = (s.jobs / mx * 100) + '%';
+      const bw = document.createElement('span'); bw.className = 'bar bw'; bw.style.width = (s.wages / mx * 100) + '%';
+      bars.append(bj, bw);
+      const gv = document.createElement('span'); gv.className = 'gv';
+      gv.textContent = fmtPct(s.jobs) + ' of jobs, ' + fmtPct(s.wages) + ' of wages';
+      b.append(gn, bars, gv);
+      b.title = D.majors[s.major].title;
+      b.addEventListener('click', () => {
+        const i = S.highlight.indexOf(s.major);
+        if (i >= 0) S.highlight.splice(i, 1); else { if (S.highlight.length >= 3) S.highlight.shift(); S.highlight.push(s.major); }
+        render();
+      });
+      box.appendChild(b);
+    }
+  }
+
+  // ---------- verdict ----------
+  function renderVerdict() {
+    const v = $('verdict'), n = $('cnote'), a = AREA.get(S.id);
+    v.textContent = ''; n.textContent = '';
+    $('vHist').disabled = !D.history[S.id];
+    $('vHist').title = D.history[S.id] ? '' : 'Change over time is not available here. ' + (a.hist_note || '');
+    if (S.view !== 'history') {
+      n.textContent = D.history[S.id] ? 'Each bubble is one occupation, sized by jobs. Switch to "Change over time" to see how this curve has moved since May ' + framesFor(S.id)[0] + '.'
+                                      : 'Each bubble is one occupation, sized by jobs. Change over time is not shown for this place. ' + (a.hist_note || '');
+      return;
+    }
+    const first = framesFor(S.id)[0], F = D.history[S.id][String(first)];
+    const g0 = curveHist(S.id, first).gini, g1 = curveHist(S.id, LATEST).gini, ch = g1 - g0;
+    const txt = 'From May ' + first + ' to May ' + LATEST + ' the Gini went from ' + g0.toFixed(4) + ' to ' + g1.toFixed(4) + ' (' + (ch > 0 ? '+' : '') + ch.toFixed(4) + '). ';
+    const why = F.verdict_to_2025 === 'no clear change' ? 'That does not clear the noise range (' + F.noise_to_2025.toFixed(3) + ') and our other checks.'
+              : 'That clears the noise range (' + F.noise_to_2025.toFixed(3) + ') and our other checks.';
+    const b = document.createElement('strong'); b.textContent = F.verdict_to_2025 === 'no clear change' ? 'No clear change. ' : (F.verdict_to_2025 === 'clear drop' ? 'Clear drop (more equal). ' : 'Clear rise (less equal). ');
+    v.append(b, document.createTextNode(txt + why));
+    let note = 'Dotted line: May ' + first + '. Codes BLS split or merged are combined so all years match, so the Gini can differ from the May 2025 view by about 0.001.';
+    if (F.boundary_change) note += ' Boundaries changed slightly (' + fmtPct(F.boundary_change) + ' of jobs); tested, small effect.';
+    if (F.area_title !== a.title) note += ' Called ' + F.area_title + ' in ' + first + '.';
+    n.textContent = note;
+  }
+
+  // ---------- table view ----------
+  $('tableBtn').addEventListener('click', () => {
+    const c = S.view === 'history' ? curveHist(S.id, S.frame) : curveLatest(S.id), hist = S.view === 'history';
+    const yr = hist ? S.frame : LATEST;
+    $('tabletitle').textContent = AREA.get(S.id).title + ', May ' + yr + ' (Gini ' + c.gini.toFixed(4) + ')';
+    const t = $('table'); t.textContent = '';
+    const hr = t.insertRow(); for (const h of ['Occupation', 'Major group', 'Jobs', 'Average annual wage', 'Workers up to here', 'Wages up to here']) { const th = document.createElement('th'); th.textContent = h; hr.appendChild(th); }
+    for (const q of c.pts) {
+      const r = t.insertRow(), nm = hist ? D.groups[q.row.group].title : D.occs[q.row.occ].title;
+      for (const v of [nm, shortMajor(D.majors[q.row.major].title), fmtInt(q.row.e), fmtUsd(q.row.w), fmtPct(q.x), fmtPct(q.y)]) r.insertCell().textContent = v;
+    }
+    $('tablev').hidden = false; $('tableClose').focus();
+  });
+  $('tableClose').addEventListener('click', () => { $('tablev').hidden = true; });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') $('tablev').hidden = true; });
+
+  // ---------- render ----------
+  function render() {
+    const a = AREA.get(S.id), hist = S.view === 'history', yr = hist ? S.frame : LATEST;
+    const c = hist ? curveHist(S.id, yr) : curveLatest(S.id);
+    typeSel.value = S.type; fillPlaces(); $('place').value = a.title; $('cmp').value = S.cmp ? AREA.get(S.cmp).title : '';
+    $('vLatest').setAttribute('aria-pressed', String(!hist)); $('vHist').setAttribute('aria-pressed', String(hist));
+    $('sub').textContent = a.title + ', May ' + yr + '. Gini ' + c.gini.toFixed(4) + '. Each bubble is an occupation, sized by jobs.';
+    $('ctitle').textContent = a.title + ': share of wages by share of workers, May ' + yr;
+    $('timebar').hidden = !hist; if (hist) buildYears();
+    hideTip(); S.pinned = false;
+    drawPlot(); renderReads(c); renderRank(); renderTrend(); renderGroups(c); renderVerdict();
+  }
+  new ResizeObserver(() => { drawPlot(); renderRank(); renderTrend(); }).observe(plot);
+  fillPlaces(); render();
+  if (S.view === 'history') play();
+})();
+</script>
+</body>
+</html>

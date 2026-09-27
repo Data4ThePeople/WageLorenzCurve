@@ -35,3 +35,8 @@ None.
   21.7%). History assessment: U.S. and states 2013-2025 and same-county metros
   2016-2025 pass; big metros blocked by the 2024 redraw. Next: QCEW check on
   changed counties. See DATASETS.md.
+- 2026-09-27 QCEW boundary check: 305 metros eligible for history from 2016
+  (New York and New Orleans via rebuilt old boundaries). Viz built
+  (`dist/index.html`): May 2025 view, change over time 2013-2025, tooltip,
+  readouts, ranking strip, group shares, compare, table view. Tie-out passes
+  (`scripts/08_tieout.py`). Published to GitHub Pages.
