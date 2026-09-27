@@ -578,7 +578,7 @@
     const dl = document.createElement('dl');
     const year = hist ? (S.tw ? (S.tw.t < .5 ? S.tw.from : S.tw.to) : S.frame) : LATEST;
     add(dl, 'Jobs', fmtInt(r.e));
-    add(dl, 'Average annual wage', fmtUsd(r.w));
+    add(dl, hist ? 'Average annual wage (not inflation-adjusted)' : 'Average annual wage', fmtUsd(r.w));
     const rel = r.w / c.avgWage - 1;
     add(dl, 'vs. place average', (Math.abs(rel) < 0.005 ? 'about the same' : fmtPct(Math.abs(rel), 0) + (rel > 0 ? ' above' : ' below')));
     add(dl, 'Share of jobs', fmtPct(q.jobShare, 2));
@@ -595,7 +595,7 @@
       if (first !== year) {
         const f = curveFor(S.id, first).pts.find(z => z.row.key === r.key);
         const n2 = document.createElement('div'); n2.className = 'tn';
-        n2.textContent = f ? 'In May ' + first + ': average wage ' + fmtUsd(f.row.w) + '; ' + fmtPct(f.x) + ' of workers up to here earned ' + fmtPct(f.y) + ' of wages.'
+        n2.textContent = f ? 'In May ' + first + ': average wage ' + fmtUsd(f.row.w) + ' (not adjusted for inflation); ' + fmtPct(f.x) + ' of workers up to here earned ' + fmtPct(f.y) + ' of wages.'
                            : 'Not published for this place in May ' + first + '.';
         tip.append(n2);
       }
@@ -647,7 +647,7 @@
     const rows = [[R.gini.toFixed(4), 'Gini of payroll wages across occupations' + (sd ? ' (noise ±' + (2 * sd).toFixed(3) + ')' : '')],
                   [fmtPct(R.bottomHalf), 'of wages go to the lowest-paid half of workers'],
                   [fmtPct(R.top10), 'of wages go to the top-paid 10% of workers'],
-                  [fmtUsd(R.avgWage), 'average annual wage']];
+                  [fmtUsd(R.avgWage), 'average annual wage' + (S.view === 'history' ? ' (not adjusted for inflation)' : '')]];
     const st = document.createElement('div'); st.className = 'stats'; col.appendChild(st);
     for (const [v, l] of rows) { const s = document.createElement('div'); s.className = 'stat'; const b = document.createElement('b'); b.textContent = v; const sp = document.createElement('span'); sp.textContent = l; s.append(b, sp); st.appendChild(s); }
     return col;
