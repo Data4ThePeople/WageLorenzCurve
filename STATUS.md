@@ -6,7 +6,7 @@ Process: ~/.claude/d4tp-process/PROCESS.md
 ## Current
 
 Post: lorenz-chart-viz (Day 1; replaces the February 4, 2026 post in place)
-Step: 2d
+Step: 2e (waiting to start)
 Since: 2026-09-27
 
 ## Steps
@@ -17,7 +17,7 @@ Since: 2026-09-27
 | 2a | Draft with brackets resolved | 2026-09-27 | Claude-written draft at Eric's request; replaces the February post in place |
 | 2b | Eric's edit, Claude's look-over | 2026-09-27 | Items 1-15 accepted; IRS chart and crosswalk write-up added |
 | 2c | Slice markup | 2026-09-27 | 129 blocks; spacers between blurbs |
-| 2d | Hero 1680x1080 + alt text | | |
+| 2d | Hero 1680x1080 + alt text | 2026-09-27 | U.S. May 2025 curve rendered at hero scale; alt 463 characters |
 | 2e | SEO | | |
 | 2f | Pushed to Prismic (draft) | | |
 | 2g | Mailchimp teaser | | |
@@ -73,3 +73,4 @@ None.
 - 2026-09-27 Step 2b confirmed by Eric.
 - 2026-09-27 Step 2c confirmed by Eric.
 - 2026-09-27 2d: hero rendered from the U.S. May 2025 curve at hero scale (scripts/11_hero.py), padded with hero pad (4%), alt text 463 characters; hero check ok.
+- 2026-09-27 Step 2d confirmed by Eric.
