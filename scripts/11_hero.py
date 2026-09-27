@@ -40,11 +40,11 @@ for v in (0.5, 1):
     ax.plot([v, v], [0, 1], color=GRID, lw=1, zorder=0); ax.plot([0, 1], [v, v], color=GRID, lw=1, zorder=0)
 ax.plot([0, 1], [0, 0], color=GRID, lw=1.5, zorder=0); ax.plot([0, 0], [0, 1], color=GRID, lw=1.5, zorder=0)
 ax.set_xticks([0, .5, 1]); ax.set_yticks([0, .5, 1])
-ax.set_xticklabels(["0%", "50%", "100%"], fontsize=15, color=MUTED); ax.set_yticklabels(["0%", "50%", "100%"], fontsize=15, color=MUTED)
-ax.tick_params(length=0, pad=8)
+ax.set_xticklabels(["0%", "50%", "100%"], fontsize=24, color=INK); ax.set_yticklabels(["0%", "50%", "100%"], fontsize=24, color=INK)
+ax.tick_params(length=0, pad=10)
 ax.fill_between(np.r_[0, x], np.r_[0, x], np.r_[0, y], color="#8FBFAF", alpha=0.08, lw=0, zorder=1)
 ax.plot([0, 1], [0, 1], ls=(0, (6, 5)), color=MUTED, lw=2, zorder=2)
-ax.text(0.62, 0.655, "Equal pay line", rotation=45, rotation_mode="anchor", color=MUTED, fontsize=15, ha="center", va="bottom")
+ax.text(0.62, 0.655, "Equal pay line", rotation=45, rotation_mode="anchor", color=MUTED, fontsize=20, ha="center", va="bottom")
 ax.plot(np.r_[0, x], np.r_[0, y], color=INK, lw=2.5, zorder=3)
 share = e / e.sum()
 r = 34 * np.sqrt(share / share.max())                   # points, largest bubble ~34 pt radius
@@ -54,7 +54,7 @@ ax.scatter(x[order], y[order], s=(np.maximum(r[order], 2.2)) ** 2, c=[cols[i] fo
            edgecolors=BG, linewidths=1.2, zorder=4)
 ax.plot([0.5, 0.5, 0], [0, half, half], ls=(0, (2, 3)), color=INK, lw=1.4, zorder=5)
 ax.text(0.02, half + 0.025, f"Lowest-paid half: {half*100:.1f}% of wages", color=INK, fontsize=16, fontweight="bold", zorder=6)
-fig.text(0.065, 0.945, "Share of total payroll wages vs. share of workers, U.S., May 2025", fontsize=16, color=MUTED)
+fig.text(0.065, 0.945, "Share of total payroll wages vs. share of workers, U.S., May 2025", fontsize=20, color=MUTED)
 
 tx = 0.62
 fig.text(tx, 0.74, "Occupational\nPay Gaps\nby Place", fontsize=52, fontweight="bold", color=INK, va="top", linespacing=1.05)
