@@ -54,7 +54,7 @@ ax.scatter(x[order], y[order], s=(np.maximum(r[order], 2.2)) ** 2, c=[cols[i] fo
            edgecolors=BG, linewidths=1.2, zorder=4)
 ax.plot([0.5, 0.5, 0], [0, half, half], ls=(0, (2, 3)), color=INK, lw=1.4, zorder=5)
 ax.text(0.02, half + 0.025, f"Lowest-paid half: {half*100:.1f}% of wages", color=INK, fontsize=16, fontweight="bold", zorder=6)
-fig.text(0.065, 0.945, "Share of total payroll wages vs. share of workers, U.S., May 2025", fontsize=20, color=MUTED)
+fig.text(0.065, 0.935, "Share of total payroll wages vs. share of workers, U.S., May 2025", fontsize=28, fontweight="bold", color=INK)
 
 tx = 0.62
 fig.text(tx, 0.74, "Occupational\nPay Gaps\nby Place", fontsize=52, fontweight="bold", color=INK, va="top", linespacing=1.05)
