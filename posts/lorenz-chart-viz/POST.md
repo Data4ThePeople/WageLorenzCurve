@@ -7,7 +7,7 @@ updated: 2026-09-28
 prismic_id: aYJX3BAAACIAbrYU
 section: Visualization
 hero: images/lorenz-chart-viz-hero-1680x1080.png
-hero_alt:
+hero_alt: A Lorenz curve of U.S. payroll wages by occupation, May 2025, on a dark background. Colored bubbles, one per occupation and sized by jobs, run from the lowest-paid job at bottom left to the highest-paid at top right, sagging below a dashed equal pay line. A marker shows the lowest-paid half of workers earn 30.2% of payroll wages. Beside it: Occupational Pay Gaps by Place, every state, metro and rural area, payroll (W-2) wages only. Built by Data 4 The People.
 meta_title:
 description:
 keywords:

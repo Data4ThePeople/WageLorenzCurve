@@ -6,7 +6,7 @@ Process: ~/.claude/d4tp-process/PROCESS.md
 ## Current
 
 Post: lorenz-chart-viz (Day 1; replaces the February 4, 2026 post in place)
-Step: 2d (waiting to start)
+Step: 2d
 Since: 2026-09-27
 
 ## Steps
@@ -72,3 +72,4 @@ None.
   example), added IRS to data sources, DATASETS.md and the tie-out.
 - 2026-09-27 Step 2b confirmed by Eric.
 - 2026-09-27 Step 2c confirmed by Eric.
+- 2026-09-27 2d: hero rendered from the U.S. May 2025 curve at hero scale (scripts/11_hero.py), padded with hero pad (4%), alt text 463 characters; hero check ok.
