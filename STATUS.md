@@ -6,7 +6,7 @@ Process: ~/.claude/d4tp-process/PROCESS.md
 ## Current
 
 Post: lorenz-chart-viz (Day 1; replaces the February 4, 2026 post in place)
-Step: 2e (waiting to start)
+Step: 2e
 Since: 2026-09-27
 
 ## Steps
@@ -74,3 +74,4 @@ None.
 - 2026-09-27 Step 2c confirmed by Eric.
 - 2026-09-27 2d: hero rendered from the U.S. May 2025 curve at hero scale (scripts/11_hero.py), padded with hero pad (4%), alt text 463 characters; hero check ok.
 - 2026-09-27 Step 2d confirmed by Eric.
+- 2026-09-27 2e: meta title, description, keywords and dataset schema written (Dataset, WebPage, WebApplication, FAQPage with 11 questions); target searches proposed by Claude for Eric to confirm.

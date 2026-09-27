@@ -8,10 +8,25 @@ prismic_id: aYJX3BAAACIAbrYU
 section: Visualization
 hero: images/lorenz-chart-viz-hero-1680x1080.png
 hero_alt: A Lorenz curve of U.S. payroll wages by occupation, May 2025, on a dark background. Colored bubbles, one per occupation and sized by jobs, run from the lowest-paid job at bottom left to the highest-paid at top right, sagging below a dashed equal pay line. A marker shows the lowest-paid half of workers earn 30.2% of payroll wages. Beside it: Occupational Pay Gaps by Place, every state, metro and rural area, payroll (W-2) wages only. Built by Data 4 The People.
-meta_title:
-description:
-keywords:
+meta_title: "Pay Gaps by Occupation: Lorenz Curve for Every U.S. Metro"
+description: "Free interactive Lorenz curve of payroll wages by occupation for every U.S. state and metro area, with the Gini, change since 2013 and the income it misses."
+keywords: lorenz curve, gini coefficient by state, wage inequality by metro area, pay gap by occupation, wage distribution by state, OEWS wage data, where income comes from by income level
 schema_type: dataset
+dataset_name: Lorenz curves and Gini coefficients of payroll wages across occupations for 585 U.S. places, May 2013 to May 2025
+dataset_description: "Share of payroll wages by share of workers, occupations ordered by average pay, for the U.S., every state, metro area and nonmetro area, from BLS Occupational Employment and Wage Statistics. May 2025 at full occupational detail; May 2013, 2016, 2019 and 2022 on a harmonized occupation list for the U.S., states and metro areas with stable boundaries. Includes Gini coefficients with noise ranges and BEA personal income by source, 2013 to 2024."
+temporal: 2013-05/2025-05
+spatial: United States
+measured: Gini coefficient of payroll wages across occupations|index 0 to 1; Share of payroll wages earned by the lowest-paid half of workers|percent; Share of payroll wages earned by the top-paid 10% of workers|percent; Share of personal income from wages and other sources|percent
+sources: https://www.bls.gov/oes/|https://apps.bea.gov/regional/|https://www.bls.gov/cew/|https://www.irs.gov/statistics/soi-tax-stats-individual-statistical-tables-by-size-of-adjusted-gross-income
+distribution: text/html|https://data4thepeople.github.io/WageLorenzCurve/;application/json|https://github.com/Data4ThePeople/WageLorenzCurve/tree/main/data/build
+measurement_technique: Detailed OEWS occupations sorted by annual mean wage; cumulative shares of jobs and of jobs x mean wage; Gini by the trapezoid rule. Occupation codes harmonized across SOC revisions with BLS crosswalks; comparisons limited to non-overlapping survey years; changes tested against RSE-based noise.
+credit: Data 4 The People, from the U.S. Bureau of Labor Statistics and the U.S. Bureau of Economic Analysis
+license: https://www.data4thepeople.com/terms-of-use
+app_url: https://data4thepeople.github.io/WageLorenzCurve/
+app_name: "Occupational Pay Gaps by Place: interactive Lorenz curve"
+app_category: EducationalApplication
+app_description: Free interactive Lorenz curve of payroll wages by occupation for every U.S. state, metro area and nonmetro area, with change over time and the income it leaves out.
+app_features: Pick any of 585 places|Hover or tap any occupation|Highlight major occupation groups|Compare two places|Play the change since 2013|Gini ranking of every place|Income by source from BEA|Table view
 drop_cap: false
 heading_spacer: 20px
 caption_spacer: 20px
