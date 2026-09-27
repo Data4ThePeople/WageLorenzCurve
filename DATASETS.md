@@ -87,6 +87,9 @@ management, business and computer codes through the 2018 split of the
 catch-all codes. Groups are named after the member with the most U.S. jobs in
 May 2025. The change tests (04) check direction at native detail, and it
 agreed for the tech metros checked (San Jose, San Francisco, Seattle).
+Effect on changes between frame years (combined minus full detail): median
+0.0003, maximum 0.0059 (Morgantown, WV, 2016 to 2025); direction agrees in
+98-100% of places per span, and where it does not the verdict is "no clear change".
 
 **Estimation method change, May 2021.** BLS moved to a model-based estimator.
 Observed in this data: metro coverage rises about 4 points and the metro
