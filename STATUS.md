@@ -5,8 +5,8 @@ Process: ~/.claude/d4tp-process/PROCESS.md
 
 ## Current
 
-Post: none yet
-Step: 2a (waiting for the Day 1 slug)
+Post: occupational-pay-gaps-by-place (Day 1, proposed slug)
+Step: 2a
 Since: 2026-09-27
 
 ## Steps
@@ -53,3 +53,7 @@ None.
   the viz (what changed, how to use it, method, limits); Day 2 gives five
   takeaways chosen from the candidate list (home health aides in New York
   required). Each post runs 2a to 2g under its own slug.
+- 2026-09-27 Step 2a opened for Day 1, slug occupational-pay-gaps-by-place
+  (proposed). At Eric's request Claude wrote the first draft (normally Eric
+  provides it). Open items: link to the February 4, 2026 post; send date
+  (draft assumes Monday, September 28, with Day 2 on Tuesday, September 29).
