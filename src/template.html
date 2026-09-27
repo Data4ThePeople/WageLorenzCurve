@@ -79,6 +79,8 @@
   .rank svg,.trend svg{display:block; width:100%; overflow:visible}
   .rankinfo{font-size:12px; color:var(--ink-2); min-height:17px}
   .groups{display:flex; flex-direction:column; min-height:0}
+  .ghead{display:flex; justify-content:space-between; align-items:baseline; gap:8px}
+  .tog{font-size:11.5px; color:var(--ink-2); white-space:nowrap; display:flex; align-items:center; gap:4px; cursor:pointer}
   .glegend{font-size:11.5px; color:var(--ink-2); margin:-2px 0 4px}
   .glegend .kj{color:var(--ink-3); font-weight:600} .glegend .kw{color:var(--ink); font-weight:600}
   .glist{overflow:auto; min-height:0; max-height:320px}
@@ -178,8 +180,9 @@
         <svg id="trend" height="92" aria-label="Gini in each comparison year with its noise range"></svg>
       </section>
       <section class="card groups">
-        <h2>Share of jobs vs. share of wages, by major group</h2>
-        <div class="glegend">Top bar: <span class="kj">share of jobs</span>. Bottom bar: <span class="kw">share of wages</span>. Click up to three groups to color them on the curve.</div>
+        <div class="ghead"><h2>Share of jobs vs. share of wages, by major group</h2>
+          <label class="tog"><input type="checkbox" id="byGroup" checked> Color by group</label></div>
+        <div class="glegend">Top bar: <span class="kj">share of jobs</span>. Bottom bar: <span class="kw">share of wages</span>. <span id="gtip"></span></div>
         <div class="glist" id="groups"></div>
       </section>
     </aside>
@@ -233,7 +236,7 @@
   const framesFor = id => D.history[id] ? D.meta.frames.filter(y => y === LATEST || D.history[id][String(y)]) : [LATEST];
 
   // ---------- state ----------
-  const S = { type: 'Metro area', id: '35620', cmp: null, view: 'latest', frame: LATEST, highlight: [], hover: null, pinned: false, anim: null };
+  const S = { byGroup: true, type: 'Metro area', id: '35620', cmp: null, view: 'latest', frame: LATEST, highlight: [], hover: null, pinned: false, anim: null };
   const hp = new URLSearchParams(location.hash.slice(1));
   if (hp.get('area') && AREA.has(hp.get('area'))) S.id = hp.get('area');
   if (hp.get('cmp') && AREA.has(hp.get('cmp'))) S.cmp = hp.get('cmp');
@@ -325,6 +328,16 @@
   const M = { l: 46, r: 18, t: 10, b: 38 };
   function curveFor(id, year) { return S.view === 'history' ? curveHist(id, year) : curveLatest(id); }
   function sampleCurve(c, n = 120) { const out = []; for (let i = 0; i <= n; i++) out.push([i / n, wageShareAt(c, i / n)]); return out; }
+  // One color per major group (first two digits of the occupation code). Related groups share a hue family,
+  // in BLS code order: management/business blues, computer/engineering/science purples,
+  // community/legal/education/arts greens, healthcare reds, service oranges and browns,
+  // sales/office pinks, farming/construction/maintenance/production/transportation teals and greys.
+  const MAJOR_COLOR = { '11': '#1f4e9c', '13': '#5b8fd9', '15': '#6a3d9a', '17': '#9a7bd0', '19': '#bda4e6',
+    '21': '#14694a', '23': '#2e9e6e', '25': '#62c08e', '27': '#9dd6ae', '29': '#b2182b', '31': '#e07a7a',
+    '33': '#8c510a', '35': '#e6862b', '37': '#d9b33b', '39': '#b68a5a', '41': '#c2378f', '43': '#e58fc3',
+    '45': '#7f8c3a', '47': '#2f6b75', '49': '#5fa3ad', '51': '#8a8a8a', '53': '#4a4a4a' };
+  const majorColor = m => MAJOR_COLOR[D.majors[m].code] || css('--bubble');
+  const isHl = m => S.highlight.includes(m);
   function hlColor(major) { const i = S.highlight.indexOf(major); return i < 0 ? null : css(['--s1', '--s2', '--s3'][i]); }
 
   function drawPlot() {
@@ -404,16 +417,17 @@
     if (mapB) for (const b of cB.pts) if (!mapA.has(b.row.key)) drawn.push({ q: b, c: cB, x: sx(b.x), y: sy(b.y), r: rad(b, cB), a: t });
     drawn.sort((a, b) => b.r - a.r);
     const neutral = css('--bubble'), anyHl = S.highlight.length > 0;
+    const fillOf = m => S.byGroup ? majorColor(m) : hlColor(m);
     for (const d of drawn) {
-      const hc = hlColor(d.q.row.major);
-      ctx.globalAlpha = d.a * (hc ? 0.88 : anyHl ? 0.18 : 0.5);
-      ctx.beginPath(); ctx.arc(d.x, d.y, d.r, 0, Math.PI * 2); ctx.fillStyle = hc || neutral; ctx.fill();
-      ctx.globalAlpha = d.a * (anyHl && !hc ? 0.3 : 0.9); ctx.lineWidth = 1; ctx.strokeStyle = paper; ctx.stroke();
+      const m = d.q.row.major, dim = anyHl && !isHl(m), fc = dim ? null : fillOf(m);
+      ctx.globalAlpha = d.a * (dim ? 0.15 : fc ? (S.byGroup && !anyHl ? 0.78 : 0.9) : 0.5);
+      ctx.beginPath(); ctx.arc(d.x, d.y, d.r, 0, Math.PI * 2); ctx.fillStyle = fc || neutral; ctx.fill();
+      ctx.globalAlpha = d.a * (dim ? 0.3 : 0.9); ctx.lineWidth = 1; ctx.strokeStyle = paper; ctx.stroke();
     }
     ctx.globalAlpha = 1;
-    // highlighted bubbles drawn again on top so they are never hidden by grey ones
-    if (anyHl) for (const d of drawn) { const hc = hlColor(d.q.row.major); if (!hc) continue;
-      ctx.globalAlpha = d.a * 0.9; ctx.beginPath(); ctx.arc(d.x, d.y, d.r, 0, Math.PI * 2); ctx.fillStyle = hc; ctx.fill(); ctx.strokeStyle = paper; ctx.stroke(); }
+    // highlighted bubbles drawn again on top so faded ones never cover them
+    if (anyHl) for (const d of drawn) { if (!isHl(d.q.row.major)) continue;
+      ctx.globalAlpha = d.a * 0.9; ctx.beginPath(); ctx.arc(d.x, d.y, d.r, 0, Math.PI * 2); ctx.fillStyle = fillOf(d.q.row.major); ctx.fill(); ctx.strokeStyle = paper; ctx.stroke(); }
     ctx.globalAlpha = 1;
     // annotation: lowest-paid half
     const half = line[Math.round((line.length - 1) / 2)];
@@ -597,14 +611,18 @@
   }
 
   // ---------- major groups ----------
+  $('byGroup').addEventListener('change', e => { S.byGroup = e.target.checked; if (!S.byGroup) S.highlight = S.highlight.slice(-3); render(); });
   function renderGroups(c) {
     const box = $('groups'); box.textContent = '';
+    $('byGroup').checked = S.byGroup;
+    $('gtip').textContent = S.byGroup ? 'Bubble colors show each group. Click groups to highlight them; click again to clear.'
+                                      : 'Click up to three groups to color them on the curve.';
     const sh = majorShares(c, D.majors.length).filter(s => s.jobs > 0)
       .sort((a, b) => b.wages / b.jobs - a.wages / a.jobs);
     const mx = Math.max(...sh.map(s => Math.max(s.jobs, s.wages)));
     for (const s of sh) {
       const b = document.createElement('button'); b.className = 'grow'; b.setAttribute('aria-pressed', String(S.highlight.includes(s.major)));
-      const hc = hlColor(s.major);
+      const hc = S.byGroup ? majorColor(s.major) : hlColor(s.major);
       const gn = document.createElement('span'); gn.className = 'gn';
       const sw = document.createElement('span'); sw.className = 'sw'; if (hc) { sw.style.background = hc; sw.style.borderColor = hc; }
       const nm = document.createElement('span'); nm.textContent = shortMajor(D.majors[s.major].title); nm.style.overflow = 'hidden'; nm.style.textOverflow = 'ellipsis';
@@ -619,7 +637,7 @@
       b.title = D.majors[s.major].title;
       b.addEventListener('click', () => {
         const i = S.highlight.indexOf(s.major);
-        if (i >= 0) S.highlight.splice(i, 1); else { if (S.highlight.length >= 3) S.highlight.shift(); S.highlight.push(s.major); }
+        if (i >= 0) S.highlight.splice(i, 1); else { if (!S.byGroup && S.highlight.length >= 3) S.highlight.shift(); S.highlight.push(s.major); }
         render();
       });
       box.appendChild(b);
