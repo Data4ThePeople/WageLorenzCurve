@@ -1,5 +1,5 @@
 ---
-title: "Occupational Pay Gaps by Place: An Interactive Lorenz Curve for Every U.S. State and Metro Area"
+title: "Wage Inequality by City and State: An Interactive Chart of Who Gets the Pay"
 subtitle: A free, interactive chart of how payroll wages are split across occupations in 585 places, with how that split has changed since 2013 for states and since 2016 for most metro areas, and the income it leaves out.
 slug: lorenz-chart-viz
 date: 2026-02-04
@@ -8,15 +8,15 @@ prismic_id: aYJX3BAAACIAbrYU
 section: Visualization
 hero: images/lorenz-chart-viz-hero-1680x1080.png
 hero_alt: A Lorenz curve of U.S. payroll wages by occupation, May 2025, on a dark background. Colored bubbles, one per occupation and sized by jobs, run from the lowest-paid job at bottom left to the highest-paid at top right, sagging below a dashed equal pay line. A marker shows the lowest-paid half of workers earn 30.2% of payroll wages. Beside it: Occupational Pay Gaps by Place, every state, metro and rural area, payroll (W-2) wages only. Built by Data 4 The People.
-meta_title: "Pay Gaps by Occupation: Lorenz Curve for Every U.S. Metro"
-description: "Free interactive Lorenz curve of payroll wages by occupation for every U.S. state and metro area, with the Gini, change since 2013 and the income it misses."
-keywords: lorenz curve, gini coefficient by state, wage inequality by metro area, pay gap by occupation, wage distribution by state, OEWS wage data, where income comes from by income level
+meta_title: "Wage Inequality by City and State: Interactive Chart"
+description: "Free interactive chart of wage inequality in every U.S. city and state: how pay splits between high- and low-paid jobs, and how it changed since 2013."
+keywords: wage inequality by state, wage inequality by city, wage gap between high and low earners, most unequal cities for pay, wage inequality chart, interactive wage inequality map, wage inequality over time
 schema_type: dataset
 dataset_name: Lorenz curves and Gini coefficients of payroll wages across occupations for 585 U.S. places, May 2013 to May 2025
 dataset_description: "Share of payroll wages by share of workers, occupations ordered by average pay, for the U.S., every state, metro area and nonmetro area, from BLS Occupational Employment and Wage Statistics. May 2025 at full occupational detail; May 2013, 2016, 2019 and 2022 on a harmonized occupation list for the U.S., states and metro areas with stable boundaries. Includes Gini coefficients with noise ranges and BEA personal income by source, 2013 to 2024."
 temporal: 2013-05/2025-05
 spatial: United States
-measured: Gini coefficient of payroll wages across occupations|index 0 to 1; Share of payroll wages earned by the lowest-paid half of workers|percent; Share of payroll wages earned by the top-paid 10% of workers|percent; Share of personal income from wages and other sources|percent
+measured: Gini coefficient of payroll wages across occupations|index 0 to 1; Share of payroll wages earned by the lowest-paid half of workers|percent; Share of payroll wages earned by the top-paid 10% of workers|percent; Wage needed to be in the top 10% relative to the median wage|percent; Share of personal income from wages and other sources|percent
 sources: https://www.bls.gov/oes/|https://apps.bea.gov/regional/|https://www.bls.gov/cew/|https://www.irs.gov/statistics/soi-tax-stats-individual-statistical-tables-by-size-of-adjusted-gross-income
 distribution: text/html|https://data4thepeople.github.io/WageLorenzCurve/;application/json|https://github.com/Data4ThePeople/WageLorenzCurve/tree/main/data/build
 measurement_technique: Detailed OEWS occupations sorted by annual mean wage; cumulative shares of jobs and of jobs x mean wage; Gini by the trapezoid rule. Occupation codes harmonized across SOC revisions with BLS crosswalks; comparisons limited to non-overlapping survey years; changes tested against RSE-based noise.
@@ -26,14 +26,14 @@ app_url: https://data4thepeople.github.io/WageLorenzCurve/
 app_name: "Occupational Pay Gaps by Place: interactive Lorenz curve"
 app_category: EducationalApplication
 app_description: Free interactive Lorenz curve of payroll wages by occupation for every U.S. state, metro area and nonmetro area, with change over time and the income it leaves out.
-app_features: Pick any of 585 places|Hover or tap any occupation|Highlight major occupation groups|Compare two places|Play the change since 2013|Gini ranking of every place|Income by source from BEA|Table view
+app_features: Pick any of 585 places|Top 10% pay line vs. the median wage|Hover or tap any occupation|Highlight major occupation groups|Compare two places|Play the change since 2013|Gini ranking of every place|Income by source from BEA|Table view
 drop_cap: false
 heading_spacer: 20px
 caption_spacer: 20px
 dividers: false
 ---
 
-# Occupational Pay Gaps by Place: An Interactive Lorenz Curve for Every U.S. State and Metro Area
+# Wage Inequality by City and State: An Interactive Chart of Who Gets the Pay
 
 <iframe src="https://data4thepeople.github.io/WageLorenzCurve/?v=20260927#embed=1" width="100%" height="780" loading="lazy" style="border:0" title="Occupational Pay Gaps by Place: interactive Lorenz curve of payroll wages by occupation"></iframe>
 
@@ -80,7 +80,7 @@ The chart below shows why this matters. It uses IRS data on 2023 federal tax ret
 
 **4. Point at any bubble.** On a computer, move your mouse over it. On a phone or tablet, tap it. A box shows the job's name, how many people do it, what it pays on average, and how its pay compares with the area's average.
 
-**5. Read the numbers on the right.** "What the curve says" gives four numbers for the place you picked. The first is the Gini, a single number for the size of the gap (see "How to read it" below). The next two show how much of the area's wages go to the lowest-paid half of workers and to the top-paid 10%. The last is the average yearly wage.
+**5. Read the numbers on the right.** "What the curve says" gives five numbers for the place you picked. The first is the Gini, a single number for the size of the gap (see "How to read it" below). The next two show how much of the area's wages go to the lowest-paid half of workers and to the top-paid 10%. Then comes the average yearly wage. The last shows how much more it takes to be in the top 10% of earners than the median worker makes.
 
 **6. Light up a job group.** Every occupation belongs to one of 22 larger groups, such as "Healthcare Support" or "Management." The bubble colors show the groups. Click a group's name in the "Major groups" list to highlight it on the curve. Click it again to turn it off. You can light up as many groups as you like.
 
@@ -96,16 +96,53 @@ The chart below shows why this matters. It uses IRS data on 2023 federal tax ret
 - **Gini.** A single number for the gap, from 0 to 1. Zero would mean every job pays the same. The higher the number, the bigger the gap. Here it measures gaps between occupations' average pay among payroll workers, so it runs lower than income Gini figures you may see elsewhere.
 - **Noise range.** Every number here comes from a survey, so each one has some uncertainty. The noise range next to the Gini shows how much it could move from survey error alone.
 - **"The gap between occupations narrowed."** The change is larger than the noise range and passes our other checks. "No clear change" means it does not.
+- **Top 10% vs. the median.** The pay needed to be in the top 10% of workers, compared with the median (middle) wage. It comes straight from BLS's wage estimates for all workers in the place, so unlike the curve it also counts pay differences inside an occupation.
 - **Ranking strip.** The row of gray ticks shows every place of the same type. The blue tick is the place you picked. Ticks to the left are more equal.
 - **Dollars** are in the dollars of each year, not adjusted for inflation.
 
 ### What it shows right now
 
-In May 2025, across the whole U.S., the lowest-paid half of payroll workers earned 30.2% of payroll wages. The top-paid 10% earned 23.2%. The U.S. Gini was 0.2837.
+In May 2025, across the whole U.S., the lowest-paid half of payroll workers earned 30.2% of payroll wages. The top-paid 10% earned 23.2%. The U.S. Gini was 0.2837. It took $128,560 a year to be in the top 10% of workers, 152% more than the median wage of $50,980.
 
 Among the 393 metro areas, San Jose-Sunnyvale-Santa Clara, CA had the largest gap (Gini 0.3321), and New York-Newark-Jersey City, NY-NJ had the second largest (0.3171). In the New York metro, the lowest-paid half of workers earned 27.4% of wages.
 
 Nationally, the gap between occupations has narrowed since 2013. Since 2022, states and metro areas are mixed: 11 states and 56 metro areas widened while 15 states and 108 metro areas narrowed. At the same time, the share of U.S. personal income that comes from wages fell from 50.5% in 2013 to 49.7% in 2024, and the share from dividends, interest and rent rose from 18.2% to 21.0%.
+
+### Where the gap is widest and narrowest
+
+These rankings use the Gini of payroll wages across occupations for May 2025. A higher Gini means a bigger gap.
+
+Metro areas with the largest gap:
+
+1. San Jose-Sunnyvale-Santa Clara, CA (0.3321)
+2. New York-Newark-Jersey City, NY-NJ (0.3171)
+3. Bridgeport-Stamford-Danbury, CT (0.3161)
+4. San Francisco-Oakland-Fremont, CA (0.3114)
+5. Huntsville, AL (0.3108)
+6. Durham-Chapel Hill, NC (0.3106)
+7. Atlanta-Sandy Springs-Roswell, GA (0.3100)
+8. Houston-Pasadena-The Woodlands, TX (0.3077)
+9. Slidell-Mandeville-Covington, LA (0.3052)
+10. Dallas-Fort Worth-Arlington, TX (0.3040)
+
+Metro areas with the smallest gap, not counting Puerto Rico:
+
+1. Grants Pass, OR (0.2003)
+2. Joplin, MO-KS (0.2091)
+3. Lewiston-Auburn, ME (0.2092)
+4. Elkhart-Goshen, IN (0.2096)
+5. Albany, OR (0.2103)
+6. Kahului-Wailuku, HI (0.2105)
+7. Lake Havasu City-Kingman, AZ (0.2137)
+8. Longview-Kelso, WA (0.2149)
+9. Minot, ND (0.2174)
+10. Lewiston, ID-WA (0.2178)
+
+The six Puerto Rico metro areas have Gini values from 0.1754 to 0.2390, but wages there are much lower overall.
+
+Among states, the largest gaps are in New York (0.3084), Georgia (0.3039), Texas (0.3019), California (0.2984) and New Jersey (0.2978). The smallest are in Maine (0.2308), North Dakota (0.2385), Montana (0.2397), Wyoming (0.2412) and Hawaii (0.2412).
+
+By the other common measure, the pay needed to be in the top 10% compared with the median wage, the widest gaps are in California (173%), New York (164%), Texas (158%), Massachusetts (156%) and Georgia (154%). The narrowest are in North Dakota (97%), Vermont (98%) and South Dakota (102%).
 
 Tomorrow: five takeaways from the chart, including how home health and personal care aides grew to become the largest occupation in the New York metro.
 
@@ -119,7 +156,7 @@ Every chart we publish should be something you can check, question and rebuild y
 
 ::: spacer
 
-**Occupational Employment and Wage Statistics (OEWS), U.S. Bureau of Labor Statistics.** A survey of about 1.1 million workplaces that reports how many people work in each occupation and what they are paid, for the U.S., every state, every metro area and every nonmetro area. We use the May "All data" file for each year from 2011 to 2025. For each place and occupation we use two numbers: the number of jobs and the average (mean) annual wage.
+**Occupational Employment and Wage Statistics (OEWS), U.S. Bureau of Labor Statistics.** A survey of about 1.1 million workplaces that reports how many people work in each occupation and what they are paid, for the U.S., every state, every metro area and every nonmetro area. We use the May "All data" file for each year from 2011 to 2025. For each place and occupation we use two numbers: the number of jobs and the average (mean) annual wage. For the top 10% vs. median readout, we use BLS's 90th-percentile and median wages for all workers in each place.
 
 **Personal income by county (CAINC4), U.S. Bureau of Economic Analysis.** BEA's estimate of all income received by the people who live in each county, split by source: wages and salaries, employer-paid benefits, business owners' income, dividends, interest and rent, and government transfers such as Social Security. We use 2013 through 2024. It feeds the "What this chart can't see" tab only.
 
@@ -153,7 +190,7 @@ As a check, we ran the rebuilt method on the same May 2024 data the February cha
 
 BLS publishes the same workers at several levels: all occupations, 22 major groups, and finer levels down to about 830 detailed occupations. The curve uses only the detailed level, so no worker is counted twice. It also uses only the rows for all industries combined.
 
-We use the average wage rather than the median or other percentiles because BLS publishes it for more occupations.
+We use the average wage rather than the median or other percentiles because BLS publishes it for more occupations. The one place we use percentiles is the top 10% vs. median readout, which uses BLS's figures for all workers in the place, so it also reflects pay differences inside occupations. BLS publishes those figures for every place in every year we use.
 
 ### Step 3: Make occupations match across years
 
@@ -263,6 +300,18 @@ Those figures usually measure all income, for households or individuals. This on
 ### Does this chart show that inequality is falling?
 
 Over the long run, it shows the gap in payroll wages between occupations narrowing: in 49 of 51 states since 2013, and in 229 of 305 metro areas since 2016. Since 2022 the picture is mixed. Among states, 15 narrowed, 11 widened and 25 show no clear change. Among 307 metro areas, 108 narrowed, 56 widened and 143 show no clear change. Either way, it does not show whether overall inequality fell, because it leaves out business and investment income. Over the same years, the share of U.S. personal income that comes from dividends, interest and rent rose from 18.2% to 21.0%.
+
+### Which city has the biggest wage gap?
+
+By the Gini of payroll wages across occupations, San Jose-Sunnyvale-Santa Clara, CA had the largest gap of the 393 metro areas in May 2025 (0.3321), followed by New York-Newark-Jersey City, NY-NJ (0.3171) and Bridgeport-Stamford-Danbury, CT (0.3161). Grants Pass, OR had the smallest (0.2003), not counting Puerto Rico.
+
+### Which state has the most wage inequality?
+
+New York, by the Gini of payroll wages across occupations (0.3084 in May 2025), followed by Georgia and Texas. By the pay needed to be in the top 10% compared with the median wage, California is first (173%), then New York (164%). Maine has the smallest gap by the Gini (0.2308), and North Dakota by the top 10% measure (97%).
+
+### Is wage inequality getting worse?
+
+Measured as the gap in payroll wages between occupations, no over the long run: it narrowed in 49 of 51 states since 2013 and in 229 of 305 metro areas since 2016. Since 2022 the picture is mixed, with 11 states and 56 metro areas widening. Comparing one May to the next says little, because neighboring BLS estimates share most of their survey data, so we compare only years three apart. None of this covers business or investment income, where the highest incomes are.
 
 ### Why can't I see change over time for some places?
 

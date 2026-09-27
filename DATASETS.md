@@ -35,6 +35,13 @@ rows are sums of detailed rows and are never added in.
 because it is published for more cells than the percentiles. Total wages for an
 occupation = `TOT_EMP` x `A_MEAN`.
 
+**Wage percentiles (top 10% vs. median readout).** From the all-occupations
+("total") row for each place: `A_PCT90` and `A_MEDIAN` (and `A_PCT10`). These
+are BLS's estimates for all workers in the place, so they include pay
+differences within occupations. No value is missing or top-coded for any place
+in May 2025 or in any comparison year (2013, 2016, 2019, 2022). Checked in the
+tie-out against the source rows (1,712 place-years).
+
 **Missing values and codes.**
 - `**` employment not published (suppressed for confidentiality or quality).
   The occupation drops off the curve; its jobs are still in the area total.
