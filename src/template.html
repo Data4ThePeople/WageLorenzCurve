@@ -90,6 +90,12 @@
   .stat b{font-size:20px; font-variant-numeric:tabular-nums; min-width:74px}
   .stat span{font-size:12.5px; color:var(--ink-2)}
   .cover{font-size:11.5px; color:var(--ink-3); margin:6px 0 0}
+  .isp{display:flex; align-items:center; gap:8px; margin:2px 0 4px; font-size:11.5px}
+  .isp .yr{flex:0 0 32px; color:var(--ink-2); font-variant-numeric:tabular-nums}
+  .isp .whole{flex:1; display:flex; height:22px; border-radius:4px; overflow:hidden; gap:2px}
+  .isp .on,.isp .off{display:flex; align-items:center; padding:0 7px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; min-width:0}
+  .isp .on{background:var(--accent); color:var(--accent-ink); font-weight:600}
+  .isp .off{background:var(--grid); color:var(--ink); justify-content:flex-end}
   .ihead{font-size:10.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-3); font-weight:600; margin:4px 0 1px}
   .ihead.split{border-top:1px solid var(--line); padding-top:7px; margin-top:7px}
   .irow.sub .il{padding-left:12px; color:var(--ink-2)}
@@ -151,7 +157,8 @@
     .side{height:100%; overflow-y:auto; padding-right:2px}
     .side > .card{flex:none}
     .groups{flex:1 1 auto !important; min-height:220px; display:flex; flex-direction:column}
-    .groups .pane{flex:1; min-height:0; display:flex; flex-direction:column}
+    .groups .pane{flex:1; min-height:0; display:flex; flex-direction:column; overflow-y:auto}
+    #paneI{display:block}
     .glist{max-height:none; flex:1; min-height:0}
   }
   /* Prismic frame: fixed 780px height, light theme pinned */
@@ -217,6 +224,7 @@
         </div>
         <div id="paneI" role="tabpanel" class="pane" hidden>
           <h2 id="ititle">What this chart can’t see</h2>
+          <div id="isplit"></div>
           <div class="glegend" id="ilegend"></div>
           <div id="income"></div>
           <p class="cover" id="inote"></p>
@@ -715,6 +723,7 @@
     const shown = hist ? (S.tw ? (S.tw.t < .5 ? S.tw.from : S.tw.to) : S.frame) : LATEST;
     const yEnd = Math.min(shown, D.meta.income_years[D.meta.income_years.length - 1]);
     $('ititle').textContent = 'All personal income by source, ' + a.title;
+    $('isplit').textContent = '';
     if (!a.income || !a.income[String(yEnd)]) {
       $('ilegend').textContent = '';
       $('inote').textContent = !a.income ? 'Income by source is not available for this place. BEA does not publish it for Puerto Rico or the other territories.'
@@ -725,7 +734,17 @@
     const lg = $('ilegend'); lg.textContent = '';
     const k0 = document.createElement('span'); k0.className = 'k0'; k0.textContent = 'Light bar: ' + y0;
     const k1 = document.createElement('span'); k1.className = 'k1'; k1.textContent = 'Dark bar: ' + yEnd;
-    lg.append(k0, document.createTextNode('. '), k1, document.createTextNode('. Share of all personal income.'));
+    lg.append(document.createTextNode('Breakdown, share of all personal income. '), k0, document.createTextNode('. '), k1, document.createTextNode('.'));
+    // one bar per year: the part of personal income on the curve (wages) and the part that is not; adds to exactly 100%
+    for (const [y, r] of y0 === yEnd ? [[yEnd, r1]] : [[y0, r0], [yEnd, r1]]) {
+      const w = r[1] / r[0], row = document.createElement('div'); row.className = 'isp';
+      const yl = document.createElement('span'); yl.className = 'yr'; yl.textContent = y;
+      const whole = document.createElement('span'); whole.className = 'whole';
+      whole.setAttribute('role', 'img'); whole.setAttribute('aria-label', y + ': on the curve ' + fmtPct(w) + ', not on the curve ' + fmtPct(1 - w));
+      const on = document.createElement('span'); on.className = 'on'; on.style.flex = w + ' 1 0'; on.textContent = 'On the curve ' + fmtPct(w);
+      const off = document.createElement('span'); off.className = 'off'; off.style.flex = (1 - w) + ' 1 0'; off.textContent = 'Not on the curve ' + fmtPct(1 - w);
+      whole.append(on, off); row.append(yl, whole); $('isplit').appendChild(row);
+    }
     const sh = (r, i) => r[i] / r[0];
     const rest = r => 1 - r[1] / r[0];                 // everything except wages: exactly the part the curve can't see
     const mx = Math.max(rest(r0), rest(r1), ...INC.map(c => Math.max(sh(r0, c.i), sh(r1, c.i))));
@@ -746,8 +765,8 @@
     head('Not on the curve', 'split');
     addRow('Everything except wages', rest(r0), rest(r1), 'lead');
     for (const c of INC.slice(1)) addRow(c.label, sh(r0, c.i), sh(r1, c.i), 'sub');
-    $('inote').textContent = 'Source: BEA. \u201cEverything except wages\u201d is 100% minus the wages share. Government transfers include Social Security, Medicare and Medicaid. The four sources add to more than the \u201ceverything except wages\u201d line because BEA subtracts payroll taxes and adjusts for commuters, which are not shown. Capital gains are not counted in personal income at all. '
-      + (hist && shown === LATEST ? 'Latest BEA year is 2024. ' : '') + (y0 === yEnd && !hist ? 'Earlier years are not available on this area\u2019s current boundaries. ' : '') + 'This shows how much income comes from each source, not who receives it.';
+    $('inote').textContent = 'Source: BEA. \u201cNot on the curve\u201d is 100% minus wages. The four sources under it add to more than that because BEA subtracts payroll taxes and adjusts for commuters. Transfers include Social Security, Medicare and Medicaid. Capital gains are not in personal income. '
+      + (hist && shown === LATEST ? 'Latest BEA year is 2024. ' : '') + (y0 === yEnd && !hist ? 'Earlier years are not available on this area\u2019s current boundaries. ' : '') + 'Shows where income comes from, not who receives it.';
   }
 
   // ---------- major groups ----------
