@@ -63,3 +63,5 @@ None.
   date 2026-02-04, adds updated 2026-09-28 and prismic_id. The importer's
   update replaces the page body and does not carry author or tags: at 2f,
   re-set author and the Visualization tag in Prismic before publishing.
+- 2026-09-27 Title confirmed by Eric: "Occupational Pay Gaps by Place: An Interactive
+  Lorenz Curve for Every U.S. State and Metro Area" (replaces the February title).
