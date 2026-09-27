@@ -90,6 +90,9 @@
   .stat b{font-size:20px; font-variant-numeric:tabular-nums; min-width:74px}
   .stat span{font-size:12.5px; color:var(--ink-2)}
   .cover{font-size:11.5px; color:var(--ink-3); margin:6px 0 0}
+  .ihead{font-size:10.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-3); font-weight:600; margin:4px 0 1px}
+  .ihead.split{border-top:1px solid var(--line); padding-top:7px; margin-top:7px}
+  .irow.sub .il{padding-left:12px; color:var(--ink-2)}
   .irow{display:flex; gap:8px; align-items:center; font-size:12px; padding:2px 0}
   .irow .il{flex:1 1 auto; min-width:0} .irow .ibars{flex:0 0 26%} .irow .iv{flex:0 0 96px; white-space:nowrap}
   .irow .il{white-space:nowrap; overflow:hidden; text-overflow:ellipsis} .irow.lead .il{font-weight:600}
@@ -726,19 +729,26 @@
     const k1 = document.createElement('span'); k1.className = 'k1'; k1.textContent = 'Dark bar: ' + yEnd;
     lg.append(k0, document.createTextNode('. '), k1, document.createTextNode('. Share of all personal income.'));
     const sh = (r, i) => r[i] / r[0];
-    const mx = Math.max(...INC.map(c => Math.max(sh(r0, c.i), sh(r1, c.i))));
-    for (const c of INC) {
-      const row = document.createElement('div'); row.className = 'irow' + (c.lead ? ' lead' : '');
-      const l = document.createElement('span'); l.className = 'il'; l.textContent = c.label; l.title = c.label;
+    const rest = r => 1 - r[1] / r[0];                 // everything except wages: exactly the part the curve can't see
+    const mx = Math.max(rest(r0), rest(r1), ...INC.map(c => Math.max(sh(r0, c.i), sh(r1, c.i))));
+    const addRow = (label, v0, v1, cls) => {
+      const row = document.createElement('div'); row.className = 'irow' + (cls ? ' ' + cls : '');
+      const l = document.createElement('span'); l.className = 'il'; l.textContent = label; l.title = label;
       const bars = document.createElement('span'); bars.className = 'ibars';
-      const b0 = document.createElement('span'); b0.className = 'bar ib0'; b0.style.width = (sh(r0, c.i) / mx * 100) + '%';
-      const b1 = document.createElement('span'); b1.className = 'bar ib1'; b1.style.width = (sh(r1, c.i) / mx * 100) + '%';
+      const b0 = document.createElement('span'); b0.className = 'bar ib0'; b0.style.width = (v0 / mx * 100) + '%';
+      const b1 = document.createElement('span'); b1.className = 'bar ib1'; b1.style.width = (v1 / mx * 100) + '%';
       bars.append(b0, b1);
       const v = document.createElement('span'); v.className = 'iv';
-      v.textContent = y0 === yEnd ? fmtPct(sh(r1, c.i)) : fmtPct(sh(r0, c.i)) + ' → ' + fmtPct(sh(r1, c.i));
+      v.textContent = y0 === yEnd ? fmtPct(v1) : fmtPct(v0) + ' → ' + fmtPct(v1);
       row.append(l, bars, v); box.appendChild(row);
-    }
-    $('inote').textContent = 'Source: BEA. Only wages and salaries are on the curve. Government transfers include Social Security, Medicare and Medicaid. Shares do not add to 100% because payroll taxes and commuting adjustments are left out. Capital gains are not counted in personal income at all. '
+    };
+    const head = (txt, cls) => { const h = document.createElement('div'); h.className = 'ihead' + (cls ? ' ' + cls : ''); h.textContent = txt; box.appendChild(h); };
+    head('On the curve');
+    addRow('Wages and salaries', sh(r0, 1), sh(r1, 1), 'lead');
+    head('Not on the curve', 'split');
+    addRow('Everything except wages', rest(r0), rest(r1), 'lead');
+    for (const c of INC.slice(1)) addRow(c.label, sh(r0, c.i), sh(r1, c.i), 'sub');
+    $('inote').textContent = 'Source: BEA. \u201cEverything except wages\u201d is 100% minus the wages share. Government transfers include Social Security, Medicare and Medicaid. The four sources add to more than the \u201ceverything except wages\u201d line because BEA subtracts payroll taxes and adjusts for commuters, which are not shown. Capital gains are not counted in personal income at all. '
       + (hist && shown === LATEST ? 'Latest BEA year is 2024. ' : '') + (y0 === yEnd && !hist ? 'Earlier years are not available on this area\u2019s current boundaries. ' : '') + 'This shows how much income comes from each source, not who receives it.';
   }
 
