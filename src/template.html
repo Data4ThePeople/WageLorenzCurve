@@ -211,8 +211,7 @@
           <button role="tab" id="tabI" aria-selected="false" aria-controls="paneI">What this chart can’t see</button>
         </div>
         <div id="paneG" role="tabpanel" class="pane">
-          <div class="ghead"><h2>Share of jobs vs. share of wages, by major group</h2>
-            <label class="tog"><input type="checkbox" id="byGroup" checked> Color by group</label></div>
+          <h2>Share of jobs vs. share of wages, by major group</h2>
           <div class="glegend">Top bar: <span class="kj">share of jobs</span>. Bottom bar: <span class="kw">share of wages</span>. <span id="gtip"></span></div>
           <div class="glist" id="groups"></div>
         </div>
@@ -274,7 +273,7 @@
   const framesFor = id => D.history[id] ? D.meta.frames.filter(y => y === LATEST || D.history[id][String(y)]) : [LATEST];
 
   // ---------- state ----------
-  const S = { byGroup: true, type: 'Metro area', id: '35620', cmp: null, view: 'latest', frame: LATEST, highlight: [], hover: null, pinned: false, anim: null };
+  const S = { type: 'Metro area', id: '35620', cmp: null, view: 'latest', frame: LATEST, highlight: [], hover: null, pinned: false, anim: null };
   const hp = new URLSearchParams(location.hash.slice(1));
   if (hp.get('area') && AREA.has(hp.get('area'))) S.id = hp.get('area');
   if (hp.get('cmp') && AREA.has(hp.get('cmp'))) S.cmp = hp.get('cmp');
@@ -431,7 +430,6 @@
     '45': '#7f8c3a', '47': '#2f6b75', '49': '#5fa3ad', '51': '#8a8a8a', '53': '#4a4a4a' };
   const majorColor = m => MAJOR_COLOR[D.majors[m].code] || css('--bubble');
   const isHl = m => S.highlight.includes(m);
-  function hlColor(major) { const i = S.highlight.indexOf(major); return i < 0 ? null : css(['--s1', '--s2', '--s3'][i]); }
 
   function drawPlot() {
     const W = plot.clientWidth, H = plot.clientHeight; if (!W || !H) return;
@@ -510,10 +508,10 @@
     if (mapB) for (const b of cB.pts) if (!mapA.has(b.row.key)) drawn.push({ q: b, c: cB, x: sx(b.x), y: sy(b.y), r: rad(b, cB), a: t });
     drawn.sort((a, b) => b.r - a.r);
     const neutral = css('--bubble'), anyHl = S.highlight.length > 0;
-    const fillOf = m => S.byGroup ? majorColor(m) : hlColor(m);
+    const fillOf = majorColor;
     for (const d of drawn) {
       const m = d.q.row.major, dim = anyHl && !isHl(m), fc = dim ? null : fillOf(m);
-      ctx.globalAlpha = d.a * (dim ? 0.15 : fc ? (S.byGroup && !anyHl ? 0.78 : 0.9) : 0.5);
+      ctx.globalAlpha = d.a * (dim ? 0.15 : anyHl ? 0.9 : 0.78);
       ctx.beginPath(); ctx.arc(d.x, d.y, d.r, 0, Math.PI * 2); ctx.fillStyle = fc || neutral; ctx.fill();
       ctx.globalAlpha = d.a * (dim ? 0.3 : 0.9); ctx.lineWidth = 1; ctx.strokeStyle = paper; ctx.stroke();
     }
@@ -761,18 +759,15 @@
   $('tabG').addEventListener('click', () => showTab('G'));
   $('tabI').addEventListener('click', () => showTab('I'));
   $('seeInc').addEventListener('click', e => { e.preventDefault(); showTab('I'); $('tabI').scrollIntoView({ block: 'nearest', behavior: 'smooth' }); $('tabI').focus(); });
-  $('byGroup').addEventListener('change', e => { S.byGroup = e.target.checked; if (!S.byGroup) S.highlight = S.highlight.slice(-3); render(); });
   function renderGroups(c) {
     const box = $('groups'); box.textContent = '';
-    $('byGroup').checked = S.byGroup;
-    $('gtip').textContent = S.byGroup ? 'Bubble colors show each group. Click groups to highlight them; click again to clear.'
-                                      : 'Click up to three groups to color them on the curve.';
+    $('gtip').textContent = 'Bubble colors show each group. Click groups to highlight them; click again to clear.';
     const sh = majorShares(c, D.majors.length).filter(s => s.jobs > 0)
       .sort((a, b) => b.wages / b.jobs - a.wages / a.jobs);
     const mx = Math.max(...sh.map(s => Math.max(s.jobs, s.wages)));
     for (const s of sh) {
       const b = document.createElement('button'); b.className = 'grow'; b.setAttribute('aria-pressed', String(S.highlight.includes(s.major)));
-      const hc = S.byGroup ? majorColor(s.major) : hlColor(s.major);
+      const hc = majorColor(s.major);
       const gn = document.createElement('span'); gn.className = 'gn';
       const sw = document.createElement('span'); sw.className = 'sw'; if (hc) { sw.style.background = hc; sw.style.borderColor = hc; }
       const nm = document.createElement('span'); nm.textContent = shortMajor(D.majors[s.major].title); nm.style.overflow = 'hidden'; nm.style.textOverflow = 'ellipsis';
@@ -787,7 +782,7 @@
       b.title = D.majors[s.major].title;
       b.addEventListener('click', () => {
         const i = S.highlight.indexOf(s.major);
-        if (i >= 0) S.highlight.splice(i, 1); else { if (!S.byGroup && S.highlight.length >= 3) S.highlight.shift(); S.highlight.push(s.major); }
+        if (i >= 0) S.highlight.splice(i, 1); else S.highlight.push(s.major);
         render();
       });
       box.appendChild(b);
