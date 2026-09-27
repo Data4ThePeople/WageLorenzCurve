@@ -639,7 +639,7 @@
   });
 
   // ---------- readouts ----------
-  function readCol(title, c, sd, dashed) {
+  function readCol(title, c, sd, dashed, pct) {
     const col = document.createElement('div'); col.className = 'col';
     if (title) { const h = document.createElement('h3'); const k = document.createElement('span'); k.className = 'lkey' + (dashed ? ' dash' : '');
       h.append(k, document.createTextNode(title)); h.title = title; col.appendChild(h); }
@@ -648,6 +648,8 @@
                   [fmtPct(R.bottomHalf), 'of wages go to the lowest-paid half of workers'],
                   [fmtPct(R.top10), 'of wages go to the top-paid 10% of workers'],
                   [fmtUsd(R.avgWage), 'average annual wage' + (S.view === 'history' ? ' (not adjusted for inflation)' : '')]];
+    // BLS's own wage percentiles for all workers in the place (includes pay differences inside occupations)
+    if (pct && pct.p50) rows.push([fmtPct(pct.p90 / pct.p50 - 1, 0), 'higher than the median wage: the pay needed to be in the top 10% (' + fmtUsd(pct.p90) + ' vs. ' + fmtUsd(pct.p50) + ')']);
     const st = document.createElement('div'); st.className = 'stats'; col.appendChild(st);
     for (const [v, l] of rows) { const s = document.createElement('div'); s.className = 'stat'; const b = document.createElement('b'); b.textContent = v; const sp = document.createElement('span'); sp.textContent = l; s.append(b, sp); st.appendChild(s); }
     return col;
@@ -656,16 +658,17 @@
     const box = $('reads'); box.textContent = ''; const a = AREA.get(S.id);
     const hist = S.view === 'history', yr = hist ? S.frame : LATEST;
     const sd = hist && yr !== LATEST ? D.history[S.id][String(yr)].gini_sd : a.gini_sd;
+    const pct = hist && yr !== LATEST ? D.history[S.id][String(yr)] : a;
     $('rtitle').textContent = 'What the curve says about payroll wages, May ' + yr;
     if (S.cmp && !hist) {
       // interleave the two columns so each statistic sits on the same grid row as its counterpart
       box.classList.add('two');
-      const A = readCol(a.title, c, sd), B = readCol(AREA.get(S.cmp).title, curveLatest(S.cmp), AREA.get(S.cmp).gini_sd, true);
+      const A = readCol(a.title, c, sd, false, pct), B = readCol(AREA.get(S.cmp).title, curveLatest(S.cmp), AREA.get(S.cmp).gini_sd, true, AREA.get(S.cmp));
       const parts = el => [el.querySelector('h3'), ...el.querySelectorAll('.stat')];
       const pa = parts(A), pb = parts(B);
       pa.forEach((x, i) => box.append(x, pb[i]));
     }
-    else { box.classList.remove('two'); box.append(readCol('', c, sd)); }
+    else { box.classList.remove('two'); box.append(readCol('', c, sd, false, pct)); }
     if (hist && yr !== LATEST) {
       const F = D.history[S.id][String(yr)];
       $('cover').textContent = 'Covers ' + fmtPct(c.jobs / F.total_jobs, 0) + ' of ' + (F.area_title === a.title ? 'the area’s ' : F.area_title + '’s ') + fmtJobs(F.total_jobs) + ' payroll jobs in May ' + yr + '. Occupations BLS did not publish for this place are left out.';

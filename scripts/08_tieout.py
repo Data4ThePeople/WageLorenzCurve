@@ -74,6 +74,22 @@ print(f"   {len(J['hist'])} places with history, {n} frame values: max differenc
 ok = max(diffs["gini"], diffs["bottomHalf"], diffs["top10"], hd) < TOL and diffs["avgWage"] < 1e-9
 print("   ->", "PASS" if ok else "FAIL")
 
+print("2a. Top 10% vs. median readout: exported percentiles vs. BLS all-occupation rows")
+D0 = json.load(open(os.path.join(ROOT, "data/build/lorenz.json")))
+bad, n = 0, 0
+tot25 = d25[d25.o_group == "total"].set_index("akey")
+for a in D0["areas"]:
+    r = tot25.loc[a["id"]]; n += 1
+    bad += int((a["p10"], a["p50"], a["p90"]) != (int(r.a_pct10), int(r.a_median), int(r.a_pct90)))
+for ak, fr in D0["history"].items():
+    for y, F in fr.items():
+        t = tests[(tests.akey == ak) & (tests.start == int(y))].iloc[0]
+        dd = pd.read_parquet(os.path.join(INT, f"oews_{y}.parquet"), columns=["area", "o_group", "a_median", "a_pct90"])
+        rr = dd[(dd.o_group == "total") & (area_key(dd.area) == t.start_area)].iloc[0]; n += 1
+        bad += int((F["p50"], F["p90"]) != (int(rr.a_median), int(rr.a_pct90)))
+print(f"   {n} place-years checked; mismatches {bad} -> {'PASS' if bad == 0 else 'FAIL'}")
+us = tot25.loc["99"]; print(f"   U.S. May 2025: top-10% line ${us.a_pct90:,.0f}, median ${us.a_median:,.0f}, {us.a_pct90/us.a_median-1:.0%} higher")
+
 print("2b. Income by source (BEA): export vs BEA's own U.S. and state rows")
 import zipfile
 z = zipfile.ZipFile(os.path.join(ROOT, "data/raw/bea/CAINC4.zip"))

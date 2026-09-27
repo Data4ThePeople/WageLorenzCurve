@@ -60,7 +60,11 @@ for ak, a in d25.groupby("akey"):
                   "state": first.prim_state, "total_jobs": int(tot),
                   "jobs_topcoded": int(det.loc[det.a_mean_flag == "#", "tot_emp"].sum()),
                   "jobs_no_wage": int(det.loc[det.a_mean.isna() & (det.a_mean_flag != "#"), "tot_emp"].sum()),
-                  "gini_sd": round(float(m.gini_sd), 5), "ref_gini": round(float(m.gini), 6)})
+                  "gini_sd": round(float(m.gini_sd), 5), "ref_gini": round(float(m.gini), 6),
+                  # BLS all-occupation wage percentiles (annual): 10th, median, 90th
+                  "p10": int(a.loc[a.o_group == "total", "a_pct10"].iloc[0]),
+                  "p50": int(a.loc[a.o_group == "total", "a_median"].iloc[0]),
+                  "p90": int(a.loc[a.o_group == "total", "a_pct90"].iloc[0])})
     key = list(zip(ua.occ_code, ua.tot_emp))
     assert ua.occ_code.is_unique, f"duplicate occupation in area {ak}"
     latest[ak] = {"o": [occ_idx[c] for c in ua.occ_code], "e": ua.tot_emp.astype(int).tolist(),
@@ -72,10 +76,13 @@ history = {}
 frames_by_area = {}
 for _, t in tests.iterrows():
     frames_by_area.setdefault(t.akey, {})[int(t.start)] = t
+PCT = {}
 H = {}
 for y in (2013, 2016, 2019, 2022):
     dy = pd.read_parquet(os.path.join(INT, f"oews_{y}.parquet"))
     h = harmonize(dy[dy.area_type.isin([1, 2, 4])], cmap); h["akey"] = area_key(h.area); H[y] = h
+    tot = dy[dy.o_group == "total"].assign(akey=lambda x: area_key(x.area))
+    PCT[y] = tot.set_index("akey")[["a_median", "a_pct90"]]
 for ak, starts in frames_by_area.items():
     fr = {}
     for y, t in sorted(starts.items()):
@@ -89,7 +96,8 @@ for ak, starts in frames_by_area.items():
                       "verdict_to_2025": t.verdict, "change_to_2025": round(float(t.ch_harm), 5),
                       "noise_to_2025": round(float(2 * t.sd + t.allowance), 5),
                       "boundary_change": None if pd.isna(t.boundary_change) or t.area_type != 4 else round(float(t.boundary_change), 4),
-                      "rebuild_effect": round(float(t.rebuild_effect), 4)}
+                      "rebuild_effect": round(float(t.rebuild_effect), 4),
+                      "p50": int(PCT[y].loc[t.start_area, "a_median"]), "p90": int(PCT[y].loc[t.start_area, "a_pct90"])}
     history[ak] = fr
 
 # Why a place has no history (shown when the History view is unavailable)
