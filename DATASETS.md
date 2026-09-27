@@ -87,10 +87,36 @@ delineations) and again in May 2024. County lists used:
 `area_definitions_m2016`, `_2018`, `_m2019`, `_m2021`, `_m2022`, `_m2023`,
 `_m2024` from BLS. BLS does not post county lists for 2011 to 2015 at the
 standard address. Before 2024, New England metros are built from towns; from
-2024, from counties (Connecticut uses planning regions). Of 358 metros present
-in both 2016 and 2025, 280 have the identical county or town set. Many of the
-largest metros (New York, Chicago, Atlanta, Houston, Dallas, Miami, Washington,
-Boston) do not.
+2024, from counties (Connecticut uses planning regions). May 2025 uses the May
+2024 definitions (identical area codes in both years' data).
+
+Boundary check (`scripts/05_boundary_check.py`, using QCEW, dataset 2): each
+2025 metro is matched to the frame-year metro sharing the most jobs (35 are
+renumbered). Boundary change = jobs in counties in only one of the two
+definitions / jobs in both combined. Eligible for history if under 2%. If a
+metro lost whole counties that now form other 2025 areas, those areas are
+merged back in to rebuild the old boundary; eligible if that moves the 2025
+Gini by less than 0.002 (New York: Dutchess and Orange moved to Kiryas
+Joel-Poughkeepsie-Newburgh, 2.9% of jobs, Gini effect 0.0009; New Orleans:
+Slidell split off, effect 0.0013). Result, 2016 to 2025: 305 of 393 metros
+eligible. Not eligible: most New England metros (towns that split counties;
+Connecticut's old counties are not in current QCEW), metros newly split from
+larger ones (Kenosha, Kiryas Joel-Poughkeepsie-Newburgh), and metros whose
+boundaries changed by 2% or more.
+County code fixes applied: 02261 -> 02063 + 02066, 46113 -> 46102,
+51515 -> 51019, 12025 -> 12086; Kalawao County, HI (15005) has no QCEW row and
+is counted as 0 jobs.
+
+Nonmetro areas were redrawn in 2018 and 2024 and are shown for 2025 only.
+
+**Metro files check.** Eric's `oesmYYma` files (MSA, BOS, aMSA) match the
+All-data metro and nonmetro rows exactly (2016 and 2025: 0 employment and 0
+wage differences). The aMSA files (2011 to 2017) are the 11 full metros that
+also have divisions, and those rows are in All data too. No county lists.
+
+**Top-code limit** (from each year's file descriptions): $187,200 a year
+($90/hour) through May 2015; $208,000 ($100/hour) May 2016 to 2018. Later
+years to be confirmed from the field descriptions.
 
 **Overlap between years.** Adjacent May estimates share five of six panels.
 Only years three apart share no survey data: 2013, 2016, 2019, 2022, 2025.
@@ -114,6 +140,37 @@ occupation are not counted, so it runs lower than person-level Gini figures.
 **License.** U.S. government work, public domain. Cite as U.S. Bureau of Labor
 Statistics, Occupational Employment and Wage Statistics.
 
+**History verdicts** (`scripts/04_history_tests.py`, change to May 2025 must
+clear 2 x noise SD + 0.005 method allowance (states and metros, spans crossing
+2021) + any boundary-rebuild effect, and agree in direction on the common
+occupation set and at native detail):
+
+| Start | U.S. | States: drop / rise / no clear change | Metros: drop / rise / no clear change |
+|---|---|---|---|
+| 2013 | drop | 49 / 0 / 2 | not tested (no county lists) |
+| 2016 | drop | 47 / 0 / 4 | 229 / 1 / 75 |
+| 2019 | drop | 32 / 0 / 19 | 167 / 2 / 138 |
+| 2022 | drop | 15 / 11 / 25 | 108 / 56 / 143 |
+
 **Reproduction check.** May 2024, NY-Newark-Jersey City metro Gini = 0.3148
 and California: lowest-paid 40.2% of workers earn 21.7% of wages. Both match
 the published February 4, 2026 post exactly.
+
+## 2. BLS Quarterly Census of Employment and Wages (QCEW), 2024 annual averages
+
+**What it is.** Count of jobs covered by unemployment insurance, by county,
+from employer tax filings (a near-census, not a survey).
+
+**File used.** `data.bls.gov/cew/data/api/2024/a/industry/10.csv` (all
+industries), saved to `data/raw/qcew/`. Rows with own_code 0 (all ownerships)
+and 5-digit county FIPS; field `annual_avg_emplvl`. 3,275 county rows, none
+suppressed at this level.
+
+**Use here.** Only as weights to measure how many jobs sit in the counties a
+metro gained or lost between definitions. Not used in any Lorenz curve.
+
+**Quirks.** Connecticut is reported by planning region (09110 to 09190), not
+the old counties used in pre-2024 OEWS definitions. A single year (2024) is
+used for all frame comparisons, which is adequate for a share-of-jobs threshold.
+
+**License.** U.S. government work, public domain.
