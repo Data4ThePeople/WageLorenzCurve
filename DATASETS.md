@@ -78,8 +78,15 @@ Employment and total wages are summed within a group, so no allocation is
 assumed. The largest group joins 14 current codes (most computer occupations
 plus two "all other" management and business codes) because "all other" codes
 chain together.
-Effect on the Gini: grouping lowers it by 0.0007 to 0.0015 nationally, by a
-similar amount every year.
+Effect on the Gini (May 2025): grouping lowers it by 0.0015 for the U.S. (0.0007
+to 0.0015 across years), by a median 0.0015 for states (up to 0.0044) and
+0.0011 for metros (up to 0.0065: Morgantown, WV 0.0065; San Jose 0.0055;
+Boulder 0.0038). The largest effects come from the 14-code group that chains
+Software Developers to Project Management Specialists and the "all other"
+management, business and computer codes through the 2018 split of the
+catch-all codes. Groups are named after the member with the most U.S. jobs in
+May 2025. The change tests (04) check direction at native detail, and it
+agreed for the tech metros checked (San Jose, San Francisco, Seattle).
 
 **Estimation method change, May 2021.** BLS moved to a model-based estimator.
 Observed in this data: metro coverage rises about 4 points and the metro

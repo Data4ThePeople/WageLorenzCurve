@@ -39,7 +39,23 @@ def group_major(h):
     rows = us25[us25.hgroup == h]
     code = rows.sort_values("tot_emp").occ_code.iloc[-1] if len(rows) else h.split("+")[0]
     return major_idx[code[:2]]
-groups = [{"codes": h.split("+"), "title": t, "major": group_major(h)} for h, t in zip(hg.hgroup, hg.hgroup_title)]
+# A combined group is named after its member with the most U.S. jobs in May 2025, and its
+# member titles are listed largest first (the tooltip shows them). Groups not published
+# nationally in 2025 fall back to code order.
+titles25 = cmap[cmap.year == 2025].drop_duplicates("occ_code").set_index("occ_code").occ_title
+def ordered_members(h, t):
+    codes = h.split("+")
+    title_of = dict(zip(sorted(codes), t.split(" / "))) if len(t.split(" / ")) == len(codes) else {}
+    emp = us25.set_index("occ_code").tot_emp
+    codes = sorted(codes, key=lambda c: -emp.get(c, -1))
+    return codes, [title_of.get(c) or titles25.get(c, c) for c in codes]
+groups = []
+for h, t in zip(hg.hgroup, hg.hgroup_title):
+    codes, names = ordered_members(h, t)
+    # codes used only in earlier years (e.g. 31-1011 and 39-9021 before 31-1120), with their last title
+    past = cmap[(cmap.hgroup == h) & ~cmap.occ_code.isin(codes)].sort_values("year").drop_duplicates("occ_code", keep="last")
+    groups.append({"codes": codes, "title": " / ".join(names), "name": names[0], "major": group_major(h),
+                   "past": [f"{c} {t}" for c, t in zip(past.occ_code, past.occ_title)]})
 
 # Occupations (2025 native detailed)
 u = usable(d25)

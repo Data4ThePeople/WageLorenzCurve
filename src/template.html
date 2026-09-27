@@ -572,7 +572,7 @@
     tip.textContent = '';
     const g = hist ? D.groups[r.group] : null, o = hist ? null : D.occs[r.occ];
     const tt = document.createElement('div'); tt.className = 'tt';
-    tt.textContent = hist ? (g.codes.length > 1 ? g.title.split(' / ')[0] + ' and related' : g.title) : o.title;
+    tt.textContent = hist ? (g.codes.length > 1 ? g.name + ' and ' + (g.codes.length - 1) + ' related ' + (g.codes.length > 2 ? 'codes' : 'code') : g.title) : o.title;
     const tc = document.createElement('div'); tc.className = 'tc';
     tc.textContent = (hist ? g.codes.join(', ') : o.code) + ' · ' + D.majors[r.major].title;
     const dl = document.createElement('dl');
@@ -598,6 +598,11 @@
         n2.textContent = f ? 'In May ' + first + ': average wage ' + fmtUsd(f.row.w) + ' (not adjusted for inflation); ' + fmtPct(f.x) + ' of workers up to here earned ' + fmtPct(f.y) + ' of wages.'
                            : 'Not published for this place in May ' + first + '.';
         tip.append(n2);
+      }
+      if (g.past && g.past.length && g.codes.length === 1) {
+        const n4 = document.createElement('div'); n4.className = 'tn';
+        n4.textContent = 'Earlier years combine the codes BLS used then: ' + g.past.slice(0, 4).join('; ') + (g.past.length > 4 ? '; and ' + (g.past.length - 4) + ' more' : '') + '.';
+        tip.append(n4);
       }
       if (g.codes.length > 1) {
         const n3 = document.createElement('div'); n3.className = 'tn';
@@ -851,7 +856,8 @@
               : 'That clears the noise range (' + F.noise_to_2025.toFixed(3) + ') and our other checks.';
     const b = document.createElement('strong'); b.textContent = F.verdict_to_2025 === 'no clear change' ? 'No clear change in the gap between occupations. ' : (F.verdict_to_2025 === 'clear drop' ? 'The gap between occupations narrowed. ' : 'The gap between occupations widened. ');
     v.append(b, document.createTextNode(txt + why));
-    let note = 'Dotted line: May ' + first + '. Codes BLS split or merged are combined so all years match, so the Gini can differ from the May 2025 view by about 0.001.';
+    const gNative = curveLatest(S.id).gini, gComb = curveHist(S.id, LATEST).gini;
+    let note = 'Dotted line: May ' + first + '. Codes BLS split or merged are combined so all years match. For this place that moves the May 2025 Gini from ' + gNative.toFixed(4) + ' (May 2025 view) to ' + gComb.toFixed(4) + ' (this view).';
     if (F.boundary_change) note += ' Boundaries changed slightly (' + fmtPct(F.boundary_change) + ' of jobs); tested, small effect.';
     if (F.area_title !== a.title) note += ' Called ' + F.area_title + ' in ' + first + '.';
     if (a.hist_caveat) note += ' ' + a.hist_caveat;
@@ -866,7 +872,7 @@
     const t = $('table'); t.textContent = '';
     const hr = t.insertRow(); for (const h of ['Occupation', 'Major group', 'Jobs', 'Average annual wage', 'Workers up to here', 'Wages up to here']) { const th = document.createElement('th'); th.textContent = h; hr.appendChild(th); }
     for (const q of c.pts) {
-      const r = t.insertRow(), nm = hist ? D.groups[q.row.group].title : D.occs[q.row.occ].title;
+      const r = t.insertRow(), nm = hist ? (D.groups[q.row.group].codes.length > 1 ? D.groups[q.row.group].name + ' and related (' + D.groups[q.row.group].codes.length + ' codes)' : D.groups[q.row.group].title) : D.occs[q.row.occ].title;
       for (const v of [nm, shortMajor(D.majors[q.row.major].title), fmtInt(q.row.e), fmtUsd(q.row.w), fmtPct(q.x), fmtPct(q.y)]) r.insertCell().textContent = v;
     }
     $('tablev').hidden = false; $('tableClose').focus();

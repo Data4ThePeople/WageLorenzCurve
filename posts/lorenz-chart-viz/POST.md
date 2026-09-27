@@ -204,7 +204,9 @@ This turns about 830 codes a year into 753 to 755 groups that mean the same thin
 
 One limit: if BLS withheld one of the old codes for a place in an earlier year, that year's group includes only the other code. This happens mostly in small metro areas. The change tests in Step 6 treat it like any other withheld number, and the May 2025 view is not affected, because it uses BLS's codes as published.
 
-Combining codes lowers the U.S. Gini by 0.0007 to 0.0015, by about the same amount each year. That is why the Gini in the change-over-time view can differ slightly from the May 2025 view.
+Catch-all codes can chain several occupations together. When BLS split its old "all other" codes in 2018, parts of them went to new occupations such as Project Management Specialists and Software Quality Assurance Analysts. Because those links connect to software developers, the largest group joins Software Developers with 13 other codes, including Project Management Specialists and Managers, All Other. The chart names each group after its code with the most U.S. jobs and lists the rest in the tooltip.
+
+Combining codes lowers the Gini by 0.0015 for the U.S. in May 2025 and by about 0.001 for a typical metro area. In a few places with many software, management and business jobs it lowers it more, up to 0.0065 in Morgantown, WV and 0.0055 in San Jose. The effect is similar in every year, so comparisons across years are not thrown off, and the change-over-time view states each place's own difference. That is why the Gini there can differ from the May 2025 view.
 
 ### Step 4: Use years that share no survey data
 
