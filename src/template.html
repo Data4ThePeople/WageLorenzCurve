@@ -63,7 +63,7 @@
   .seg button{border:0; background:none; padding:6px 11px; cursor:pointer; font-size:13px}
   .seg button[aria-pressed="true"]{background:var(--accent); color:var(--accent-ink)}
   .seg button:disabled{opacity:.45; cursor:not-allowed}
-  .main{display:grid; grid-template-columns:minmax(0,1fr); gap:10px}
+  .wl > .main{display:grid; grid-template-columns:minmax(0,1fr); gap:10px}
   .card{background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:10px 12px; min-width:0}
   .card h2{font-size:13px; margin:0 0 6px; font-weight:600}
   .chartcard{display:flex; flex-direction:column; min-height:0}
@@ -92,7 +92,7 @@
   .cover{font-size:11.5px; color:var(--ink-3); margin:6px 0 0}
   .irow{display:flex; gap:8px; align-items:center; font-size:12px; padding:2px 0}
   .irow .il{flex:1 1 auto; min-width:0} .irow .ibars{flex:0 0 26%} .irow .iv{flex:0 0 96px; white-space:nowrap}
-  .irow .il{white-space:nowrap; overflow:hidden; text-overflow:ellipsis} .irow.main .il{font-weight:600}
+  .irow .il{white-space:nowrap; overflow:hidden; text-overflow:ellipsis} .irow.lead .il{font-weight:600}
   .irow .iv{text-align:right; font-variant-numeric:tabular-nums; color:var(--ink-2); font-size:11.5px}
   .ib0{background:var(--ink-3); opacity:.4} .ib1{background:var(--ink)} .irow .bar{height:5px; border-radius:0 3px 3px 0; display:block; margin:1px 0}
   .glegend .k0{color:var(--ink-3); font-weight:600} .glegend .k1{color:var(--ink); font-weight:600}
@@ -142,7 +142,7 @@
     .brand .logo{height:18px} .hdr h1{font-size:17px}
   }
   @container (min-width: 760px){
-    .main{grid-template-columns:minmax(0,1.35fr) minmax(0,1fr); height:640px}
+    .wl > .main{grid-template-columns:minmax(0,1.35fr) minmax(0,1fr); height:640px}
     .chartcard{height:100%}
     .plot{aspect-ratio:auto; flex:1; min-height:0}
     .side{height:100%; overflow-y:auto; padding-right:2px}
@@ -154,9 +154,9 @@
   /* Prismic frame: fixed 780px height, light theme pinned */
   .wl.framed{height:780px; display:flex; flex-direction:column; padding:8px 12px 6px}
   .wl.framed .hdr .sub{font-size:12px}
-  .wl.framed .main{flex:1; min-height:0; height:auto}
+  .wl.framed > .main{flex:1; min-height:0; height:auto}
   .wl.framed .controls{margin:6px 0 6px}
-  @container (max-width: 759px){ .wl.framed{overflow-y:auto} .wl.framed .main{flex:none} }
+  @container (max-width: 759px){ .wl.framed{overflow-y:auto} .wl.framed > .main{flex:none} }
 </style>
 </head>
 <body>
@@ -703,7 +703,7 @@
 
   // ---------- what this chart can't see (BEA personal income by source) ----------
   const INC = [
-    { i: 1, label: 'Wages and salaries (on the curve)', main: true },
+    { i: 1, label: 'Wages and salaries (on the curve)', lead: true },
     { i: 2, label: 'Employer-paid benefits' },
     { i: 3, label: 'Business owners’ income' },
     { i: 4, label: 'Dividends, interest and rent' },
@@ -728,7 +728,7 @@
     const sh = (r, i) => r[i] / r[0];
     const mx = Math.max(...INC.map(c => Math.max(sh(r0, c.i), sh(r1, c.i))));
     for (const c of INC) {
-      const row = document.createElement('div'); row.className = 'irow' + (c.main ? ' main' : '');
+      const row = document.createElement('div'); row.className = 'irow' + (c.lead ? ' lead' : '');
       const l = document.createElement('span'); l.className = 'il'; l.textContent = c.label; l.title = c.label;
       const bars = document.createElement('span'); bars.className = 'ibars';
       const b0 = document.createElement('span'); b0.className = 'bar ib0'; b0.style.width = (sh(r0, c.i) / mx * 100) + '%';
