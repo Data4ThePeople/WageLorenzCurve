@@ -6,7 +6,7 @@ Process: ~/.claude/d4tp-process/PROCESS.md
 ## Current
 
 Post: lorenz-chart-viz (Day 1; replaces the February 4, 2026 post in place)
-Step: 2e
+Step: 1 (reopened)
 Since: 2026-09-27
 
 ## Steps
@@ -24,7 +24,10 @@ Since: 2026-09-27
 
 ## Stale
 
-None.
+- 2a, 2b, 2c, 2d: stale as of 2026-09-27. Reason: Eric approved adding a
+  "top 10% vs. median" readout to the viz and retargeting the post for
+  "wage inequality by city and state" (new H1, rankings section, three new
+  questions). Each is re-run and re-confirmed in order after Step 1.
 
 ## Log
 
@@ -75,3 +78,4 @@ None.
 - 2026-09-27 2d: hero rendered from the U.S. May 2025 curve at hero scale (scripts/11_hero.py), padded with hero pad (4%), alt text 463 characters; hero check ok.
 - 2026-09-27 Step 2d confirmed by Eric.
 - 2026-09-27 2e: meta title, description, keywords and dataset schema written (Dataset, WebPage, WebApplication, FAQPage with 11 questions); target searches proposed by Claude for Eric to confirm.
+- 2026-09-27 /step back 1: add top-10%-vs-median readout (BLS all-occupation percentiles) to the viz; SEO retarget approved (items 1-7 of the competition analysis).
