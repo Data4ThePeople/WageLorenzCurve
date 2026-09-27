@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Occupational Pay Inequality by Place</title>
-<meta name="description" content="Interactive Lorenz curve of pay by occupation for every U.S. state, metro area and nonmetro area, from BLS OEWS May 2025 data, with change over time since 2013. Built by Data 4 The People.">
+<title>Occupational Pay Gaps by Place</title>
+<meta name="description" content="Interactive Lorenz curve of payroll wages by occupation for every U.S. state, metro area and nonmetro area (BLS OEWS, May 2025), with change since 2013 and the income sources it leaves out (BEA). Built by Data 4 The People.">
 <style>
   :root{ color-scheme: light; }
   .wl{
@@ -77,18 +77,32 @@
   .timebar .years button{flex:1; padding:4px 0; font-variant-numeric:tabular-nums}
   .timebar .years button[aria-pressed="true"]{background:var(--accent); color:var(--accent-ink); border-color:var(--accent)}
   .timebar .years button:disabled{opacity:.35; cursor:not-allowed}
+  .caveat{font-size:12px; margin:6px 0 0; padding:4px 8px; border-left:3px solid var(--accent); background:var(--grid); color:var(--ink)}
   .verdict{font-size:12.5px; margin:6px 0 0; color:var(--ink)}
   .side{display:flex; flex-direction:column; gap:10px; min-height:0}
   .reads{display:grid; grid-template-columns:1fr; gap:6px}
   .reads.two{grid-template-columns:1fr 1fr}
   .reads .col h3{font-size:12px; margin:0 0 4px; color:var(--ink-2); font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
   .stat{display:flex; align-items:baseline; gap:8px; margin:2px 0}
+  .reads:not(.two) .stats{display:grid; grid-template-columns:1fr 1fr; gap:6px 14px}
+  .reads:not(.two) .stat{flex-direction:column; align-items:flex-start; gap:0; margin:0}
+  .reads:not(.two) .stat span{line-height:1.25}
   .stat b{font-size:20px; font-variant-numeric:tabular-nums; min-width:74px}
   .stat span{font-size:12.5px; color:var(--ink-2)}
   .cover{font-size:11.5px; color:var(--ink-3); margin:6px 0 0}
-  .rank svg,.trend svg{display:block; width:100%; overflow:visible}
+  .irow{display:flex; gap:8px; align-items:center; font-size:12px; padding:2px 0}
+  .irow .il{flex:1 1 auto; min-width:0} .irow .ibars{flex:0 0 26%} .irow .iv{flex:0 0 96px; white-space:nowrap}
+  .irow .il{white-space:nowrap; overflow:hidden; text-overflow:ellipsis} .irow.main .il{font-weight:600}
+  .irow .iv{text-align:right; font-variant-numeric:tabular-nums; color:var(--ink-2); font-size:11.5px}
+  .ib0{background:var(--ink-3); opacity:.4} .ib1{background:var(--ink)} .irow .bar{height:5px; border-radius:0 3px 3px 0; display:block; margin:1px 0}
+  .glegend .k0{color:var(--ink-3); font-weight:600} .glegend .k1{color:var(--ink); font-weight:600}
+  .rank svg{display:block; width:100%; overflow:visible}
   .rankinfo{font-size:12px; color:var(--ink-2); min-height:17px}
   .groups{display:flex; flex-direction:column; min-height:0}
+  .tabbar{display:flex; gap:4px; border-bottom:1px solid var(--line); margin:-4px -4px 8px; padding:0 4px}
+  .tabbar button{border:0; background:none; padding:5px 8px 6px; cursor:pointer; font-size:12.5px; color:var(--ink-2); border-bottom:2px solid transparent; margin-bottom:-1px}
+  .tabbar button[aria-selected="true"]{color:var(--ink); font-weight:600; border-bottom-color:var(--accent)}
+  .caveat a{color:inherit; font-weight:600}
   .ghead{display:flex; justify-content:space-between; align-items:baseline; gap:8px}
   .tog{font-size:11.5px; color:var(--ink-2); white-space:nowrap; display:flex; align-items:center; gap:4px; cursor:pointer}
   .glegend{font-size:11.5px; color:var(--ink-2); margin:-2px 0 4px}
@@ -131,9 +145,11 @@
     .main{grid-template-columns:minmax(0,1.35fr) minmax(0,1fr); height:640px}
     .chartcard{height:100%}
     .plot{aspect-ratio:auto; flex:1; min-height:0}
-    .side{height:100%}
-    .groups{flex:1}
-    .glist{max-height:none; flex:1}
+    .side{height:100%; overflow-y:auto; padding-right:2px}
+    .side > .card{flex:none}
+    .groups{flex:1 1 auto !important; min-height:220px; display:flex; flex-direction:column}
+    .groups .pane{flex:1; min-height:0; display:flex; flex-direction:column}
+    .glist{max-height:none; flex:1; min-height:0}
   }
   /* Prismic frame: fixed 780px height, light theme pinned */
   .wl.framed{height:780px; display:flex; flex-direction:column; padding:8px 12px 6px}
@@ -147,7 +163,7 @@
 <div class="wl" id="wl">
   <header class="hdr">
     <div>
-      <h1>Occupational Pay Inequality by Place</h1>
+      <h1>Occupational Pay Gaps by Place</h1>
       <p class="sub" id="sub">Loading…</p>
     </div>
     <div class="brand"><!--__LOGO_ON_LIGHT__--><!--__LOGO_ON_DARK__--></div>
@@ -171,6 +187,7 @@
         <button id="play" aria-label="Play the change over time">Play</button>
         <div class="years" id="years"></div>
       </div>
+      <p class="caveat">Payroll wages only. This leaves out business, investment and self-employment income, where most top incomes are, so it cannot tell you whether overall inequality rose or fell. See <a href="#" id="seeInc">what this chart can’t see</a>.</p>
       <p class="verdict" id="verdict"></p>
       <p class="note" id="cnote"></p>
     </section>
@@ -185,20 +202,28 @@
         <svg id="rank" height="50" aria-label="Every place of this type as a dot, placed by its Gini"></svg>
         <div class="rankinfo" id="rankinfo"></div>
       </section>
-      <section class="card trend" id="trendCard" hidden>
-        <h2 id="ttitle"></h2>
-        <svg id="trend" height="92" aria-label="Gini in each comparison year with its noise range"></svg>
-      </section>
-      <section class="card groups">
-        <div class="ghead"><h2>Share of jobs vs. share of wages, by major group</h2>
-          <label class="tog"><input type="checkbox" id="byGroup" checked> Color by group</label></div>
-        <div class="glegend">Top bar: <span class="kj">share of jobs</span>. Bottom bar: <span class="kw">share of wages</span>. <span id="gtip"></span></div>
-        <div class="glist" id="groups"></div>
+      <section class="card groups tabs">
+        <div class="tabbar" role="tablist">
+          <button role="tab" id="tabG" aria-selected="true" aria-controls="paneG">Major groups</button>
+          <button role="tab" id="tabI" aria-selected="false" aria-controls="paneI">What this chart can’t see</button>
+        </div>
+        <div id="paneG" role="tabpanel" class="pane">
+          <div class="ghead"><h2>Share of jobs vs. share of wages, by major group</h2>
+            <label class="tog"><input type="checkbox" id="byGroup" checked> Color by group</label></div>
+          <div class="glegend">Top bar: <span class="kj">share of jobs</span>. Bottom bar: <span class="kw">share of wages</span>. <span id="gtip"></span></div>
+          <div class="glist" id="groups"></div>
+        </div>
+        <div id="paneI" role="tabpanel" class="pane" hidden>
+          <h2 id="ititle">What this chart can’t see</h2>
+          <div class="glegend" id="ilegend"></div>
+          <div id="income"></div>
+          <p class="cover" id="inote"></p>
+        </div>
       </section>
     </aside>
   </div>
   <footer class="foot">
-    <p id="source">Source: U.S. Bureau of Labor Statistics, Occupational Employment and Wage Statistics (OEWS), May 2025; change over time uses May 2013, 2016, 2019 and 2022. Payroll (W-2) jobs only; the self-employed are not included. The Gini here measures gaps between occupations' average pay, not between individual workers. Built by Data 4 The People.</p>
+    <p id="source">Source: U.S. Bureau of Labor Statistics, Occupational Employment and Wage Statistics (OEWS), May 2025; change over time uses May 2013, 2016, 2019 and 2022. Income by source: U.S. Bureau of Economic Analysis, personal income by county (CAINC4), 2013-2024. Payroll (W-2) jobs only; the self-employed are not included. The Gini here measures gaps between occupations' average pay, not between individual workers. Built by Data 4 The People.</p>
     <button id="tableBtn">View as table</button>
   </footer>
   <div class="tablev" id="tablev" hidden role="dialog" aria-label="Table view">
@@ -252,6 +277,9 @@
   if (hp.get('cmp') && AREA.has(hp.get('cmp'))) S.cmp = hp.get('cmp');
   if (hp.get('view') === 'history' && D.history[S.id]) S.view = 'history';
   S.type = AREA.get(S.id).type;
+  const yp = +hp.get('year');
+  const startFrame = S.view === 'history' && framesFor(S.id).includes(yp) ? yp : null;
+  if (startFrame) S.frame = startFrame;
   const saveHash = () => {
     const p = new URLSearchParams(location.hash.slice(1));
     p.set('area', S.id); S.cmp ? p.set('cmp', S.cmp) : p.delete('cmp'); S.view === 'history' ? p.set('view', 'history') : p.delete('view');
@@ -378,7 +406,7 @@
     const tick = now => {
       const t = Math.min(1, (now - t0) / ms), e = t < .5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
       S.tw = { from, to: y, t: e };
-      if (t < 1) { drawPlot(); requestAnimationFrame(tick); }
+      if (t < 1) { drawPlot(); renderRank(); requestAnimationFrame(tick); }
       else { S.tw = null; S.frame = y; render(); done && done(); }
     };
     requestAnimationFrame(tick);
@@ -592,18 +620,19 @@
     const col = document.createElement('div'); col.className = 'col';
     if (title) { const h = document.createElement('h3'); h.textContent = title; h.title = title; col.appendChild(h); }
     const R = readouts(c);
-    const rows = [[R.gini.toFixed(4), 'Gini' + (sd ? ' (noise range ±' + (2 * sd).toFixed(3) + ')' : '')],
+    const rows = [[R.gini.toFixed(4), 'Gini of payroll wages across occupations' + (sd ? ' (noise ±' + (2 * sd).toFixed(3) + ')' : '')],
                   [fmtPct(R.bottomHalf), 'of wages go to the lowest-paid half of workers'],
                   [fmtPct(R.top10), 'of wages go to the top-paid 10% of workers'],
                   [fmtUsd(R.avgWage), 'average annual wage']];
-    for (const [v, l] of rows) { const s = document.createElement('div'); s.className = 'stat'; const b = document.createElement('b'); b.textContent = v; const sp = document.createElement('span'); sp.textContent = l; s.append(b, sp); col.appendChild(s); }
+    const st = document.createElement('div'); st.className = 'stats'; col.appendChild(st);
+    for (const [v, l] of rows) { const s = document.createElement('div'); s.className = 'stat'; const b = document.createElement('b'); b.textContent = v; const sp = document.createElement('span'); sp.textContent = l; s.append(b, sp); st.appendChild(s); }
     return col;
   }
   function renderReads(c) {
     const box = $('reads'); box.textContent = ''; const a = AREA.get(S.id);
     const hist = S.view === 'history', yr = hist ? S.frame : LATEST;
     const sd = hist && yr !== LATEST ? D.history[S.id][String(yr)].gini_sd : a.gini_sd;
-    $('rtitle').textContent = 'What the curve says, May ' + yr;
+    $('rtitle').textContent = 'What the curve says about payroll wages, May ' + yr;
     if (S.cmp && !hist) { box.classList.add('two'); box.append(readCol(a.title, c, sd), readCol(AREA.get(S.cmp).title, curveLatest(S.cmp), AREA.get(S.cmp).gini_sd)); }
     else { box.classList.remove('two'); box.append(readCol('', c, sd)); }
     if (hist && yr !== LATEST) {
@@ -620,59 +649,108 @@
   const svgNS = 'http://www.w3.org/2000/svg';
   const el = (n, attrs, parent) => { const e = document.createElementNS(svgNS, n); for (const k in attrs) e.setAttribute(k, attrs[k]); parent && parent.appendChild(e); return e; };
   const ordinal = n => n + (n % 100 >= 11 && n % 100 <= 13 ? 'th' : ({ 1: 'st', 2: 'nd', 3: 'rd' }[n % 10] || 'th'));
+  const rankScale = new Map();
+  function giniAt(id, y) { return S.view === 'history' ? (y === LATEST || (D.history[id] && D.history[id][String(y)]) ? curveHist(id, y).gini : null) : curveLatest(id).gini; }
   function renderRank() {
-    const card = $('rankCard'), svg = $('rank');
-    card.hidden = S.view === 'history'; if (card.hidden) return;
-    svg.textContent = '';
-    const type = S.type === 'U.S.' ? 'State' : S.type;
-    const pool = D.areas.filter(a => a.type === type).map(a => ({ a, g: curveLatest(a.id).gini })).sort((x, y) => x.g - y.g);
-    $('ktitle').textContent = 'Gini for all ' + pool.length + ' ' + PLURAL[type] + ', May ' + LATEST;
+    const svg = $('rank'); svg.textContent = '';
+    const type = S.type === 'U.S.' ? 'State' : S.type, hist = S.view === 'history';
+    const members = D.areas.filter(a => a.type === type && (!hist || D.history[a.id]));
+    const tw = hist && S.tw ? S.tw : { from: S.frame, to: S.frame, t: 0 };
+    const yr = hist ? (tw.t < .5 ? tw.from : tw.to) : LATEST;
+    // position of each place at this moment (between two years while animating)
+    const pos = members.map(a => {
+      const g0 = giniAt(a.id, tw.from), g1 = giniAt(a.id, tw.to);
+      if (g0 == null && g1 == null) return null;
+      const g = g0 == null ? g1 : g1 == null ? g0 : g0 + (g1 - g0) * tw.t;
+      const op = g0 == null ? tw.t : g1 == null ? 1 - tw.t : 1;
+      return { a, g, op };
+    }).filter(Boolean).sort((x, y) => x.g - y.g);
+    const shown = pos.filter(p => p.op >= .5);
+    // fixed scale across all years in the history view so movement is visible
+    let lo, hi;
+    if (hist) {
+      const k = type; if (!rankScale.has(k)) { let l = 1, h = 0;
+        for (const a of members) for (const y of D.meta.frames) { const g = giniAt(a.id, y); if (g != null) { l = Math.min(l, g); h = Math.max(h, g); } }
+        if (type === 'State') for (const y of D.meta.frames) { const g = giniAt(D.areas.find(a => a.type === 'U.S.').id, y); if (g != null) { l = Math.min(l, g); h = Math.max(h, g); } }
+        rankScale.set(k, [l, h]); }
+      [lo, hi] = rankScale.get(k);
+    } else { lo = pos[0].g; hi = pos[pos.length - 1].g; }
+    $('ktitle').textContent = 'Gini of payroll wages across occupations: all ' + shown.length + ' ' + PLURAL[type] + (hist ? ' with comparable data' : '') + ', May ' + yr;
     const W = svg.clientWidth || 300, H = 50, pad = 6, top = 6, bot = 30;
-    const lo = pool[0].g, hi = pool[pool.length - 1].g, xs = v => pad + (v - lo) / (hi - lo || 1) * (W - 2 * pad);
+    const xs = v => pad + (v - lo) / (hi - lo || 1) * (W - 2 * pad);
     const ink3 = css('--ink-3');
-    for (const p of pool) el('line', { x1: xs(p.g), x2: xs(p.g), y1: top + 4, y2: bot - 4, stroke: ink3, 'stroke-opacity': 0.45 }, svg);
+    for (const p of pos) el('line', { x1: xs(p.g), x2: xs(p.g), y1: top + 4, y2: bot - 4, stroke: ink3, 'stroke-opacity': 0.45 * p.op }, svg);
     for (const v of [lo, hi]) { const t = el('text', { x: xs(v), y: H - 4, 'text-anchor': v === lo ? 'start' : 'end', 'font-size': 11, fill: ink3 }, svg); t.textContent = v.toFixed(3) + (v === lo ? ' more equal' : ' less equal'); }
-    if (S.cmp && AREA.get(S.cmp).type === type) { const g = curveLatest(S.cmp).gini; el('line', { x1: xs(g), x2: xs(g), y1: top, y2: bot, stroke: css('--ink'), 'stroke-width': 2, 'stroke-dasharray': '3 2' }, svg); }
-    const selG = curveLatest(S.id).gini;
-    el('line', { x1: xs(selG), x2: xs(selG), y1: 0, y2: bot + 2, stroke: css('--s1'), 'stroke-width': 3 }, svg);
+    const at = id => { const p = pos.find(q => q.a.id === id); if (p) return p.g; const g0 = giniAt(id, tw.from), g1 = giniAt(id, tw.to); return g0 == null ? g1 : g1 == null ? g0 : g0 + (g1 - g0) * tw.t; };
+    if (S.cmp && AREA.get(S.cmp).type === type && !hist) { const g = at(S.cmp); el('line', { x1: xs(g), x2: xs(g), y1: top, y2: bot, stroke: css('--ink'), 'stroke-width': 2, 'stroke-dasharray': '3 2' }, svg); }
+    const selG = at(S.id);
+    if (selG != null) el('line', { x1: xs(selG), x2: xs(selG), y1: 0, y2: bot + 2, stroke: css('--s1'), 'stroke-width': 3 }, svg);
     const hov = el('line', { x1: 0, x2: 0, y1: top, y2: bot, stroke: css('--ink'), 'stroke-width': 2, visibility: 'hidden' }, svg);
-    const near = e => { const r = svg.getBoundingClientRect(), x = e.clientX - r.left; let best = pool[0]; for (const p of pool) if (Math.abs(xs(p.g) - x) < Math.abs(xs(best.g) - x)) best = p; return best; };
+    const near = e => { const r = svg.getBoundingClientRect(), x = e.clientX - r.left; let best = shown[0]; for (const p of shown) if (Math.abs(xs(p.g) - x) < Math.abs(xs(best.g) - x)) best = p; return best; };
     svg.onpointermove = e => { const p = near(e); hov.setAttribute('x1', xs(p.g)); hov.setAttribute('x2', xs(p.g)); hov.setAttribute('visibility', 'visible');
       $('rankinfo').textContent = p.a.title + ': ' + p.g.toFixed(4) + '. Click to open.'; };
-    svg.onpointerleave = () => { hov.setAttribute('visibility', 'hidden'); rankInfo(pool); };
+    svg.onpointerleave = () => { hov.setAttribute('visibility', 'hidden'); rankInfo(shown, yr, selG); };
     svg.onclick = e => choose(near(e).a.id);
     svg.style.cursor = 'pointer';
-    rankInfo(pool);
+    rankInfo(shown, yr, selG);
   }
-  function rankInfo(pool) {
+  function rankInfo(pool, yr, selG) {
     const i = pool.findIndex(p => p.a.id === S.id);
-    $('rankinfo').textContent = S.type === 'U.S.' ? 'Blue: the U.S. as a whole (' + curveLatest(S.id).gini.toFixed(4) + '). Grey ticks: the states. Hover or click to open one.'
-      : 'Blue: ' + AREA.get(S.id).title + ', the ' + ordinal(pool.length - i) + ' least equal of ' + pool.length + '. Hover or click a tick to open another.';
+    $('rankinfo').textContent = S.type === 'U.S.' ? 'Blue: the U.S. as a whole (' + (selG != null ? selG.toFixed(4) : '') + '). Grey ticks: the states. Hover or click to open one.'
+      : i < 0 ? 'Hover or click a tick to open a place.'
+      : 'Blue: ' + AREA.get(S.id).title + ', the ' + ordinal(pool.length - i) + ' least equal of ' + pool.length + ' in May ' + yr + '. Hover or click a tick to open another.';
   }
 
-  // ---------- Gini over time ----------
-  function renderTrend() {
-    const card = $('trendCard'), svg = $('trend');
-    card.hidden = S.view !== 'history'; if (card.hidden) return;
-    svg.textContent = '';
-    const fr = framesFor(S.id), pts = fr.map(y => ({ y, g: curveHist(S.id, y).gini, sd: y === LATEST ? AREA.get(S.id).gini_sd : D.history[S.id][String(y)].gini_sd }));
-    $('ttitle').textContent = 'Gini in each comparison year, ' + AREA.get(S.id).title + ' (bars: noise range)';
-    const W = svg.clientWidth || 300, H = 92, pl = 40, pr = 12, pt = 8, pb = 18;
-    let lo = Math.min(...pts.map(p => p.g - 2 * p.sd)), hi = Math.max(...pts.map(p => p.g + 2 * p.sd)); const padv = (hi - lo) * 0.15 || 0.005; lo -= padv; hi += padv;
-    const xs = y => pl + (D.meta.frames.indexOf(y)) / (D.meta.frames.length - 1) * (W - pl - pr), ys = v => pt + (hi - v) / (hi - lo) * (H - pt - pb);
-    const ink3 = css('--ink-3'), ink = css('--ink');
-    for (const v of [lo + padv, (lo + hi) / 2, hi - padv]) { el('line', { x1: pl, x2: W - pr, y1: ys(v), y2: ys(v), stroke: css('--grid') }, svg); const t = el('text', { x: pl - 4, y: ys(v) + 4, 'text-anchor': 'end', 'font-size': 10.5, fill: ink3 }, svg); t.textContent = v.toFixed(3); }
-    for (const y of D.meta.frames) { const t = el('text', { x: xs(y), y: H - 3, 'text-anchor': 'middle', 'font-size': 10.5, fill: fr.includes(y) ? ink3 : css('--line') }, svg); t.textContent = y; }
-    el('polyline', { points: pts.map(p => xs(p.y) + ',' + ys(p.g)).join(' '), fill: 'none', stroke: css('--ink-2'), 'stroke-width': 2 }, svg);
-    for (const p of pts) {
-      el('line', { x1: xs(p.y), x2: xs(p.y), y1: ys(p.g - 2 * p.sd), y2: ys(p.g + 2 * p.sd), stroke: ink3, 'stroke-width': 1.5 }, svg);
-      const on = p.y === S.frame;
-      const c = el('circle', { cx: xs(p.y), cy: ys(p.g), r: on ? 5.5 : 4, fill: on ? css('--s1') : css('--panel'), stroke: on ? css('--panel') : ink, 'stroke-width': on ? 1.5 : 1.5 }, svg);
-      const tt = el('title', {}, c); tt.textContent = 'May ' + p.y + ': ' + p.g.toFixed(4) + ' (±' + (2 * p.sd).toFixed(3) + ')';
+  // ---------- what this chart can't see (BEA personal income by source) ----------
+  const INC = [
+    { i: 1, label: 'Wages and salaries (on the curve)', main: true },
+    { i: 2, label: 'Employer-paid benefits' },
+    { i: 3, label: 'Business owners’ income' },
+    { i: 4, label: 'Dividends, interest and rent' },
+    { i: 5, label: 'Government transfers' }];
+  function renderIncome() {
+    const a = AREA.get(S.id), box = $('income'); box.textContent = '';
+    const hist = S.view === 'history';
+    const shown = hist ? (S.tw ? (S.tw.t < .5 ? S.tw.from : S.tw.to) : S.frame) : LATEST;
+    const yEnd = Math.min(shown, D.meta.income_years[D.meta.income_years.length - 1]);
+    $('ititle').textContent = 'All personal income by source, ' + a.title;
+    if (!a.income || !a.income[String(yEnd)]) {
+      $('ilegend').textContent = '';
+      $('inote').textContent = !a.income ? 'Income by source is not available for this place. BEA does not publish it for Puerto Rico or the other territories.'
+        : 'BEA income by source is not available for ' + yEnd + ' on this area\u2019s current boundaries. Years available: ' + Object.keys(a.income).join(', ') + '.';
+      return;
     }
+    const y0 = D.meta.income_years.find(y => a.income[String(y)]), r0 = a.income[String(y0)], r1 = a.income[String(yEnd)];
+    const lg = $('ilegend'); lg.textContent = '';
+    const k0 = document.createElement('span'); k0.className = 'k0'; k0.textContent = 'Light bar: ' + y0;
+    const k1 = document.createElement('span'); k1.className = 'k1'; k1.textContent = 'Dark bar: ' + yEnd;
+    lg.append(k0, document.createTextNode('. '), k1, document.createTextNode('. Share of all personal income.'));
+    const sh = (r, i) => r[i] / r[0];
+    const mx = Math.max(...INC.map(c => Math.max(sh(r0, c.i), sh(r1, c.i))));
+    for (const c of INC) {
+      const row = document.createElement('div'); row.className = 'irow' + (c.main ? ' main' : '');
+      const l = document.createElement('span'); l.className = 'il'; l.textContent = c.label; l.title = c.label;
+      const bars = document.createElement('span'); bars.className = 'ibars';
+      const b0 = document.createElement('span'); b0.className = 'bar ib0'; b0.style.width = (sh(r0, c.i) / mx * 100) + '%';
+      const b1 = document.createElement('span'); b1.className = 'bar ib1'; b1.style.width = (sh(r1, c.i) / mx * 100) + '%';
+      bars.append(b0, b1);
+      const v = document.createElement('span'); v.className = 'iv';
+      v.textContent = y0 === yEnd ? fmtPct(sh(r1, c.i)) : fmtPct(sh(r0, c.i)) + ' → ' + fmtPct(sh(r1, c.i));
+      row.append(l, bars, v); box.appendChild(row);
+    }
+    $('inote').textContent = 'Source: BEA. Only wages and salaries are on the curve. Government transfers include Social Security, Medicare and Medicaid. Shares do not add to 100% because payroll taxes and commuting adjustments are left out. Capital gains are not counted in personal income at all. '
+      + (hist && shown === LATEST ? 'Latest BEA year is 2024. ' : '') + (y0 === yEnd && !hist ? 'Earlier years are not available on this area\u2019s current boundaries. ' : '') + 'This shows how much income comes from each source, not who receives it.';
   }
 
   // ---------- major groups ----------
+  function showTab(t) {
+    const inc = t === 'I';
+    $('tabG').setAttribute('aria-selected', String(!inc)); $('tabI').setAttribute('aria-selected', String(inc));
+    $('paneG').hidden = inc; $('paneI').hidden = !inc;
+  }
+  $('tabG').addEventListener('click', () => showTab('G'));
+  $('tabI').addEventListener('click', () => showTab('I'));
+  $('seeInc').addEventListener('click', e => { e.preventDefault(); showTab('I'); $('tabI').scrollIntoView({ block: 'nearest', behavior: 'smooth' }); $('tabI').focus(); });
   $('byGroup').addEventListener('change', e => { S.byGroup = e.target.checked; if (!S.byGroup) S.highlight = S.highlight.slice(-3); render(); });
   function renderGroups(c) {
     const box = $('groups'); box.textContent = '';
@@ -719,10 +797,10 @@
     }
     const first = framesFor(S.id)[0], F = D.history[S.id][String(first)];
     const g0 = curveHist(S.id, first).gini, g1 = curveHist(S.id, LATEST).gini, ch = g1 - g0;
-    const txt = 'From May ' + first + ' to May ' + LATEST + ' the Gini went from ' + g0.toFixed(4) + ' to ' + g1.toFixed(4) + ' (' + (ch > 0 ? '+' : '') + ch.toFixed(4) + '). ';
+    const txt = 'From May ' + first + ' to May ' + LATEST + ' the Gini of payroll wages across occupations went from ' + g0.toFixed(4) + ' to ' + g1.toFixed(4) + ' (' + (ch > 0 ? '+' : '') + ch.toFixed(4) + '). ';
     const why = F.verdict_to_2025 === 'no clear change' ? 'That does not clear the noise range (' + F.noise_to_2025.toFixed(3) + ') and our other checks.'
               : 'That clears the noise range (' + F.noise_to_2025.toFixed(3) + ') and our other checks.';
-    const b = document.createElement('strong'); b.textContent = F.verdict_to_2025 === 'no clear change' ? 'No clear change. ' : (F.verdict_to_2025 === 'clear drop' ? 'Clear drop (more equal). ' : 'Clear rise (less equal). ');
+    const b = document.createElement('strong'); b.textContent = F.verdict_to_2025 === 'no clear change' ? 'No clear change in the gap between occupations. ' : (F.verdict_to_2025 === 'clear drop' ? 'The gap between occupations narrowed. ' : 'The gap between occupations widened. ');
     v.append(b, document.createTextNode(txt + why));
     let note = 'Dotted line: May ' + first + '. Codes BLS split or merged are combined so all years match, so the Gini can differ from the May 2025 view by about 0.001.';
     if (F.boundary_change) note += ' Boundaries changed slightly (' + fmtPct(F.boundary_change) + ' of jobs); tested, small effect.';
@@ -752,15 +830,15 @@
     const c = hist ? curveHist(S.id, yr) : curveLatest(S.id);
     typeSel.value = S.type; $('place').value = a.title; $('cmp').value = S.cmp ? AREA.get(S.cmp).title : '';
     $('vLatest').setAttribute('aria-pressed', String(!hist)); $('vHist').setAttribute('aria-pressed', String(hist));
-    $('sub').textContent = a.title + ', May ' + yr + '. Gini ' + c.gini.toFixed(4) + '. Each bubble is an occupation, sized by jobs.';
+    $('sub').textContent = a.title + ', May ' + yr + '. Payroll wages only. Each bubble is an occupation, sized by jobs.';
     $('ctitle').textContent = a.title + ': share of wages by share of workers, May ' + yr;
     $('timebar').hidden = !hist; if (hist) buildYears();
     hideTip(); S.pinned = false;
-    drawPlot(); renderReads(c); renderRank(); renderTrend(); renderGroups(c); renderVerdict();
+    drawPlot(); renderReads(c); renderRank(); renderIncome(); renderGroups(c); renderVerdict();
   }
-  new ResizeObserver(() => { drawPlot(); renderRank(); renderTrend(); }).observe(plot);
+  new ResizeObserver(() => { drawPlot(); renderRank(); }).observe(plot);
   render();
-  if (S.view === 'history') play();
+  if (S.view === 'history' && !startFrame) play();
 })();
 </script>
 </body>

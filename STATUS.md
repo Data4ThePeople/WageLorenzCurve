@@ -40,3 +40,9 @@ None.
   (`dist/index.html`): May 2025 view, change over time 2013-2025, tooltip,
   readouts, ranking strip, group shares, compare, table view. Tie-out passes
   (`scripts/08_tieout.py`). Published to GitHub Pages.
+- 2026-09-27 Eric's review: bubbles colored by major group again (first two SOC
+  digits) with click-to-highlight; dropdown place pickers with type-ahead.
+  Reframed to "Occupational Pay Gaps by Place": payroll wages only, verdicts
+  describe the gap between occupations, permanent caveat. Added BEA income by
+  source ("What this chart can't see"). Removed the Gini trend chart; the
+  all-places Gini strip now animates through the years.

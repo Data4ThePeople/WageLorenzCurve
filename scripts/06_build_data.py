@@ -113,8 +113,17 @@ for a in areas:
     else:
         a["hist_note"] = "Not enough comparable data for earlier years."
 
+# Personal income by source (BEA), shares computed in the page. Thousands of dollars.
+inc = pd.read_csv(os.path.join(INT, "bea_income_by_area.csv"), dtype={"area": str})
+INC_COLS = ["personal_income", "wages", "supplements", "proprietors", "dividends_interest_rent", "transfers"]
+for a in areas:
+    rows = inc[(inc.area == a["id"]) & inc.complete]
+    a["income"] = {str(r.year): [int(round(r[c] / 1000)) for c in INC_COLS] for _, r in rows.iterrows()} or None
+
 out = {"meta": {"latest_year": 2025, "frames": [2013, 2016, 2019, 2022, 2025],
                 "source": "U.S. Bureau of Labor Statistics, Occupational Employment and Wage Statistics, May 2013-May 2025",
+                "income_cols": ["personal_income", "wages", "supplements", "proprietors", "dividends_interest_rent", "transfers"],
+                "income_years": [2013, 2016, 2019, 2022, 2024],
                 "ref_gini_harm_2025": {ak: round(float(metrics[(metrics.year == 2025) & (metrics.akey == ak)].gini_harm.iloc[0]), 6)
                                        for ak in history}},
        "majors": [{"code": m, "title": t} for m, t in majors], "groups": groups, "occs": occs,

@@ -174,3 +174,40 @@ the old counties used in pre-2024 OEWS definitions. A single year (2024) is
 used for all frame comparisons, which is adequate for a share-of-jobs threshold.
 
 **License.** U.S. government work, public domain.
+
+## 3. BEA personal income by source, counties (CAINC4), 2013-2024
+
+**What it is.** BEA's estimate of all personal income received by residents
+of each county, split by source: wages and salaries, employer-paid benefits
+(supplements), proprietors' (business owners') income, dividends, interest
+and rent, and government transfer receipts. Released January 14, 2026
+(file `CAINC4__ALL_AREAS_1969_2024.csv`), downloaded from
+`apps.bea.gov/regional/zip/CAINC4.zip` to `data/raw/bea/`.
+
+**Use here.** Context only: the "What this chart can't see" panel shows each
+source as a share of personal income for 2013 and 2024 (and for each frame
+year in the change-over-time view). Only wages and salaries correspond to
+what the Lorenz curve covers. Not used in any Gini.
+
+**Geography.** Counties are summed into the OEWS May 2024 area definitions
+(`scripts/05b_bea_income.py`), so metro and nonmetro boundaries match OEWS
+exactly. U.S. and states use BEA's own rows. BEA combines 23 Virginia
+independent cities with a neighboring county, and Maui with Kalawao; each
+combination lies inside one OEWS area. Check: all metro and nonmetro areas
+sum to the U.S. total exactly in 2024. Export check: 1,560 U.S. and state
+values match BEA's rows exactly.
+
+**Gaps.** Puerto Rico and the territories are not covered. Connecticut
+planning regions are published for 2024 only, so Connecticut areas show 2024
+only. The Alaska nonmetro area lacks 2013 and 2016 (census-area changes). An
+area's value for a year is shown only if every county in it is published.
+
+**Quirks and limits.** Personal income excludes capital gains entirely.
+Wages and salaries are measured by place of work; personal income and the
+other sources by place of residence, so commuter-heavy areas can look
+unusual. Shares do not add to 100% because contributions for government
+social insurance and the residence adjustment are not shown. Shares show how
+much income comes from each source, not who receives it. Values in thousands
+of current dollars. BEA revises these estimates in each annual release.
+
+**License.** U.S. government work, public domain.

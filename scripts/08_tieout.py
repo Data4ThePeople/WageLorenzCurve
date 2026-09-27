@@ -74,6 +74,25 @@ print(f"   {len(J['hist'])} places with history, {n} frame values: max differenc
 ok = max(diffs["gini"], diffs["bottomHalf"], diffs["top10"], hd) < TOL and diffs["avgWage"] < 1e-9
 print("   ->", "PASS" if ok else "FAIL")
 
+print("2b. Income by source (BEA): export vs BEA's own U.S. and state rows")
+import zipfile
+z = zipfile.ZipFile(os.path.join(ROOT, "data/raw/bea/CAINC4.zip"))
+b = pd.read_csv(z.open("CAINC4__ALL_AREAS_1969_2024.csv"), encoding="latin1", dtype=str); b.columns = [c.strip() for c in b.columns]
+b = b[b.LineCode.notna()]; b["fips"] = b.GeoFIPS.str.strip().str.strip('"').str.strip(); b["line"] = b.LineCode.str.strip()
+D = json.load(open(os.path.join(ROOT, "data/build/lorenz.json")))
+worst, checked = 0, 0
+for a in D["areas"]:
+    if a["type"] not in ("U.S.", "State") or not a["income"]: continue
+    f = "00000" if a["type"] == "U.S." else a["id"].zfill(2) + "000"
+    for y, vals in a["income"].items():
+        for line, v in zip(["10", "50", "60", "70", "46", "47"], vals):
+            src = float(b[(b.fips == f) & (b.line == line)][y].iloc[0])
+            worst = max(worst, abs(src - v)); checked += 1
+print(f"   {checked} values checked; max difference {worst:.0f} thousand dollars -> {'PASS' if worst <= 1 else 'FAIL'}")
+us_inc = [a for a in D["areas"] if a["type"] == "U.S."][0]["income"]
+for y in ("2013", "2024"):
+    v = us_inc[y]; print(f"   U.S. {y}: wages {v[1]/v[0]:.1%}, employer benefits {v[2]/v[0]:.1%}, business owners {v[3]/v[0]:.1%}, dividends/interest/rent {v[4]/v[0]:.1%}, transfers {v[5]/v[0]:.1%}")
+
 print("3. Headline numbers")
 L = J["latest"]; A = {a: t for a, t in zip(d25.akey, d25.area_title)}
 TY = dict(zip(d25.akey, d25.area_type))
