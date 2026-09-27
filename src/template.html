@@ -52,6 +52,10 @@
   .combo{position:relative; display:block}
   .combo input{padding-right:24px; background-image:linear-gradient(45deg,transparent 50%,var(--ink-3) 50%),linear-gradient(135deg,var(--ink-3) 50%,transparent 50%);
     background-position:calc(100% - 13px) 50%,calc(100% - 8px) 50%; background-size:5px 5px; background-repeat:no-repeat}
+  .clr{position:absolute; right:24px; top:50%; transform:translateY(-50%); border:0; background:none; cursor:pointer;
+        font-size:17px; line-height:1; padding:2px 5px; color:var(--ink-2); border-radius:4px}
+  .clr:hover{background:var(--grid); color:var(--ink)}
+  .combo input#cmp{padding-right:44px}
   .lb{position:absolute; z-index:30; left:0; top:calc(100% + 2px); min-width:100%; width:max-content; max-width:min(420px,92vw); max-height:280px; overflow:auto;
       margin:0; padding:4px 0; list-style:none; background:var(--panel); border:1px solid var(--line); border-radius:8px; box-shadow:0 8px 24px rgba(0,0,0,.16); color:var(--ink)}
   .lb li{padding:5px 10px; font-size:13px; cursor:pointer; display:flex; justify-content:space-between; gap:12px; white-space:nowrap}
@@ -181,7 +185,7 @@
   <div class="controls">
     <label>Place type <select id="type"></select></label>
     <label>Place <span class="combo"><input id="place" role="combobox" aria-autocomplete="both" aria-expanded="false" aria-controls="placeBox" autocomplete="off" spellcheck="false" placeholder="Type or pick a place"><ul class="lb" id="placeBox" role="listbox" hidden></ul></span></label>
-    <label>Compare with <span class="combo"><input id="cmp" role="combobox" aria-autocomplete="both" aria-expanded="false" aria-controls="cmpBox" autocomplete="off" spellcheck="false" placeholder="Any place (optional)"><ul class="lb" id="cmpBox" role="listbox" hidden></ul></span></label>
+    <label>Compare with <span class="combo"><input id="cmp" role="combobox" aria-autocomplete="both" aria-expanded="false" aria-controls="cmpBox" autocomplete="off" spellcheck="false" placeholder="Any place (optional)"><button type="button" class="clr" id="cmpClear" aria-label="Remove comparison" title="Remove comparison" hidden>×</button><ul class="lb" id="cmpBox" role="listbox" hidden></ul></span></label>
     <div class="seg" role="group" aria-label="View">
       <button id="vLatest" aria-pressed="true">May 2025</button><button id="vHist" aria-pressed="false">Change over time</button>
     </div>
@@ -365,6 +369,7 @@
   combo($('place'), $('placeBox'),
     () => D.areas.filter(a => a.type === S.type).map(a => ({ id: a.id, label: a.title })),
     () => S.id, o => choose(o.id));
+  $('cmpClear').addEventListener('click', () => { S.cmp = null; saveHash(); render(); });
   const pickCmp = o => { S.cmp = o && o.id !== S.id ? o.id : null; saveHash(); render(); };
   pickCmp.allowEmpty = true;
   combo($('cmp'), $('cmpBox'),
@@ -852,7 +857,7 @@
   function render() {
     const a = AREA.get(S.id), hist = S.view === 'history', yr = hist ? S.frame : LATEST;
     const c = hist ? curveHist(S.id, yr) : curveLatest(S.id);
-    typeSel.value = S.type; $('place').value = a.title; $('cmp').value = S.cmp ? AREA.get(S.cmp).title : '';
+    typeSel.value = S.type; $('place').value = a.title; $('cmp').value = S.cmp ? AREA.get(S.cmp).title : ''; $('cmpClear').hidden = !S.cmp;
     $('vLatest').setAttribute('aria-pressed', String(!hist)); $('vHist').setAttribute('aria-pressed', String(hist));
     $('sub').textContent = a.title + ', May ' + yr + '. Payroll wages only. Each bubble is an occupation, sized by jobs.';
     $('ctitle').textContent = a.title + ': share of wages by share of workers, May ' + yr;
