@@ -6,7 +6,7 @@ Process: ~/.claude/d4tp-process/PROCESS.md
 ## Current
 
 Post: lorenz-chart-viz (Day 1; replaces the February 4, 2026 post in place)
-Step: 2a
+Step: 2b (waiting to start)
 Since: 2026-09-27
 
 ## Steps
@@ -14,7 +14,7 @@ Since: 2026-09-27
 | Step | What | Confirmed | Notes |
 |---|---|---|---|
 | 1  | Exploration and analysis | 2026-09-27 | Viz live at data4thepeople.github.io/WageLorenzCurve; candidate findings in analysis/candidate_findings.md |
-| 2a | Draft with brackets resolved | | |
+| 2a | Draft with brackets resolved | 2026-09-27 | Claude-written draft at Eric's request; replaces the February post in place |
 | 2b | Eric's edit, Claude's look-over | | |
 | 2c | Slice markup | | |
 | 2d | Hero 1680x1080 + alt text | | |
@@ -65,3 +65,4 @@ None.
   re-set author and the Visualization tag in Prismic before publishing.
 - 2026-09-27 Title confirmed by Eric: "Occupational Pay Gaps by Place: An Interactive
   Lorenz Curve for Every U.S. State and Metro Area" (replaces the February title).
+- 2026-09-27 Step 2a confirmed by Eric.
