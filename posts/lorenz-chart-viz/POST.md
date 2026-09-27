@@ -28,6 +28,8 @@ dividers: false
 **[Open the full visualization](https://data4thepeople.github.io/WageLorenzCurve/)** **for a larger chart, dark mode, and a link you can share to any place and year.**
 :::
 
+::: spacer
+
 ::: blurb Updated September 28, 2026
 We rebuilt this chart on the newest data, May 2025. It now shows how states have changed since 2013 and most metro areas since 2016, lets you compare two places, and shows the income the chart leaves out. The first version, published February 4, 2026, used May 2024 data in Tableau. [Its method is saved here](https://github.com/Data4ThePeople/WageLorenzCurve/blob/main/Visualizing%20Wage%20Dispersion%20and%20Occupational%20Pay%20Inequality.pdf).
 :::
@@ -43,6 +45,8 @@ We first published this chart on February 4, 2026, built in Tableau from May 202
 ::: blurb Read this first
 This chart covers payroll (W-2) wages only. It leaves out business owners, the self-employed, and income from investments such as dividends, interest, rent and capital gains. That is where most of the very highest incomes are. On 2023 tax returns reporting $10 million or more, wages were 17.0% of total income, and capital gains, dividends, interest and partnership income made up 76.4% ([IRS](https://www.irs.gov/statistics/soi-tax-stats-individual-statistical-tables-by-size-of-adjusted-gross-income)). Across all returns, wages were 66.1%. So this chart can tell you how pay is split among people who draw a paycheck. It cannot tell you whether overall income inequality in a place rose or fell. The "What this chart can't see" tab shows how much of each place's income falls outside the chart.
 :::
+
+::: spacer
 
 The chart below shows why this matters. It uses IRS data on 2023 federal tax returns, grouped by how much income each return reported. On returns under $500,000, wages were 69% to 80% of total income. On returns of $10 million or more, they were 17%, and capital gains, dividends, interest and partnership income made up most of the rest.
 
