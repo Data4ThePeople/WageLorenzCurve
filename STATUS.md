@@ -6,7 +6,7 @@ Process: ~/.claude/d4tp-process/PROCESS.md
 ## Current
 
 Post: lorenz-chart-viz (Day 1; replaces the February 4, 2026 post in place)
-Step: 2g (waiting to start)
+Step: 2g (paused; Eric drafts the email the morning of September 28)
 Since: 2026-09-27
 
 ## Steps
@@ -85,3 +85,4 @@ None. (2a-2d were stale after /step back 1 on 2026-09-27; re-run the same day at
 - 2026-09-27 2f: dry run then publish. Updated draft aYJX3BAAACIAbrYU (slug lorenz-chart-viz) in the Migration Release. Before publishing in Prismic: set author (Eric Pachman) and the Visualization tag, which the update does not carry. Not verified by read-back (no PRISMIC_READ_TOKEN).
 - 2026-09-27 Publication date and time set to 2026-09-27 21:00 EDT (updated date the same); Updated blurb now reads September 27, 2026; draft re-pushed.
 - 2026-09-27 Send plan confirmed: Day 1 (lorenz-chart-viz) publishes tonight, September 27; Day 2 (five takeaways) publishes Monday night, September 28, matching the Tomorrow line.
+- 2026-09-27 Step 2f confirmed by Eric (published date kept at September 27, 2026, 9:00 pm EDT). 2g paused until the morning of September 28. Open before publishing in Prismic: set author and the Visualization tag. Unanswered 2e proposals: free-to-use sentence, IRS line in the data-source answer, links to betting-the-house-on-billionaires and gasoline-share-of-income.
