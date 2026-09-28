@@ -54,7 +54,7 @@ We rebuilt this chart on the newest data, May 2025. It now shows how states have
 
 ::: spacer
 
-This chart shows how the pay from payroll jobs is split across occupations in each place in the United States. Pick a state, a metro area or a rural region, and you can see how much of the area's wages go to its lowest-paid workers, how much go to its highest-paid workers, and which occupations sit where.
+This chart shows how the pay from payroll jobs is split across occupations in each place in the United States. Pick a state, a metro area or a rural region, and you can see how much of the area's wages go to its lowest-paid workers, how much go to its highest-paid workers, and which occupations sit where. The chart is free to use and needs no sign-in. It is built from the U.S. Bureau of Labor Statistics' Occupational Employment and Wage Statistics survey.
 
 We first published this chart on February 4, 2026, built in Tableau from May 2024 data. This version is rebuilt from scratch on the newest data, May 2025, and adds three things. It shows how the U.S. and every state have changed since 2013, and most metro areas since 2016. It lets you compare any two places. And it shows the income the chart leaves out.
 
@@ -332,7 +332,7 @@ No. They are in the dollars of each year. The Gini, the curve and the shares are
 
 ### Where does the data come from?
 
-The U.S. Bureau of Labor Statistics' Occupational Employment and Wage Statistics survey, May 2013 to May 2025, and the U.S. Bureau of Economic Analysis's personal income by county, 2013 to 2024.
+The U.S. Bureau of Labor Statistics' Occupational Employment and Wage Statistics survey, May 2013 to May 2025, the U.S. Bureau of Economic Analysis's personal income by county, 2013 to 2024, and the IRS's income tax statistics for 2023.
 
 ### How often is the chart updated?
 
