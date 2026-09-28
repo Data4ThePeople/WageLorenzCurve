@@ -51,4 +51,9 @@ Take a look at our latest rebuild and see what an AI-assisted process can do whe
 
 ## 6. Call to action
 
-**[Read the full report](https://www.data4thepeople.com/p/lorenz-chart-viz)**
+**[See the wage gap where you live](https://www.data4thepeople.com/p/lorenz-chart-viz)**
+
+Button text:
+```
+See the wage gap where you live
+```
