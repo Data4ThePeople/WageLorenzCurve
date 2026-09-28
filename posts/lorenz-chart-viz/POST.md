@@ -2,8 +2,9 @@
 title: "Wage Inequality by City and State: An Interactive Chart of Who Gets the Pay"
 subtitle: A free, interactive chart of how payroll wages are split across occupations in 585 places, with how that split has changed since 2013 for states and since 2016 for most metro areas, and the income it leaves out.
 slug: lorenz-chart-viz
-date: 2026-02-04
-updated: 2026-09-28
+date: 2026-09-27
+time: 21:00:00-04:00
+updated: 2026-09-27
 prismic_id: aYJX3BAAACIAbrYU
 section: Visualization
 hero: images/lorenz-chart-viz-hero-1680x1080.png
@@ -45,7 +46,7 @@ dividers: false
 
 ::: spacer
 
-::: blurb Updated September 28, 2026
+::: blurb Updated September 27, 2026
 We rebuilt this chart on the newest data, May 2025. It now shows how states have changed since 2013 and most metro areas since 2016, lets you compare two places, and shows the income the chart leaves out. The first version, published February 4, 2026, used May 2024 data in Tableau. [Its method is saved here](https://github.com/Data4ThePeople/WageLorenzCurve/blob/main/Visualizing%20Wage%20Dispersion%20and%20Occupational%20Pay%20Inequality.pdf).
 :::
 

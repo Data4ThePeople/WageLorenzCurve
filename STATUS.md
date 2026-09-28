@@ -83,3 +83,4 @@ None. (2a-2d were stale after /step back 1 on 2026-09-27; re-run the same day at
 - 2026-09-27 2c re-run: 165 blocks, no back-to-back blurbs; embed cache tag updated to v=20260927c.
 - 2026-09-27 2d re-run: hero title text now Wage Inequality by City and State; alt text updated; hero check ok. 2e confirmed via Eric's approval of the SEO retarget. Moving to 2f.
 - 2026-09-27 2f: dry run then publish. Updated draft aYJX3BAAACIAbrYU (slug lorenz-chart-viz) in the Migration Release. Before publishing in Prismic: set author (Eric Pachman) and the Visualization tag, which the update does not carry. Not verified by read-back (no PRISMIC_READ_TOKEN).
+- 2026-09-27 Publication date and time set to 2026-09-27 21:00 EDT (updated date the same); Updated blurb now reads September 27, 2026; draft re-pushed.
