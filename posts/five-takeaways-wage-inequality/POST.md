@@ -23,6 +23,10 @@ Yesterday we rebuilt our [chart of wage inequality by city and state](https://ww
 
 ## 1. New York is the most unequal state on two of three measures
 
+First, what the gap looks like. The chart below puts New York and Maine, the most and least unequal states by the Gini, on the same axes.
+
+![Line chart titled How far the curve bows shows the gap, May 2025. Two curves show the share of payroll wages by share of workers, occupations ordered by average pay, against a dashed equal pay line. Maine, Gini 0.231, stays closer to the line; New York, Gini 0.308, bows farther below it. At the halfway mark, the lowest-paid half of workers get 34.2% of wages in Maine and 28.2% in New York.](images/01b-lorenz-new-york-vs-maine.png)
+
 We measured the gap three ways: the Gini of payroll wages across occupations, the share of wages that goes to the lowest-paid half of workers, and how far the pay needed to be in the top 10% sits above the median wage. The chart below shows the five most and least unequal states on each.
 
 ![Three panels of bar charts titled Most and least unequal states, May 2025. By the Gini, the most unequal are New York 0.308, Georgia, Texas, California and New Jersey, and the least unequal are Maine 0.231, North Dakota, Montana, Wyoming and Hawaii. By the lowest-paid half's share of wages, New York is lowest at 28.2% and Maine highest at 34.2%. By the top 10% pay line vs. the median, California leads at 173% and North Dakota is lowest at 97%.](images/01-states-three-measures.png)

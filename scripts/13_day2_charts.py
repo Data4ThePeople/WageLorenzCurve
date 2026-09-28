@@ -89,6 +89,38 @@ us = N["us"]
 footer(fig, SOURCE_OEWS, f"U.S.: Gini {us['gini']:.3f}; lowest-paid half {us['half']:.1%}; top 10% line {us['top10_vs_median']:.0%} above median. Payroll wages only.")
 fig.savefig(os.path.join(OUT, "01-states-three-measures.png"), facecolor=BG); plt.close(fig)
 
+# 1b. Lorenz curves: New York vs. Maine (most and least unequal states by the Gini), May 2025
+import sys, pandas as pd
+sys.path.insert(0, os.path.join(ROOT, "scripts"))
+from lorenz import usable, gini as _gini
+_d = pd.read_parquet(os.path.join(ROOT, "data/interim/oews_2025.parquet"))
+fig = frame("How far the curve bows shows the gap", "Share of payroll wages by share of workers, May 2025.", h=6.4)
+ax = fig.add_axes([0.14, 0.17, 0.62, 0.62]); clean(ax); ax.set_aspect("equal")
+ax.set_xlim(0, 1); ax.set_ylim(0, 1)
+for v in (0.25, 0.5, 0.75, 1): ax.plot([v, v], [0, 1], color=GRID, lw=0.6, zorder=0); ax.plot([0, 1], [v, v], color=GRID, lw=0.6, zorder=0)
+ax.plot([0, 1], [0, 1], ls=(0, (5, 4)), color=MUTED, lw=1.4)
+ax.text(0.36, 0.40, "Equal pay line", rotation=45, rotation_mode="anchor", color=MUTED, fontsize=8 * FS)
+LZ = {}
+for name, col, lx in (("New York", ORANGE, 0.62), ("Maine", BLUE, 0.45)):
+    u = usable(_d[_d.area_title == name]).sort_values("a_mean", kind="stable")
+    e = u.tot_emp.values; w = e * u.a_mean.values
+    x = np.r_[0, np.cumsum(e) / e.sum()]; y = np.r_[0, np.cumsum(w) / w.sum()]
+    g = _gini(u.tot_emp, u.a_mean); h = float(np.interp(0.5, x, y)); LZ[name] = (g, h)
+    ax.plot(x, y, color=col, lw=2.4)
+    ax.plot([0.5], [h], "o", color=col, ms=6)
+
+legend_words(fig, [(f"Maine, Gini {LZ['Maine'][0]:.3f}", BLUE), (f"New York, Gini {LZ['New York'][0]:.3f}", ORANGE)], 1 - 0.95 / 6.4)
+assert abs(LZ["New York"][0] - dict((n, v) for n, v in N["states"]["gini"]["most"])["New York"]) < 1e-9
+ax.plot([0.5, 0.5], [0, max(v[1] for v in LZ.values())], ls=(0, (2, 3)), color=INK, lw=0.9)
+ax.text(0.52, 0.06, f"Lowest-paid half of workers:\nMaine {LZ['Maine'][1]:.1%} of wages\nNew York {LZ['New York'][1]:.1%}", fontsize=7.8 * FS, color=INK)
+ax.set_xticks([0, .5, 1]); ax.set_yticks([0, .5, 1])
+ax.set_xticklabels(["0%", "50%", "100%"], fontsize=7.5 * FS); ax.set_yticklabels(["0%", "50%", "100%"], fontsize=7.5 * FS)
+ax.set_xlabel("Share of workers, lowest paid to highest paid", fontsize=8 * FS, color=INK)
+ax.set_ylabel("Share of total wages", fontsize=8 * FS, color=INK)
+ax.text(0.03, 0.97, "The farther a curve bows\nbelow the equal pay line,\nthe bigger the gap.", fontsize=8.6 * FS, color=INK, va="top", transform=ax.transAxes)
+footer(fig, SOURCE_OEWS, "Payroll wages only. Each curve adds up occupations from lowest to highest average pay.")
+fig.savefig(os.path.join(OUT, "01b-lorenz-new-york-vs-maine.png"), facecolor=BG); plt.close(fig)
+
 # 2. Metros, all and 500,000+ jobs
 fig = three_measures("metros", "Most and least unequal metro areas, May 2025",
                      f"{N['metros']['n']} metro areas outside Puerto Rico, three measures.", "02-metros", shorten=True)
