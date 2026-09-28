@@ -130,20 +130,6 @@ gap_chart("gap_vs_aides", "Home health and personal care aides", "03a-gap-vs-hom
 gap_chart("gap_vs_fastfood", "Fast food and counter workers", "03b-gap-vs-fast-food.png",
           "The pay gap in dollars: higher-paid jobs vs. fast food workers", "Fast food pay")
 
-# 3c. New York aides
-ny = N["ny_aides"]; yrs = ["2016", "2019", "2022", "2025"]
-fig = frame("Home health aides became New York's largest occupation",
-            "Home health and personal care aides, New York-Newark-Jersey City metro area, May of each year.", h=5.2)
-ax = fig.add_axes([0.08, 0.13, 0.86, 0.62]); clean(ax)
-v = [ny[y]["jobs"] for y in yrs]
-ax.bar(yrs, v, color=BLUE, width=0.6)
-for x, y_, jv in zip(yrs, v, [ny[y]["share"] for y in yrs]):
-    ax.text(x, y_ + 12000, f"{y_:,.0f} jobs\n{jv:.1%} of all jobs", ha="center", fontsize=8, color=INK)
-ax.set_ylim(0, max(v) * 1.25); ax.set_yticks([]); ax.tick_params(axis="x", labelsize=9, colors=INK)
-footer(fig, "Source: BLS OEWS, May 2016 to May 2025.",
-       f"Largest occupation in May 2025; next were {ny['second_2025'][0].lower()} ({ny['second_2025'][1]:,.0f}). Before 2019 BLS listed aides as two occupations; both are counted.")
-fig.savefig(os.path.join(OUT, "03c-ny-home-health-aides.png"), facecolor=BG); plt.close(fig)
-
 # 4. Change over time
 C = N["change"]
 bars = [("States, since 2016", C["states_2016"]), ("States, since 2022", C["states_2022"]),
@@ -172,7 +158,8 @@ shutil.copy(os.path.join(ROOT, "posts/lorenz-chart-viz/images/01-income-sources-
 CO = N["county"]; SRC = ["Wages", "Capital gains", "Dividends and interest", "Partnership and S corporation", "Sole proprietor", "Everything else"]
 COLS = [BLUE, ORANGE, AQUA, YELLOW, VIOLET, GREY]
 rows = [(f"{q}\n(median ${v['agi_per_return_median']:,.0f} per return)", v) for q, v in CO["pooled_fifths"].items()]
-rows += [(n.replace(" (New York County), NY", ", NY"), v) for n, v in CO["named"].items() if not n.startswith("Collier")]
+rows += [(n.replace(" (New York County), NY", ", NY").replace("Collier County, FL", "Collier County, FL (Naples)"), v)
+         for n, v in CO["named"].items() if not n.startswith("Los Angeles")]
 fig = frame("Where income comes from, by county", f"Share of total income on 2023 tax returns. {CO['n']} counties with 100,000+ residents, grouped by income per return.", h=6.0)
 for i, ((lab, col)) in enumerate(zip(SRC, COLS)):
     pass
