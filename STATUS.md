@@ -109,3 +109,4 @@ None. (2a-2d were stale after /step back 1 on 2026-09-27; re-run the same day at
 - 2026-09-28 Day 2: 03c (New York aides chart) dropped at Eric's request; 05b now shows Collier County, FL (Naples) instead of Los Angeles County.
 - 2026-09-28 Day 2 Step 1 confirmed by Eric (chart text enlarged 35%). Step 2a opened, slug five-takeaways-wage-inequality (proposed); Claude drafts at Eric's request, minimal words, charts carry the story.
 - 2026-09-28 Step 2a confirmed by Eric; large-metro chart (02b) dropped, then restored at Eric's request. 2b: Eric edits POST.md, then asks for the look-over.
+- 2026-09-28 2b: Eric's two additions accepted (reaction at the end of #4; caution opening #5).
