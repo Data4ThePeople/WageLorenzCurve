@@ -5,11 +5,26 @@ Process: ~/.claude/d4tp-process/PROCESS.md
 
 ## Current
 
-Post: lorenz-chart-viz (Day 1; replaces the February 4, 2026 post in place)
-Step: complete (lorenz-chart-viz). Next post: Day 2, five takeaways, publishing Monday night, September 28.
-Since: 2026-09-27
+Post: Day 2, five takeaways (slug set at 2a)
+Step: 1
+Since: 2026-09-28
 
 ## Steps
+
+| Step | What | Confirmed | Notes |
+|---|---|---|---|
+| 1  | Exploration and analysis | | |
+| 2a | Draft with brackets resolved | | |
+| 2b | Eric's edit, Claude's look-over | | |
+| 2c | Slice markup | | |
+| 2d | Hero 1680x1080 + alt text | | |
+| 2e | SEO | | |
+| 2f | Pushed to Prismic (draft) | | |
+| 2g | Mailchimp teaser | | |
+
+## Completed posts
+
+### lorenz-chart-viz (Day 1), complete 2026-09-28
 
 | Step | What | Confirmed | Notes |
 |---|---|---|---|
@@ -89,3 +104,4 @@ None. (2a-2d were stale after /step back 1 on 2026-09-27; re-run the same day at
 - 2026-09-27 2e follow-up: Eric accepted proposals 1 (free-to-use sentence in Purpose) and 2 (IRS in the data-source answer), rejected 3 and 4 (internal links). Applied and re-pushed to draft aYJX3BAAACIAbrYU.
 - 2026-09-28 2g: Eric's email draft, with his accepted edits 1-10 and the chosen subject and preview, placed in EMAIL.md in the 2g structure; hero JPG exported (99 KB); every number in the email checked against the post.
 - 2026-09-28 Step 2g confirmed by Eric. lorenz-chart-viz complete (steps 1 through 2g confirmed). Remaining manual step in Prismic: set author and the Visualization tag, then publish the draft from the Migration Release.
+- 2026-09-28 Step 1 opened for Day 2 (five takeaways), publishing Monday night, September 28. Starting point: analysis/candidate_findings.md; home health aides in New York required; headline aimed at where wage inequality is rising and falling.
