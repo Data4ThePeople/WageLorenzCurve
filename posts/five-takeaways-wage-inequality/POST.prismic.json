@@ -1,5 +1,5 @@
 {
-  "page_title": "Five takeaways from our wage inequality chart",
+  "page_title": "Wage inequality by state and city: five takeaways",
   "page_subtitle": "Where the pay gap is widest, what it looks like in dollars, how it has changed since 2016, and the income wage data cannot see.",
   "published_date": "2026-09-28",
   "updated_date": "2026-09-28",
@@ -539,7 +539,133 @@
           }
         ]
       }
+    },
+    {
+      "slice_type": "spacer",
+      "slice_label": null,
+      "variation": "default",
+      "version": "initial",
+      "items": [],
+      "primary": {
+        "spacer_value": "20px"
+      }
+    },
+    {
+      "slice_type": "paragarph_text",
+      "slice_label": null,
+      "variation": "default",
+      "version": "initial",
+      "items": [],
+      "primary": {
+        "paragraph_text": [
+          {
+            "type": "heading2",
+            "text": "Common questions",
+            "spans": [],
+            "direction": "ltr"
+          }
+        ]
+      }
+    },
+    {
+      "slice_type": "spacer",
+      "slice_label": null,
+      "variation": "default",
+      "version": "initial",
+      "items": [],
+      "primary": {
+        "spacer_value": "20px"
+      }
+    },
+    {
+      "slice_type": "paragarph_text",
+      "slice_label": null,
+      "variation": "default",
+      "version": "initial",
+      "items": [],
+      "primary": {
+        "paragraph_text": [
+          {
+            "type": "heading3",
+            "text": "Which state has the most wage inequality?",
+            "spans": [],
+            "direction": "ltr"
+          },
+          {
+            "type": "paragraph",
+            "text": "New York, by the Gini of payroll wages across occupations (0.308 in May 2025). By the pay needed to be in the top 10% compared with the median, California is first. Maine is the most equal by the Gini.",
+            "spans": [],
+            "direction": "ltr"
+          }
+        ]
+      }
+    },
+    {
+      "slice_type": "spacer",
+      "slice_label": null,
+      "variation": "default",
+      "version": "initial",
+      "items": [],
+      "primary": {
+        "spacer_value": "20px"
+      }
+    },
+    {
+      "slice_type": "paragarph_text",
+      "slice_label": null,
+      "variation": "default",
+      "version": "initial",
+      "items": [],
+      "primary": {
+        "paragraph_text": [
+          {
+            "type": "heading3",
+            "text": "Is wage inequality getting worse?",
+            "spans": [],
+            "direction": "ltr"
+          },
+          {
+            "type": "paragraph",
+            "text": "Measured as the gap in payroll wages between occupations, it narrowed in 47 of 51 states since 2016. Since 2022 it is mixed: 11 states widened and 15 narrowed. Wage data leaves out investment income, so this does not show whether overall inequality fell.",
+            "spans": [],
+            "direction": "ltr"
+          }
+        ]
+      }
+    },
+    {
+      "slice_type": "spacer",
+      "slice_label": null,
+      "variation": "default",
+      "version": "initial",
+      "items": [],
+      "primary": {
+        "spacer_value": "20px"
+      }
+    },
+    {
+      "slice_type": "paragarph_text",
+      "slice_label": null,
+      "variation": "default",
+      "version": "initial",
+      "items": [],
+      "primary": {
+        "paragraph_text": [
+          {
+            "type": "heading3",
+            "text": "Where does the income of the richest come from?",
+            "spans": [],
+            "direction": "ltr"
+          },
+          {
+            "type": "paragraph",
+            "text": "On 2023 tax returns of $10 million or more, wages were 17% of income and capital gains 39%.",
+            "spans": [],
+            "direction": "ltr"
+          }
+        ]
+      }
     }
   ],
-  "schema": "{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Article\",\n  \"headline\": \"Five takeaways from our wage inequality chart\",\n  \"description\": \"The most and least unequal states and metros, the pay gap in dollars, where it narrowed since 2016, and the income wage data misses.\",\n  \"datePublished\": \"2026-09-28T21:00:00-04:00\",\n  \"dateModified\": \"2026-09-28T21:00:00-04:00\",\n  \"articleSection\": \"Data 4 Thought\",\n  \"license\": \"https://www.data4thepeople.com/terms-of-use\",\n  \"inLanguage\": \"en-US\",\n  \"isAccessibleForFree\": true,\n  \"keywords\": [\n    \"most unequal states\",\n    \"wage inequality by state\",\n    \"wage inequality by city\",\n    \"is wage inequality getting worse\",\n    \"pay gap between high and low earners\",\n    \"wage gap in dollars\",\n    \"capital gains by county\"\n  ],\n  \"author\": {\n    \"@type\": \"Person\",\n    \"name\": \"Eric Pachman\",\n    \"url\": \"https://www.data4thepeople.com/authors/eric-pachman\"\n  },\n  \"publisher\": {\n    \"@type\": \"Organization\",\n    \"name\": \"Data 4 The People\",\n    \"url\": \"https://data4thepeople.com\"\n  },\n  \"mainEntityOfPage\": {\n    \"@type\": \"WebPage\",\n    \"@id\": \"https://www.data4thepeople.com/p/five-takeaways-wage-inequality\"\n  }\n}"
+  "schema": "{\n  \"@context\": \"https://schema.org\",\n  \"@graph\": [\n    {\n      \"@type\": \"Article\",\n      \"headline\": \"Wage inequality by state and city: five takeaways\",\n      \"description\": \"The most and least unequal states and metros, the pay gap in dollars, where it narrowed since 2016, and the income wage data misses.\",\n      \"datePublished\": \"2026-09-28T21:00:00-04:00\",\n      \"dateModified\": \"2026-09-28T21:00:00-04:00\",\n      \"articleSection\": \"Data 4 Thought\",\n      \"license\": \"https://www.data4thepeople.com/terms-of-use\",\n      \"inLanguage\": \"en-US\",\n      \"isAccessibleForFree\": true,\n      \"keywords\": [\n        \"most unequal states\",\n        \"wage inequality by state\",\n        \"wage inequality by city\",\n        \"is wage inequality getting worse\",\n        \"pay gap between high and low earners\",\n        \"wage gap in dollars\",\n        \"capital gains by county\"\n      ],\n      \"author\": {\n        \"@type\": \"Person\",\n        \"name\": \"Eric Pachman\",\n        \"url\": \"https://www.data4thepeople.com/authors/eric-pachman\"\n      },\n      \"publisher\": {\n        \"@type\": \"Organization\",\n        \"name\": \"Data 4 The People\",\n        \"url\": \"https://data4thepeople.com\"\n      },\n      \"mainEntityOfPage\": {\n        \"@type\": \"WebPage\",\n        \"@id\": \"https://www.data4thepeople.com/p/five-takeaways-wage-inequality\"\n      },\n      \"@id\": \"https://www.data4thepeople.com/p/five-takeaways-wage-inequality#article\"\n    },\n    {\n      \"@type\": \"FAQPage\",\n      \"@id\": \"https://www.data4thepeople.com/p/five-takeaways-wage-inequality#faq\",\n      \"mainEntity\": [\n        {\n          \"@type\": \"Question\",\n          \"name\": \"Which state has the most wage inequality?\",\n          \"acceptedAnswer\": {\n            \"@type\": \"Answer\",\n            \"text\": \"New York, by the Gini of payroll wages across occupations (0.308 in May 2025). By the pay needed to be in the top 10% compared with the median, California is first. Maine is the most equal by the Gini.\"\n          }\n        },\n        {\n          \"@type\": \"Question\",\n          \"name\": \"Is wage inequality getting worse?\",\n          \"acceptedAnswer\": {\n            \"@type\": \"Answer\",\n            \"text\": \"Measured as the gap in payroll wages between occupations, it narrowed in 47 of 51 states since 2016. Since 2022 it is mixed: 11 states widened and 15 narrowed. Wage data leaves out investment income, so this does not show whether overall inequality fell.\"\n          }\n        },\n        {\n          \"@type\": \"Question\",\n          \"name\": \"Where does the income of the richest come from?\",\n          \"acceptedAnswer\": {\n            \"@type\": \"Answer\",\n            \"text\": \"On 2023 tax returns of $10 million or more, wages were 17% of income and capital gains 39%.\"\n          }\n        }\n      ]\n    }\n  ]\n}"
 }

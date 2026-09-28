@@ -119,3 +119,4 @@ None. (2a-2d were stale after /step back 1 on 2026-09-27; re-run the same day at
 - 2026-09-28 2d: hero from Eric's New York vs. Maine Lorenz chart, re-rendered at hero size (scripts/13), padded 3%; alt text written.
 - 2026-09-28 Step 2d confirmed by Eric.
 - 2026-09-28 2e: meta title, description, keywords written; schema article (Data 4 Thought); text proposals sent to Eric.
+- 2026-09-28 2e: Eric accepted 1 (title: Wage inequality by state and city: five takeaways) and 2 (three Common questions).

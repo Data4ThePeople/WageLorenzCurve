@@ -1,5 +1,5 @@
 ---
-title: Five takeaways from our wage inequality chart
+title: "Wage inequality by state and city: five takeaways"
 subtitle: Where the pay gap is widest, what it looks like in dollars, how it has changed since 2016, and the income wage data cannot see.
 slug: five-takeaways-wage-inequality
 date: 2026-09-28
@@ -17,7 +17,7 @@ caption_spacer: 20px
 dividers: false
 ---
 
-# Five takeaways from our wage inequality chart
+# Wage inequality by state and city: five takeaways
 
 Yesterday we rebuilt our [chart of wage inequality by city and state](https://www.data4thepeople.com/p/lorenz-chart-viz), which shows how payroll wages are split across occupations in every U.S. state and metro area. Here are five things it shows. It covers payroll (W-2) wages only, and the fifth takeaway shows what that leaves out.
 
@@ -96,3 +96,19 @@ The same holds for places. In the richest fifth of large counties, wages were 64
 - County income is from 2023 tax returns, which leave out unreported income and gains not yet sold.
 - The full method is on the [chart's page](https://www.data4thepeople.com/p/lorenz-chart-viz).
 :::
+
+::: spacer
+
+## Common questions
+
+### Which state has the most wage inequality?
+
+New York, by the Gini of payroll wages across occupations (0.308 in May 2025). By the pay needed to be in the top 10% compared with the median, California is first. Maine is the most equal by the Gini.
+
+### Is wage inequality getting worse?
+
+Measured as the gap in payroll wages between occupations, it narrowed in 47 of 51 states since 2016. Since 2022 it is mixed: 11 states widened and 15 narrowed. Wage data leaves out investment income, so this does not show whether overall inequality fell.
+
+### Where does the income of the richest come from?
+
+On 2023 tax returns of $10 million or more, wages were 17% of income and capital gains 39%.
