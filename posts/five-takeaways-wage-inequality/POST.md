@@ -59,7 +59,7 @@ Fast food and counter workers show the same pattern. Their pay is higher in the 
 
 ::: spacer
 
-## 4. Overall, the wage gap has gotten narrower since 2016; is mixed since 2022
+## 4. Overall, the wage gap has gotten narrower since 2016, but it is mixed since 2022
 
 We compared each place's Gini in May 2016 and May 2022 with May 2025, counting a change only if it clears survey noise and our other checks.
 
