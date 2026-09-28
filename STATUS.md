@@ -6,7 +6,7 @@ Process: ~/.claude/d4tp-process/PROCESS.md
 ## Current
 
 Post: lorenz-chart-viz (Day 1; replaces the February 4, 2026 post in place)
-Step: 2d (re-run)
+Step: 2f
 Since: 2026-09-27
 
 ## Steps
@@ -18,16 +18,13 @@ Since: 2026-09-27
 | 2b | Eric's edit, Claude's look-over | 2026-09-27 | Items 1-15 accepted; IRS chart and crosswalk write-up added |
 | 2c | Slice markup | 2026-09-27 | 129 blocks; spacers between blurbs |
 | 2d | Hero 1680x1080 + alt text | 2026-09-27 | U.S. May 2025 curve rendered at hero scale; alt 463 characters |
-| 2e | SEO | | |
+| 2e | SEO | 2026-09-27 | Retargeted to wage inequality by city and state; dataset schema, 14 FAQ entries |
 | 2f | Pushed to Prismic (draft) | | |
 | 2g | Mailchimp teaser | | |
 
 ## Stale
 
-- 2a, 2b, 2c, 2d: stale as of 2026-09-27. Reason: Eric approved adding a
-  "top 10% vs. median" readout to the viz and retargeting the post for
-  "wage inequality by city and state" (new H1, rankings section, three new
-  questions). Each is re-run and re-confirmed in order after Step 1.
+None. (2a-2d were stale after /step back 1 on 2026-09-27; re-run the same day at Eric's instruction.)
 
 ## Log
 
@@ -84,3 +81,4 @@ Since: 2026-09-27
 - 2026-09-27 Step 1 re-confirmed by Eric. Eric asked to move through 2a-2f to the Prismic Migration Release.
 - 2026-09-27 2a and 2b re-run: changes since last confirmation are the approved SEO items (1-7) and Eric's Step 3 paragraph; every new number checked against the data (rankings, Gini values, top-10% vs median, U.S. line, Puerto Rico range). No issues.
 - 2026-09-27 2c re-run: 165 blocks, no back-to-back blurbs; embed cache tag updated to v=20260927c.
+- 2026-09-27 2d re-run: hero title text now Wage Inequality by City and State; alt text updated; hero check ok. 2e confirmed via Eric's approval of the SEO retarget. Moving to 2f.
