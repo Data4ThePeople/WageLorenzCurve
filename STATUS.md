@@ -6,7 +6,7 @@ Process: ~/.claude/d4tp-process/PROCESS.md
 ## Current
 
 Post: five-takeaways-wage-inequality (Day 2; proposed slug)
-Step: 2b (reopened)
+Step: 2c (waiting to start)
 Since: 2026-09-28
 
 ## Steps
@@ -15,7 +15,7 @@ Since: 2026-09-28
 |---|---|---|---|
 | 1  | Exploration and analysis | 2026-09-28 | Five takeaways set by Eric; 8 charts, text enlarged; tie-out PASS |
 | 2a | Draft with brackets resolved | 2026-09-28 | Claude-drafted at Eric's request, minimal text; chart 02b kept |
-| 2b | Eric's edit, Claude's look-over | 2026-09-28 | Eric's two additions (#4 reaction, #5 caution); look-over clean |
+| 2b | Eric's edit, Claude's look-over | 2026-09-28 | Eric's two additions (#4 reaction, #5 caution); New York vs. Maine chart added; re-confirmed 2026-09-28 |
 | 2c | Slice markup | | |
 | 2d | Hero 1680x1080 + alt text | | |
 | 2e | SEO | | |
@@ -39,7 +39,7 @@ Since: 2026-09-28
 
 ## Stale
 
-- 2b: reopened 2026-09-28. Reason: Eric added a New York vs. Maine Lorenz curve chart to takeaway 1. (2a-2d were stale after /step back 1 on 2026-09-27; re-run the same day at Eric's instruction.)
+None. (2a-2d were stale after /step back 1 on 2026-09-27; re-run the same day at Eric's instruction.)
 
 ## Log
 
@@ -113,3 +113,4 @@ Since: 2026-09-28
 - 2026-09-28 Step 2b confirmed by Eric.
 - 2026-09-28 /step back 2b: New York vs. Maine Lorenz curve chart added to takeaway 1.
 - 2026-09-28 Takeaway 1: New York vs. Maine Lorenz chart (01b) added before the three-measure chart, with one introducing sentence.
+- 2026-09-28 Step 2b re-confirmed by Eric (with the New York vs. Maine chart).
