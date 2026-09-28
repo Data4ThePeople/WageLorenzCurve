@@ -6,7 +6,7 @@ Process: ~/.claude/d4tp-process/PROCESS.md
 ## Current
 
 Post: five-takeaways-wage-inequality (Day 2; proposed slug)
-Step: 2e
+Step: 2f
 Since: 2026-09-28
 
 ## Steps
@@ -18,7 +18,7 @@ Since: 2026-09-28
 | 2b | Eric's edit, Claude's look-over | 2026-09-28 | Eric's two additions (#4 reaction, #5 caution); New York vs. Maine chart added; re-confirmed 2026-09-28 |
 | 2c | Slice markup | 2026-09-28 | 37 blocks; spacers above headings that follow charts |
 | 2d | Hero 1680x1080 + alt text | 2026-09-28 | Eric's New York vs. Maine curves, re-rendered at hero size; alt 380 characters |
-| 2e | SEO | | |
+| 2e | SEO | 2026-09-28 | New title; meta, keywords; article + FAQ schema (3 questions) |
 | 2f | Pushed to Prismic (draft) | | |
 | 2g | Mailchimp teaser | | |
 
@@ -120,3 +120,4 @@ None. (2a-2d were stale after /step back 1 on 2026-09-27; re-run the same day at
 - 2026-09-28 Step 2d confirmed by Eric.
 - 2026-09-28 2e: meta title, description, keywords written; schema article (Data 4 Thought); text proposals sent to Eric.
 - 2026-09-28 2e: Eric accepted 1 (title: Wage inequality by state and city: five takeaways) and 2 (three Common questions).
+- 2026-09-28 Step 2e confirmed by Eric.
