@@ -19,7 +19,7 @@ Since: 2026-09-28
 | 2c | Slice markup | 2026-09-28 | 37 blocks; spacers above headings that follow charts |
 | 2d | Hero 1680x1080 + alt text | 2026-09-28 | Eric's New York vs. Maine curves, re-rendered at hero size; alt 380 characters |
 | 2e | SEO | 2026-09-28 | New title; meta, keywords; article + FAQ schema (3 questions) |
-| 2f | Pushed to Prismic (draft) | | |
+| 2f | Pushed to Prismic (draft) | 2026-09-28 | Created draft arpsqREAAC4AOVhk in the Migration Release; 39 slices; 10 images uploaded |
 | 2g | Mailchimp teaser | | |
 
 ## Completed posts
@@ -121,3 +121,4 @@ None. (2a-2d were stale after /step back 1 on 2026-09-27; re-run the same day at
 - 2026-09-28 2e: meta title, description, keywords written; schema article (Data 4 Thought); text proposals sent to Eric.
 - 2026-09-28 2e: Eric accepted 1 (title: Wage inequality by state and city: five takeaways) and 2 (three Common questions).
 - 2026-09-28 Step 2e confirmed by Eric.
+- 2026-09-28 2f: dry run, then published. Created draft arpsqREAAC4AOVhk (slug five-takeaways-wage-inequality) in the Migration Release; 10 images uploaded. Before publishing in Prismic: set author and tag.

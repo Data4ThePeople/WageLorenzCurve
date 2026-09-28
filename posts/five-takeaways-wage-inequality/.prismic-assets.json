@@ -1,0 +1,72 @@
+{
+  "images/01b-lorenz-new-york-vs-maine.png": {
+    "id": "kqf_qBqEK_Q5wzTZ",
+    "width": 1600,
+    "height": 1280,
+    "url": "https://images.prismic.io/data4thepeople/kqf_qBqEK_Q5wzTZ_01b-lorenz-new-york-vs-maine.png?auto=format,compress",
+    "stamp": "190280:1790598933"
+  },
+  "images/01-states-three-measures.png": {
+    "id": "ELTWUSrwg6l2oQJv",
+    "width": 1600,
+    "height": 1240,
+    "url": "https://images.prismic.io/data4thepeople/ELTWUSrwg6l2oQJv_01-states-three-measures.png?auto=format,compress",
+    "stamp": "215185:1790598125"
+  },
+  "images/02a-metros-three-measures.png": {
+    "id": "elVyR89Xwi5C_43C",
+    "width": 1600,
+    "height": 1240,
+    "url": "https://images.prismic.io/data4thepeople/elVyR89Xwi5C_43C_02a-metros-three-measures.png?auto=format,compress",
+    "stamp": "239893:1790598125"
+  },
+  "images/02b-large-metros-three-measures.png": {
+    "id": "uLJ9EXEz28aVKzcM",
+    "width": 1600,
+    "height": 1240,
+    "url": "https://images.prismic.io/data4thepeople/uLJ9EXEz28aVKzcM_02b-large-metros-three-measures.png?auto=format,compress",
+    "stamp": "231744:1790598525"
+  },
+  "images/03a-gap-vs-home-health-aides.png": {
+    "id": "oPfrP4OecuB_NzTD",
+    "width": 1600,
+    "height": 1200,
+    "url": "https://images.prismic.io/data4thepeople/oPfrP4OecuB_NzTD_03a-gap-vs-home-health-aides.png?auto=format,compress",
+    "stamp": "201674:1790598125"
+  },
+  "images/03b-gap-vs-fast-food.png": {
+    "id": "D36_JkSiJpLtON7v",
+    "width": 1600,
+    "height": 1200,
+    "url": "https://images.prismic.io/data4thepeople/D36_JkSiJpLtON7v_03b-gap-vs-fast-food.png?auto=format,compress",
+    "stamp": "205848:1790598125"
+  },
+  "images/04-change-since-2016-and-2022.png": {
+    "id": "EYSf9X1IuC8SMwjE",
+    "width": 1600,
+    "height": 919,
+    "url": "https://images.prismic.io/data4thepeople/EYSf9X1IuC8SMwjE_04-change-since-2016-and-2022.png?auto=format,compress",
+    "stamp": "132639:1790598125"
+  },
+  "images/05a-income-sources-by-income.png": {
+    "id": "MZQcPYVnXhgHIDdx",
+    "width": 1600,
+    "height": 1080,
+    "url": "https://images.prismic.io/data4thepeople/MZQcPYVnXhgHIDdx_05a-income-sources-by-income.png?auto=format,compress",
+    "stamp": "218849:1790598125"
+  },
+  "images/05b-income-sources-by-county.png": {
+    "id": "IsIbqFNR5M9AdlIK",
+    "width": 1600,
+    "height": 1200,
+    "url": "https://images.prismic.io/data4thepeople/IsIbqFNR5M9AdlIK_05b-income-sources-by-county.png?auto=format,compress",
+    "stamp": "219883:1790598125"
+  },
+  "images/five-takeaways-wage-inequality-hero-1680x1080.png": {
+    "id": "6xvgrieKuohdncdW",
+    "width": 1680,
+    "height": 1080,
+    "url": "https://images.prismic.io/data4thepeople/6xvgrieKuohdncdW_five-takeaways-wage-inequality-hero-1680x1080.png?auto=format,compress",
+    "stamp": "271532:1790600621"
+  }
+}
