@@ -6,7 +6,7 @@ Process: ~/.claude/d4tp-process/PROCESS.md
 ## Current
 
 Post: lorenz-chart-viz (Day 1; replaces the February 4, 2026 post in place)
-Step: 2f
+Step: 2g (waiting to start)
 Since: 2026-09-27
 
 ## Steps
@@ -19,7 +19,7 @@ Since: 2026-09-27
 | 2c | Slice markup | 2026-09-27 | 129 blocks; spacers between blurbs |
 | 2d | Hero 1680x1080 + alt text | 2026-09-27 | U.S. May 2025 curve rendered at hero scale; alt 463 characters |
 | 2e | SEO | 2026-09-27 | Retargeted to wage inequality by city and state; dataset schema, 14 FAQ entries |
-| 2f | Pushed to Prismic (draft) | | |
+| 2f | Pushed to Prismic (draft) | 2026-09-27 | Updated document aYJX3BAAACIAbrYU in the Migration Release; 96 slices; images QXqFczhLJVJhoXjV (IRS chart), ziKWhU2NZtEJ_P01 (hero) |
 | 2g | Mailchimp teaser | | |
 
 ## Stale
@@ -82,3 +82,4 @@ None. (2a-2d were stale after /step back 1 on 2026-09-27; re-run the same day at
 - 2026-09-27 2a and 2b re-run: changes since last confirmation are the approved SEO items (1-7) and Eric's Step 3 paragraph; every new number checked against the data (rankings, Gini values, top-10% vs median, U.S. line, Puerto Rico range). No issues.
 - 2026-09-27 2c re-run: 165 blocks, no back-to-back blurbs; embed cache tag updated to v=20260927c.
 - 2026-09-27 2d re-run: hero title text now Wage Inequality by City and State; alt text updated; hero check ok. 2e confirmed via Eric's approval of the SEO retarget. Moving to 2f.
+- 2026-09-27 2f: dry run then publish. Updated draft aYJX3BAAACIAbrYU (slug lorenz-chart-viz) in the Migration Release. Before publishing in Prismic: set author (Eric Pachman) and the Visualization tag, which the update does not carry. Not verified by read-back (no PRISMIC_READ_TOKEN).
