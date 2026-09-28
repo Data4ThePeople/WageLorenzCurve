@@ -65,9 +65,9 @@ We compared each place's Gini in May 2016 and May 2022 with May 2025, counting a
 
 ![Stacked bar chart titled Narrower since 2016, mixed since 2022. Since 2016, 47 of 51 states narrowed and 4 show no clear change; 229 of 305 metro areas narrowed, 75 show no clear change and 1 widened. Since 2022, 15 states narrowed, 25 show no clear change and 11 widened; 108 of 307 metro areas narrowed, 143 show no clear change and 56 widened.](images/04-change-since-2016-and-2022.png)
 
-Since 2022, 11 states widened, led by North Dakota, Arkansas and Pennsylvania. Of the 25 largest metro areas, 23 have comparable data, and three of them widened: Austin, Dallas-Fort Worth and Philadelphia.
-
 This surprised me, and I found it encouraging. By this measure, most places have become less unequal since 2016.
+
+Since 2022, 11 states widened, led by North Dakota, Arkansas and Pennsylvania. Of the 25 largest metro areas, 23 have comparable data, and three of them widened: Austin, Dallas-Fort Worth and Philadelphia.
 
 ## 5. Wage data misses where the money is
 
