@@ -6,7 +6,7 @@ Process: ~/.claude/d4tp-process/PROCESS.md
 ## Current
 
 Post: lorenz-chart-viz (Day 1; replaces the February 4, 2026 post in place)
-Step: 2g
+Step: complete (lorenz-chart-viz). Next post: Day 2, five takeaways, publishing Monday night, September 28.
 Since: 2026-09-27
 
 ## Steps
@@ -20,7 +20,7 @@ Since: 2026-09-27
 | 2d | Hero 1680x1080 + alt text | 2026-09-27 | U.S. May 2025 curve rendered at hero scale; alt 463 characters |
 | 2e | SEO | 2026-09-27 | Retargeted to wage inequality by city and state; dataset schema, 14 FAQ entries |
 | 2f | Pushed to Prismic (draft) | 2026-09-27 | Updated document aYJX3BAAACIAbrYU in the Migration Release; 96 slices; images QXqFczhLJVJhoXjV (IRS chart), ziKWhU2NZtEJ_P01 (hero) |
-| 2g | Mailchimp teaser | | |
+| 2g | Mailchimp teaser | 2026-09-28 | Eric's email with accepted edits; chart after the missing-income paragraph; CTA "See the wage gap where you live" |
 
 ## Stale
 
@@ -88,3 +88,4 @@ None. (2a-2d were stale after /step back 1 on 2026-09-27; re-run the same day at
 - 2026-09-27 Step 2f confirmed by Eric (published date kept at September 27, 2026, 9:00 pm EDT). 2g paused until the morning of September 28. Open before publishing in Prismic: set author and the Visualization tag.
 - 2026-09-27 2e follow-up: Eric accepted proposals 1 (free-to-use sentence in Purpose) and 2 (IRS in the data-source answer), rejected 3 and 4 (internal links). Applied and re-pushed to draft aYJX3BAAACIAbrYU.
 - 2026-09-28 2g: Eric's email draft, with his accepted edits 1-10 and the chosen subject and preview, placed in EMAIL.md in the 2g structure; hero JPG exported (99 KB); every number in the email checked against the post.
+- 2026-09-28 Step 2g confirmed by Eric. lorenz-chart-viz complete (steps 1 through 2g confirmed). Remaining manual step in Prismic: set author and the Visualization tag, then publish the draft from the Migration Release.
