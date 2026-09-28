@@ -71,7 +71,7 @@ Since 2022, 11 states widened, led by North Dakota, Arkansas and Pennsylvania. O
 
 ## 5. Wage data misses where the money is
 
-But this chart looks at only one piece of the income picture, so we can't conclude that places are actually becoming less unequal. The chart covers wages. On 2023 tax returns, wages were most of the income for most filers, but not at the top.
+This visualization looks at only one piece of the income picture, so we can't conclude that places are actually becoming less unequal. The viz covers wages. On 2023 tax returns, wages were most of the income for most filers, but not at the top.
 
 ![Stacked bar chart titled Where income comes from, by size of income, 2023 federal tax returns. Wages are 80% of total income on returns under $50,000 and 69% on returns of $200,000 to $500,000, but 17% on returns of $10 million or more, where capital gains are 39%. Across all returns, wages are 66%.](images/05a-income-sources-by-income.png)
 
