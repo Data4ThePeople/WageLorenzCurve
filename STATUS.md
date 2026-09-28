@@ -6,7 +6,7 @@ Process: ~/.claude/d4tp-process/PROCESS.md
 ## Current
 
 Post: five-takeaways-wage-inequality (Day 2; proposed slug)
-Step: 2c (waiting to start)
+Step: 2c
 Since: 2026-09-28
 
 ## Steps
@@ -114,3 +114,4 @@ None. (2a-2d were stale after /step back 1 on 2026-09-27; re-run the same day at
 - 2026-09-28 /step back 2b: New York vs. Maine Lorenz curve chart added to takeaway 1.
 - 2026-09-28 Takeaway 1: New York vs. Maine Lorenz chart (01b) added before the three-measure chart, with one introducing sentence.
 - 2026-09-28 Step 2b re-confirmed by Eric (with the New York vs. Maine chart).
+- 2026-09-28 2c: convert-only run, 37 blocks; explicit spacers added above the four headings that follow a chart.

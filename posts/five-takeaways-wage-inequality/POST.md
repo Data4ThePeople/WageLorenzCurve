@@ -31,6 +31,8 @@ We measured the gap three ways: the Gini of payroll wages across occupations, th
 
 ![Three panels of bar charts titled Most and least unequal states, May 2025. By the Gini, the most unequal are New York 0.308, Georgia, Texas, California and New Jersey, and the least unequal are Maine 0.231, North Dakota, Montana, Wyoming and Hawaii. By the lowest-paid half's share of wages, New York is lowest at 28.2% and Maine highest at 34.2%. By the top 10% pay line vs. the median, California leads at 173% and North Dakota is lowest at 97%.](images/01-states-three-measures.png)
 
+::: spacer
+
 ## 2. San Jose, New York and San Francisco lead the metro areas
 
 The same three measures for metro areas. San Jose, New York and San Francisco rank in the top five on all three.
@@ -40,6 +42,8 @@ The same three measures for metro areas. San Jose, New York and San Francisco ra
 The least unequal places are all small metro areas. The chart below keeps only the 50 with 500,000 or more jobs. The most equal of them is Riverside, CA.
 
 ![Three panels of bar charts titled Most and least unequal large metros, May 2025, for the 50 metro areas with 500,000 or more jobs. By the Gini, San Jose is most unequal at 0.332, followed by New York, San Francisco, Atlanta and Houston, and Riverside, CA is least unequal at 0.241, followed by Grand Rapids, Louisville, Buffalo and Portland.](images/02b-large-metros-three-measures.png)
+
+::: spacer
 
 ## 3. In dollars, the high end pulls away
 
@@ -52,6 +56,8 @@ Across these six metro areas, aide pay ranges from $36,610 to $51,080 a year. Th
 Fast food and counter workers show the same pattern. Their pay is higher in the two California metro areas, where large chains must pay at least $20 an hour, and the gap to the top is still widest there.
 
 ![Grouped bar chart titled The pay gap in dollars vs. fast food workers, May 2025. In San Jose, lawyers earn $244,000 more a year than fast food and counter workers, software developers $176,730 more and registered nurses $149,970 more. In Joplin, MO-KS the same gaps are $88,210, $77,930 and $47,060. Fast food pay is $44,980 in San Jose and $29,760 in Joplin.](images/03b-gap-vs-fast-food.png)
+
+::: spacer
 
 ## 4. Narrower since 2016, mixed since 2022
 
@@ -72,6 +78,8 @@ But this chart looks at only one piece of the income picture, so we can't conclu
 The same holds for places. In the richest fifth of large counties, wages were 64% of income on tax returns, against 72% in the poorest fifth. In Manhattan they were 54%, and in Collier County, FL, home to Naples and many wealthy retirees, 30%.
 
 ![Stacked bar chart titled Where income comes from, by county, 2023 tax returns for 616 counties with 100,000 or more people. Wages fall from 72% of income in the poorest fifth of counties to 64% in the richest fifth, while capital gains rise from 3% to 8%. Wages are 54% in Manhattan, 52% in Marin County, CA, 56% in Western Connecticut and 30% in Collier County, FL, where capital gains are 20%.](images/05b-income-sources-by-county.png)
+
+::: spacer
 
 ## See it for your place
 

@@ -59,6 +59,37 @@
           },
           {
             "type": "paragraph",
+            "text": "First, what the gap looks like. The chart below puts New York and Maine, the most and least unequal states by the Gini, on the same axes.",
+            "spans": [],
+            "direction": "ltr"
+          }
+        ]
+      }
+    },
+    {
+      "slice_type": "blog_body_content_image",
+      "slice_label": null,
+      "variation": "default",
+      "version": "initial",
+      "items": [],
+      "primary": {
+        "image": {
+          "alt": "Line chart titled How far the curve bows shows the gap, May 2025. Two curves show the share of payroll wages by share of workers, occupations ordered by average pay, against a dashed equal pay line. Maine, Gini 0.231, stays closer to the line; New York, Gini 0.308, bows farther below it. At the halfway mark, the lowest-paid half of workers get 34.2% of wages in Maine and 28.2% in New York.",
+          "copyright": null
+        },
+        "source_text": []
+      }
+    },
+    {
+      "slice_type": "paragarph_text",
+      "slice_label": null,
+      "variation": "default",
+      "version": "initial",
+      "items": [],
+      "primary": {
+        "paragraph_text": [
+          {
+            "type": "paragraph",
             "text": "We measured the gap three ways: the Gini of payroll wages across occupations, the share of wages that goes to the lowest-paid half of workers, and how far the pay needed to be in the top 10% sits above the median wage. The chart below shows the five most and least unequal states on each.",
             "spans": [],
             "direction": "ltr"
@@ -78,6 +109,16 @@
           "copyright": null
         },
         "source_text": []
+      }
+    },
+    {
+      "slice_type": "spacer",
+      "slice_label": null,
+      "variation": "default",
+      "version": "initial",
+      "items": [],
+      "primary": {
+        "spacer_value": "20px"
       }
     },
     {
@@ -146,6 +187,16 @@
           "copyright": null
         },
         "source_text": []
+      }
+    },
+    {
+      "slice_type": "spacer",
+      "slice_label": null,
+      "variation": "default",
+      "version": "initial",
+      "items": [],
+      "primary": {
+        "spacer_value": "20px"
       }
     },
     {
@@ -223,6 +274,16 @@
       }
     },
     {
+      "slice_type": "spacer",
+      "slice_label": null,
+      "variation": "default",
+      "version": "initial",
+      "items": [],
+      "primary": {
+        "spacer_value": "20px"
+      }
+    },
+    {
       "slice_type": "paragarph_text",
       "slice_label": null,
       "variation": "default",
@@ -272,6 +333,12 @@
             "text": "Since 2022, 11 states widened, led by North Dakota, Arkansas and Pennsylvania. Of the 25 largest metro areas, 23 have comparable data, and three of them widened: Austin, Dallas-Fort Worth and Philadelphia.",
             "spans": [],
             "direction": "ltr"
+          },
+          {
+            "type": "paragraph",
+            "text": "This surprised me, and I found it encouraging. By this measure, most places have become less unequal since 2016.",
+            "spans": [],
+            "direction": "ltr"
           }
         ]
       }
@@ -302,7 +369,7 @@
           },
           {
             "type": "paragraph",
-            "text": "The chart covers wages. On 2023 tax returns, wages were most of the income for most filers, but not at the top.",
+            "text": "But this chart looks at only one piece of the income picture, so we can't conclude that places are actually becoming less unequal. The chart covers wages. On 2023 tax returns, wages were most of the income for most filers, but not at the top.",
             "spans": [],
             "direction": "ltr"
           }
@@ -352,6 +419,16 @@
           "copyright": null
         },
         "source_text": []
+      }
+    },
+    {
+      "slice_type": "spacer",
+      "slice_label": null,
+      "variation": "default",
+      "version": "initial",
+      "items": [],
+      "primary": {
+        "spacer_value": "20px"
       }
     },
     {
