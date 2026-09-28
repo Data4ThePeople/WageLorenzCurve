@@ -1,0 +1,1096 @@
+{
+ "us": {
+  "gini": 0.28366222279975284,
+  "half": 0.30171517476134235,
+  "top10_vs_median": 1.5217732444095722,
+  "p90": 128560.0,
+  "p50": 50980.0
+ },
+ "states": {
+  "gini": {
+   "most": [
+    [
+     "New York",
+     0.30840050047555323
+    ],
+    [
+     "Georgia",
+     0.303946621258502
+    ],
+    [
+     "Texas",
+     0.30190686215796303
+    ],
+    [
+     "California",
+     0.29837231598771397
+    ],
+    [
+     "New Jersey",
+     0.2977514879963945
+    ]
+   ],
+   "least": [
+    [
+     "Maine",
+     0.23084355747597107
+    ],
+    [
+     "North Dakota",
+     0.23854329707780852
+    ],
+    [
+     "Montana",
+     0.23965917193315356
+    ],
+    [
+     "Wyoming",
+     0.24115400547448018
+    ],
+    [
+     "Hawaii",
+     0.24124824591160754
+    ]
+   ]
+  },
+  "half": {
+   "most": [
+    [
+     "New York",
+     0.2823493803534903
+    ],
+    [
+     "Massachusetts",
+     0.2876614412968667
+    ],
+    [
+     "New Jersey",
+     0.28944841818163364
+    ],
+    [
+     "California",
+     0.28951481269424956
+    ],
+    [
+     "Texas",
+     0.28952863150962477
+    ]
+   ],
+   "least": [
+    [
+     "Maine",
+     0.3423892711723959
+    ],
+    [
+     "North Dakota",
+     0.3359405828380286
+    ],
+    [
+     "South Dakota",
+     0.33500414965576214
+    ],
+    [
+     "Montana",
+     0.3341239859086987
+    ],
+    [
+     "Vermont",
+     0.3337271999797945
+    ]
+   ]
+  },
+  "top10_vs_median": {
+   "most": [
+    [
+     "California",
+     1.7314560439560438
+    ],
+    [
+     "New York",
+     1.6395173453996983
+    ],
+    [
+     "Texas",
+     1.5754833401892228
+    ],
+    [
+     "Massachusetts",
+     1.5634533731718823
+    ],
+    [
+     "Georgia",
+     1.5424538094249534
+    ]
+   ],
+   "least": [
+    [
+     "North Dakota",
+     0.9657012195121952
+    ],
+    [
+     "Vermont",
+     0.9769462670686291
+    ],
+    [
+     "South Dakota",
+     1.0157179269328802
+    ],
+    [
+     "Maine",
+     1.0515263464903755
+    ],
+    [
+     "Iowa",
+     1.0525339925834363
+    ]
+   ]
+  },
+  "agreement": {
+   "gini_vs_half": 0.9742081447963801,
+   "gini_vs_top10": 0.8160180995475113
+  },
+  "n": 51
+ },
+ "metros": {
+  "gini": {
+   "most": [
+    [
+     "San Jose-Sunnyvale-Santa Clara, CA",
+     0.3320999804925522
+    ],
+    [
+     "New York-Newark-Jersey City, NY-NJ",
+     0.3170730459154115
+    ],
+    [
+     "Bridgeport-Stamford-Danbury, CT",
+     0.316142552534199
+    ],
+    [
+     "San Francisco-Oakland-Fremont, CA",
+     0.3113731741929069
+    ],
+    [
+     "Huntsville, AL",
+     0.31082362563157684
+    ]
+   ],
+   "least": [
+    [
+     "Grants Pass, OR",
+     0.20033441778605465
+    ],
+    [
+     "Joplin, MO-KS",
+     0.2090788267769066
+    ],
+    [
+     "Lewiston-Auburn, ME",
+     0.20924992127640374
+    ],
+    [
+     "Elkhart-Goshen, IN",
+     0.20958527301872598
+    ],
+    [
+     "Albany, OR",
+     0.21033720673458856
+    ]
+   ]
+  },
+  "half": {
+   "most": [
+    [
+     "San Jose-Sunnyvale-Santa Clara, CA",
+     0.24952651691076388
+    ],
+    [
+     "San Francisco-Oakland-Fremont, CA",
+     0.27222424372949766
+    ],
+    [
+     "Huntsville, AL",
+     0.27396278395204965
+    ],
+    [
+     "New York-Newark-Jersey City, NY-NJ",
+     0.2743096488348789
+    ],
+    [
+     "Durham-Chapel Hill, NC",
+     0.2755651429921664
+    ]
+   ],
+   "least": [
+    [
+     "Grants Pass, OR",
+     0.3747268002556905
+    ],
+    [
+     "Elkhart-Goshen, IN",
+     0.36629991083955865
+    ],
+    [
+     "Lewiston-Auburn, ME",
+     0.358951648356768
+    ],
+    [
+     "Joplin, MO-KS",
+     0.3572354620053478
+    ],
+    [
+     "Lake Havasu City-Kingman, AZ",
+     0.3559988184257625
+    ]
+   ]
+  },
+  "top10_vs_median": {
+   "most": [
+    [
+     "San Francisco-Oakland-Fremont, CA",
+     1.7413143011042282
+    ],
+    [
+     "New York-Newark-Jersey City, NY-NJ",
+     1.703565033371317
+    ],
+    [
+     "Huntsville, AL",
+     1.688828759180518
+    ],
+    [
+     "San Jose-Sunnyvale-Santa Clara, CA",
+     1.667935752528257
+    ],
+    [
+     "Bridgeport-Stamford-Danbury, CT",
+     1.6263217829835694
+    ]
+   ],
+   "least": [
+    [
+     "Grand Island, NE",
+     0.7478243270592997
+    ],
+    [
+     "Morristown, TN",
+     0.8121047877145438
+    ],
+    [
+     "Jackson, TN",
+     0.8580040187541862
+    ],
+    [
+     "Joplin, MO-KS",
+     0.8810582481102713
+    ],
+    [
+     "Oshkosh-Neenah, WI",
+     0.8904920458749537
+    ]
+   ]
+  },
+  "agreement": {
+   "gini_vs_half": 0.9752396367881032,
+   "gini_vs_top10": 0.7118737445698959
+  },
+  "n": 387
+ },
+ "big_metros": {
+  "gini": {
+   "most": [
+    [
+     "San Jose-Sunnyvale-Santa Clara, CA",
+     0.3320999804925522
+    ],
+    [
+     "New York-Newark-Jersey City, NY-NJ",
+     0.3170730459154115
+    ],
+    [
+     "San Francisco-Oakland-Fremont, CA",
+     0.3113731741929069
+    ],
+    [
+     "Atlanta-Sandy Springs-Roswell, GA",
+     0.310025471517114
+    ],
+    [
+     "Houston-Pasadena-The Woodlands, TX",
+     0.3076623148287475
+    ]
+   ],
+   "least": [
+    [
+     "Riverside-San Bernardino-Ontario, CA",
+     0.24082002537377034
+    ],
+    [
+     "Grand Rapids-Wyoming-Kentwood, MI",
+     0.24641785463968224
+    ],
+    [
+     "Louisville/Jefferson County, KY-IN",
+     0.24826761269181152
+    ],
+    [
+     "Buffalo-Cheektowaga, NY",
+     0.25388555440994853
+    ],
+    [
+     "Portland-Vancouver-Hillsboro, OR-WA",
+     0.2595825120411993
+    ]
+   ]
+  },
+  "half": {
+   "most": [
+    [
+     "San Jose-Sunnyvale-Santa Clara, CA",
+     0.24952651691076388
+    ],
+    [
+     "San Francisco-Oakland-Fremont, CA",
+     0.27222424372949766
+    ],
+    [
+     "New York-Newark-Jersey City, NY-NJ",
+     0.2743096488348789
+    ],
+    [
+     "Washington-Arlington-Alexandria, DC-VA-MD-WV",
+     0.2774906506640383
+    ],
+    [
+     "Atlanta-Sandy Springs-Roswell, GA",
+     0.28328777919331377
+    ]
+   ],
+   "least": [
+    [
+     "Riverside-San Bernardino-Ontario, CA",
+     0.33424550291137317
+    ],
+    [
+     "Louisville/Jefferson County, KY-IN",
+     0.3316215769614747
+    ],
+    [
+     "Grand Rapids-Wyoming-Kentwood, MI",
+     0.330871564504683
+    ],
+    [
+     "Buffalo-Cheektowaga, NY",
+     0.3219805590745343
+    ],
+    [
+     "Las Vegas-Henderson-North Las Vegas, NV",
+     0.3197198359698394
+    ]
+   ]
+  },
+  "top10_vs_median": {
+   "most": [
+    [
+     "San Francisco-Oakland-Fremont, CA",
+     1.7413143011042282
+    ],
+    [
+     "New York-Newark-Jersey City, NY-NJ",
+     1.703565033371317
+    ],
+    [
+     "San Jose-Sunnyvale-Santa Clara, CA",
+     1.667935752528257
+    ],
+    [
+     "Charlotte-Concord-Gastonia, NC-SC",
+     1.6107221444288857
+    ],
+    [
+     "San Diego-Chula Vista-Carlsbad, CA",
+     1.5997614585108195
+    ]
+   ],
+   "least": [
+    [
+     "Louisville/Jefferson County, KY-IN",
+     1.1058507339259873
+    ],
+    [
+     "Grand Rapids-Wyoming-Kentwood, MI",
+     1.124237965104057
+    ],
+    [
+     "Memphis, TN-MS-AR",
+     1.146299850714438
+    ],
+    [
+     "Cleveland, OH",
+     1.162345432788193
+    ],
+    [
+     "Indianapolis-Carmel-Greenwood, IN",
+     1.174098094852047
+    ]
+   ]
+  },
+  "agreement": {
+   "gini_vs_half": 0.9675390156062423,
+   "gini_vs_top10": 0.6742376950780311
+  },
+  "n": 50
+ },
+ "puerto_rico_gini_range": [
+  0.17542477017004354,
+  0.239031433922972,
+  6
+ ],
+ "gaps": {
+  "San Jose": {
+   "gini": 0.3320999804925522,
+   "wages": {
+    "Home health and personal care aides": 39360.0,
+    "Fast food and counter workers": 44980.0,
+    "Registered nurses": 194950.0,
+    "Software developers": 221710.0,
+    "Lawyers": 288980.0
+   },
+   "jobs": {
+    "Home health and personal care aides": 49610.0,
+    "Fast food and counter workers": 23060.0,
+    "Registered nurses": 22930.0,
+    "Software developers": 87350.0,
+    "Lawyers": 6040.0
+   },
+   "gap_vs_aides": {
+    "Registered nurses": 155590.0,
+    "Software developers": 182350.0,
+    "Lawyers": 249620.0
+   },
+   "gap_vs_fastfood": {
+    "Registered nurses": 149970.0,
+    "Software developers": 176730.0,
+    "Lawyers": 244000.0
+   }
+  },
+  "San Francisco": {
+   "gini": 0.3113731741929069,
+   "wages": {
+    "Home health and personal care aides": 38810.0,
+    "Fast food and counter workers": 44620.0,
+    "Registered nurses": 176900.0,
+    "Software developers": 193430.0,
+    "Lawyers": 237060.0
+   },
+   "jobs": {
+    "Home health and personal care aides": 119120.0,
+    "Fast food and counter workers": 49970.0,
+    "Registered nurses": 41750.0,
+    "Software developers": 69030.0,
+    "Lawyers": 18470.0
+   },
+   "gap_vs_aides": {
+    "Registered nurses": 138090.0,
+    "Software developers": 154620.0,
+    "Lawyers": 198250.0
+   },
+   "gap_vs_fastfood": {
+    "Registered nurses": 132280.0,
+    "Software developers": 148810.0,
+    "Lawyers": 192440.0
+   }
+  },
+  "New York": {
+   "gini": 0.3170730459154115,
+   "wages": {
+    "Home health and personal care aides": 41120.0,
+    "Fast food and counter workers": 37130.0,
+    "Registered nurses": 119600.0,
+    "Software developers": 165870.0,
+    "Lawyers": 224840.0
+   },
+   "jobs": {
+    "Home health and personal care aides": 644700.0,
+    "Fast food and counter workers": 166040.0,
+    "Registered nurses": 197740.0,
+    "Software developers": 121000.0,
+    "Lawyers": 94610.0
+   },
+   "gap_vs_aides": {
+    "Registered nurses": 78480.0,
+    "Software developers": 124750.0,
+    "Lawyers": 183720.0
+   },
+   "gap_vs_fastfood": {
+    "Registered nurses": 82470.0,
+    "Software developers": 128740.0,
+    "Lawyers": 187710.0
+   }
+  },
+  "Grants Pass, OR": {
+   "gini": 0.20033441778605465,
+   "wages": {
+    "Home health and personal care aides": 51080.0,
+    "Fast food and counter workers": 35730.0,
+    "Registered nurses": 114640.0,
+    "Software developers": 135760.0,
+    "Lawyers": 130820.0
+   },
+   "jobs": {
+    "Home health and personal care aides": 4640.0,
+    "Fast food and counter workers": 1240.0,
+    "Registered nurses": 540.0,
+    "Software developers": 80.0,
+    "Lawyers": 40.0
+   },
+   "gap_vs_aides": {
+    "Registered nurses": 63560.0,
+    "Software developers": 84680.0,
+    "Lawyers": 79740.0
+   },
+   "gap_vs_fastfood": {
+    "Registered nurses": 78910.0,
+    "Software developers": 100030.0,
+    "Lawyers": 95090.0
+   }
+  },
+  "Joplin, MO-KS": {
+   "gini": 0.2090788267769066,
+   "wages": {
+    "Home health and personal care aides": 36610.0,
+    "Fast food and counter workers": 29760.0,
+    "Registered nurses": 76820.0,
+    "Software developers": 107690.0,
+    "Lawyers": 117970.0
+   },
+   "jobs": {
+    "Home health and personal care aides": 2050.0,
+    "Fast food and counter workers": 1130.0,
+    "Registered nurses": 2670.0,
+    "Software developers": 120.0,
+    "Lawyers": 180.0
+   },
+   "gap_vs_aides": {
+    "Registered nurses": 40210.0,
+    "Software developers": 71080.0,
+    "Lawyers": 81360.0
+   },
+   "gap_vs_fastfood": {
+    "Registered nurses": 47060.0,
+    "Software developers": 77930.0,
+    "Lawyers": 88210.0
+   }
+  },
+  "Louisville, KY-IN": {
+   "gini": 0.24826761269181152,
+   "wages": {
+    "Home health and personal care aides": 38200.0,
+    "Fast food and counter workers": 28750.0,
+    "Registered nurses": 90190.0,
+    "Software developers": 120560.0,
+    "Lawyers": 135380.0
+   },
+   "jobs": {
+    "Home health and personal care aides": 10970.0,
+    "Fast food and counter workers": 15540.0,
+    "Registered nurses": 18180.0,
+    "Software developers": 2770.0,
+    "Lawyers": 2000.0
+   },
+   "gap_vs_aides": {
+    "Registered nurses": 51990.0,
+    "Software developers": 82360.0,
+    "Lawyers": 97180.0
+   },
+   "gap_vs_fastfood": {
+    "Registered nurses": 61440.0,
+    "Software developers": 91810.0,
+    "Lawyers": 106630.0
+   }
+  }
+ },
+ "riverside_nurse_vs_aide_pct": 2.857465424781259,
+ "ny_aides": {
+  "2016": {
+   "jobs": 297950.0,
+   "share": 0.0324923526557141
+  },
+  "2019": {
+   "jobs": 404750.0,
+   "share": 0.04191985152242337
+  },
+  "2022": {
+   "jobs": 488640.0,
+   "share": 0.05319804470186058
+  },
+  "2025": {
+   "jobs": 644700.0,
+   "share": 0.06792035398230088
+  },
+  "largest_2025": "Home Health and Personal Care Aides",
+  "second_2025": [
+   "Retail Salespersons",
+   202080.0
+  ]
+ },
+ "change": {
+  "states_2016": {
+   "n": 51,
+   "narrowed": 47,
+   "widened": 0,
+   "no_clear_change": 4,
+   "widened_names": []
+  },
+  "metros_2016": {
+   "n": 305,
+   "narrowed": 229,
+   "widened": 1,
+   "no_clear_change": 75,
+   "widened_names": [
+    [
+     "Columbus, IN",
+     0.024387660428369
+    ]
+   ]
+  },
+  "states_2022": {
+   "n": 51,
+   "narrowed": 15,
+   "widened": 11,
+   "no_clear_change": 25,
+   "widened_names": [
+    [
+     "North Dakota",
+     0.0175962517908052
+    ],
+    [
+     "Arkansas",
+     0.0088496438945135
+    ],
+    [
+     "Pennsylvania",
+     0.0088291363645037
+    ],
+    [
+     "Utah",
+     0.0086361887154229
+    ],
+    [
+     "Vermont",
+     0.0076637514628734
+    ],
+    [
+     "Alaska",
+     0.0075388537685838
+    ],
+    [
+     "Texas",
+     0.0070674836111538
+    ],
+    [
+     "Idaho",
+     0.006319174982399
+    ],
+    [
+     "New York",
+     0.0042655019264308
+    ],
+    [
+     "Wisconsin",
+     0.0040331168918598
+    ],
+    [
+     "Indiana",
+     0.0036973271759587
+    ]
+   ]
+  },
+  "metros_2022": {
+   "n": 307,
+   "narrowed": 108,
+   "widened": 56,
+   "no_clear_change": 143,
+   "widened_names": [
+    [
+     "Ithaca, NY",
+     0.0354347410317261
+    ],
+    [
+     "College Station-Bryan, TX",
+     0.0246362295341044
+    ],
+    [
+     "Arecibo, PR",
+     0.0220309943309389
+    ],
+    [
+     "Iowa City, IA",
+     0.0219138548095908
+    ],
+    [
+     "Hot Springs, AR",
+     0.0211406635994939
+    ],
+    [
+     "Fond du Lac, WI",
+     0.0181394487783227
+    ],
+    [
+     "Elkhart-Goshen, IN",
+     0.0158765002877607
+    ],
+    [
+     "Topeka, KS",
+     0.0151135070238483
+    ],
+    [
+     "Lawrence, KS",
+     0.0149900652059377
+    ],
+    [
+     "Hammond, LA",
+     0.0140870735821972
+    ],
+    [
+     "Rome, GA",
+     0.0137354668811515
+    ],
+    [
+     "Philadelphia-Camden-Wilmington, PA-NJ-DE-MD",
+     0.0130257238065982
+    ],
+    [
+     "San Angelo, TX",
+     0.0126787365558828
+    ],
+    [
+     "Amarillo, TX",
+     0.0125259695999953
+    ],
+    [
+     "Allentown-Bethlehem-Easton, PA-NJ",
+     0.0122160953995825
+    ],
+    [
+     "Augusta-Richmond County, GA-SC",
+     0.011999903380615
+    ],
+    [
+     "Yakima, WA",
+     0.0119766837654072
+    ],
+    [
+     "Cheyenne, WY",
+     0.0116693629143128
+    ],
+    [
+     "Boise City, ID",
+     0.0115152276539508
+    ],
+    [
+     "Sumter, SC",
+     0.0112866083683491
+    ],
+    [
+     "Eau Claire, WI",
+     0.0111212941077964
+    ],
+    [
+     "Fargo, ND-MN",
+     0.0107257729908782
+    ],
+    [
+     "Harrisburg-Carlisle, PA",
+     0.0106854499568013
+    ],
+    [
+     "Salt Lake City-Murray, UT",
+     0.0106650988437796
+    ],
+    [
+     "Pocatello, ID",
+     0.0106627539644275
+    ],
+    [
+     "Peoria, IL",
+     0.0105993240369219
+    ],
+    [
+     "Lexington-Fayette, KY",
+     0.0105673110462332
+    ],
+    [
+     "Abilene, TX",
+     0.0104452729920734
+    ],
+    [
+     "Jonesboro, AR",
+     0.0104384769989409
+    ],
+    [
+     "Midland, TX",
+     0.010383148340659
+    ],
+    [
+     "Texarkana, TX-AR",
+     0.0102589874414167
+    ],
+    [
+     "Alexandria, LA",
+     0.0101479496201889
+    ],
+    [
+     "Williamsport, PA",
+     0.0092787608129981
+    ],
+    [
+     "St. George, UT",
+     0.0091800407471196
+    ],
+    [
+     "Sierra Vista-Douglas, AZ",
+     0.0087755646490159
+    ],
+    [
+     "Altoona, PA",
+     0.0083897501317643
+    ],
+    [
+     "Mankato, MN",
+     0.0082407809321511
+    ],
+    [
+     "Fort Wayne, IN",
+     0.0082118965432113
+    ],
+    [
+     "Anchorage, AK",
+     0.0081401758620728
+    ],
+    [
+     "Grand Forks, ND-MN",
+     0.008117066157309
+    ],
+    [
+     "Janesville-Beloit, WI",
+     0.0080898403533956
+    ],
+    [
+     "Little Rock-North Little Rock-Conway, AR",
+     0.0080571663733777
+    ],
+    [
+     "Oklahoma City, OK",
+     0.0079882351698501
+    ],
+    [
+     "Hilton Head Island-Bluffton-Port Royal, SC",
+     0.0073609591485293
+    ],
+    [
+     "Kokomo, IN",
+     0.0073148386953854
+    ],
+    [
+     "Bowling Green, KY",
+     0.006879732205152
+    ],
+    [
+     "Austin-Round Rock-San Marcos, TX",
+     0.0067851075445991
+    ],
+    [
+     "Prescott Valley-Prescott, AZ",
+     0.0067280239885426
+    ],
+    [
+     "Dallas-Fort Worth-Arlington, TX",
+     0.0065751898770854
+    ],
+    [
+     "Erie, PA",
+     0.0064756028909161
+    ],
+    [
+     "Cleveland, TN",
+     0.0062919862173755
+    ],
+    [
+     "Green Bay, WI",
+     0.0058890093803131
+    ],
+    [
+     "Utica-Rome, NY",
+     0.005642804990122
+    ],
+    [
+     "McAllen-Edinburg-Mission, TX",
+     0.0053343174891616
+    ],
+    [
+     "Davenport-Moline-Rock Island, IA-IL",
+     0.0045865126346291
+    ],
+    [
+     "Salem, OR",
+     0.0045180225826766
+    ]
+   ]
+  },
+  "us": {
+   "2016": [
+    0.3035322657592827,
+    0.2821322724642847,
+    "clear drop"
+   ],
+   "2022": [
+    0.2860163690955655,
+    0.2821322724642847,
+    "clear drop"
+   ]
+  },
+  "largest25": {
+   "2016": {
+    "clear drop": 23
+   },
+   "2022": {
+    "no clear change": 11,
+    "clear drop": 9,
+    "clear rise": 3
+   }
+  },
+  "largest25_widened_2022": [
+   "Austin-Round Rock-San Marcos, TX",
+   "Dallas-Fort Worth-Arlington, TX",
+   "Philadelphia-Camden-Wilmington, PA-NJ-DE-MD"
+  ]
+ },
+ "county": {
+  "n": 616,
+  "n_top": 124,
+  "median": {
+   "agi_per_return": 84864.48095677697,
+   "Wages": 0.6760086047167324,
+   "Capital gains": 0.03942976662060943,
+   "Dividends and interest": 0.03744080365069015,
+   "Partnership and S corporation": 0.05640519471385069,
+   "Sole proprietor": 0.02408695315374997,
+   "Everything else": 0.1570643228866695
+  },
+  "top_fifth": {
+   "agi_per_return": 121749.41763089235,
+   "Wages": 0.6411356574489795,
+   "Capital gains": 0.06179617972873977,
+   "Dividends and interest": 0.057301123274115406,
+   "Partnership and S corporation": 0.07192889212068401,
+   "Sole proprietor": 0.026407995923965567,
+   "Everything else": 0.12871416986564055
+  },
+  "named": {
+   "Manhattan (New York County), NY": {
+    "agi_per_return": 257312.41792914647,
+    "Wages": 0.5415419959578552,
+    "Capital gains": 0.16516644801263444,
+    "Dividends and interest": 0.14785133220627827,
+    "Partnership and S corporation": 0.05656277645351411,
+    "Sole proprietor": 0.02569218106114887,
+    "Everything else": 0.06318526630856891
+   },
+   "Marin County, CA": {
+    "agi_per_return": 236961.84241290623,
+    "Wages": 0.5166471042191546,
+    "Capital gains": 0.11459673134770182,
+    "Dividends and interest": 0.10342742482784831,
+    "Partnership and S corporation": 0.10900905646523809,
+    "Sole proprietor": 0.04393649228080471,
+    "Everything else": 0.11238319085925252
+   },
+   "Western Connecticut": {
+    "agi_per_return": 241532.85357289723,
+    "Wages": 0.562430822388936,
+    "Capital gains": 0.13283969875437984,
+    "Dividends and interest": 0.12466224644617409,
+    "Partnership and S corporation": 0.06104074316973752,
+    "Sole proprietor": 0.03334547870037236,
+    "Everything else": 0.08568101054040012
+   },
+   "Los Angeles County, CA": {
+    "agi_per_return": 101267.65959453897,
+    "Wages": 0.6591821484906949,
+    "Capital gains": 0.060822305401142675,
+    "Dividends and interest": 0.05914416635824841,
+    "Partnership and S corporation": 0.09151667139648276,
+    "Sole proprietor": 0.029342443903856753,
+    "Everything else": 0.09999226444957454
+   },
+   "Collier County, FL": {
+    "agi_per_return": 224458.5112256165,
+    "Wages": 0.3015789586770287,
+    "Capital gains": 0.20413082679776512,
+    "Dividends and interest": 0.15600007262306595,
+    "Partnership and S corporation": 0.15051459412905874,
+    "Sole proprietor": 0.023792949201993138,
+    "Everything else": 0.16398259857108832
+   }
+  },
+  "pooled_fifths": {
+   "Poorest fifth": {
+    "counties": 124,
+    "agi_per_return_median": 65335.710044760104,
+    "Wages": 0.7218253549573572,
+    "Capital gains": 0.027840266184366188,
+    "Dividends and interest": 0.030003606134609506,
+    "Partnership and S corporation": 0.042374558458731046,
+    "Sole proprietor": 0.023419987919125643,
+    "Everything else": 0.15453622634581032
+   },
+   "Second fifth": {
+    "counties": 123,
+    "agi_per_return_median": 74079.97522708506,
+    "Wages": 0.6967188312327324,
+    "Capital gains": 0.03312204298029532,
+    "Dividends and interest": 0.03400675812681414,
+    "Partnership and S corporation": 0.049989668409549874,
+    "Sole proprietor": 0.023836456988250057,
+    "Everything else": 0.16232624226235826
+   },
+   "Middle fifth": {
+    "counties": 123,
+    "agi_per_return_median": 84871.94444444444,
+    "Wages": 0.6799708901303674,
+    "Capital gains": 0.0421241453750842,
+    "Dividends and interest": 0.039368766429326546,
+    "Partnership and S corporation": 0.0595303684777275,
+    "Sole proprietor": 0.02560128726940955,
+    "Everything else": 0.15340454231808476
+   },
+   "Fourth fifth": {
+    "counties": 123,
+    "agi_per_return_median": 94980.23762376238,
+    "Wages": 0.6635958481395994,
+    "Capital gains": 0.05959407801353782,
+    "Dividends and interest": 0.05008341452891422,
+    "Partnership and S corporation": 0.0734396035231107,
+    "Sole proprietor": 0.024188328071615667,
+    "Everything else": 0.12909872772322228
+   },
+   "Richest fifth": {
+    "counties": 123,
+    "agi_per_return_median": 121860.5552637271,
+    "Wages": 0.6376565021846745,
+    "Capital gains": 0.08137468627201264,
+    "Dividends and interest": 0.06987450199260689,
+    "Partnership and S corporation": 0.07033885632534276,
+    "Sole proprietor": 0.026254608014218635,
+    "Everything else": 0.11450084521114456
+   }
+  },
+  "all_counties_check": {
+   "wages": 0.660717731939477,
+   "capital_gains": 0.05868595256322289
+  },
+  "investment_lines_median": 0.13590617430012292,
+  "investment_lines_top_fifth": 0.19293584698860217
+ }
+}

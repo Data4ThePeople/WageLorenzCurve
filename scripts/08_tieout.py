@@ -116,6 +116,35 @@ print(f"   $10M+ wages {t['Wages']*100:.1f}%; capital gains + dividends/interest
       f"{(t['Capital gains'] + t['Dividends and interest'] + t['Partnership and S corporation'])*100:.1f}%; "
       f"all returns wages {irs.loc['All returns', 'Wages']*100:.1f}%  (post cites 17.0%, 76.4%, 66.1%)")
 
+print("2d. Day 2 numbers: recomputed independently of scripts/12_day2_numbers.py")
+N2 = json.load(open(os.path.join(ROOT, "data/build/day2_numbers.json")))
+bad2 = []
+# state and metro Gini lists match area_metrics
+g25 = metrics[metrics.year == 2025].set_index("area_title").gini
+for key in ("states", "metros", "big_metros"):
+    for side in ("most", "least"):
+        for name, v in N2[key]["gini"][side]:
+            if abs(g25[name] - v) > 1e-9: bad2.append((key, name))
+# dollar gaps from the source rows
+ids = {"San Jose": "41940", "San Francisco": "41860", "New York": "35620", "Grants Pass, OR": "24420", "Joplin, MO-KS": "27900", "Louisville, KY-IN": "31140"}
+occ = {"Registered nurses": "29-1141", "Software developers": "15-1252", "Lawyers": "23-1011"}
+for m, ak in ids.items():
+    r = d25[(d25.akey == ak) & (d25.o_group == "detailed")].set_index("occ_code").a_mean
+    for o, code in occ.items():
+        if abs((r[code] - r["31-1120"]) - N2["gaps"][m]["gap_vs_aides"][o]) > 0.5: bad2.append((m, o, "aides"))
+        if abs((r[code] - r["35-3023"]) - N2["gaps"][m]["gap_vs_fastfood"][o]) > 0.5: bad2.append((m, o, "fast food"))
+# change counts from history tests
+for s_ in (2016, 2022):
+    for typ, lab in ((2, "states"), (4, "metros")):
+        v = tests[(tests.start == s_) & (tests.area_type == typ)].verdict.value_counts()
+        c_ = N2["change"][f"{lab}_{s_}"]
+        if (c_["narrowed"], c_["widened"], c_["no_clear_change"]) != (v.get("clear drop", 0), v.get("clear rise", 0), v.get("no clear change", 0)): bad2.append((lab, s_))
+# county fifths add to 100% and all-county wage share matches IRS Table 1.4
+for q, v in N2["county"]["pooled_fifths"].items():
+    if abs(sum(x for k, x in v.items() if k not in ("counties", "agi_per_return_median")) - 1) > 1e-9: bad2.append(("fifth", q))
+if round(N2["county"]["all_counties_check"]["wages"] * 100, 1) != 66.1: bad2.append(("county wage check",))
+print(f"   state/metro Gini lists, 36 dollar gaps, 4 change splits, 5 county fifths checked; mismatches {len(bad2)} -> {'PASS' if not bad2 else 'FAIL ' + str(bad2)}")
+
 print("3. Headline numbers")
 L = J["latest"]; A = {a: t for a, t in zip(d25.akey, d25.area_title)}
 TY = dict(zip(d25.akey, d25.area_type))

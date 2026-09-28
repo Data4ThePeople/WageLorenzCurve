@@ -292,3 +292,33 @@ stock market, so the top brackets' mix varies from year to year. The table
 counts returns, not people or households.
 
 **License.** U.S. government work, public domain.
+
+## 5. IRS Statistics of Income, county data, tax year 2023
+
+**What it is.** Individual income tax return statistics by county of the
+filer's residence, tax year 2023 (file `23incyallnoagi.csv`, all returns, not
+split by income size), from `irs.gov/pub/irs-soi/`, saved to `data/raw/irs/`.
+Amounts in thousands of dollars.
+
+**Use here.** Day 2 takeaway 5: income by source for large counties.
+Fields: total income `A02650`, wages `A00200`, net capital gain `A01000`,
+ordinary dividends `A00600`, taxable interest `A00300`, partnership and S
+corporation net income `A26270`, business (sole proprietor) income `A00900`,
+AGI `A00100`, returns `N1`. Counties limited to those with 100,000+ residents
+(BEA 2024 population), 616 matched. Grouped into fifths by AGI per return;
+each fifth's shares add up all income in its counties.
+
+**Check.** Summed over all counties: wages 66.1% of total income (Table 1.4:
+66.1%); capital gains 5.9% (Table 1.4: 6.1%, which also counts capital gain
+distributions reported separately).
+
+**Limits.** Tax-return income only: unreported income and unsold gains are not
+included. Capital gains swing with markets, so one year is one snapshot.
+Counted where filers live, so no commuting distortion (unlike BEA wages).
+Connecticut is reported by planning region.
+
+**License.** U.S. government work, public domain.
+
+**Percentile measure (top 10% vs. median).** BLS publishes no relative
+standard error for wage percentiles, so changes over time in this measure are
+descriptive only and carry no "clear change" verdict.
