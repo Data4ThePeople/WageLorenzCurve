@@ -6,7 +6,7 @@ date: 2026-09-28
 time: 21:00:00-04:00
 section: Data 4 Thought
 hero: images/five-takeaways-wage-inequality-hero-1680x1080.png
-hero_alt:
+hero_alt: Two Lorenz curves of payroll wages by occupation, May 2025, on a dark background, with the title How far the curve bows shows the pay gap. Maine's curve, Gini 0.231, stays closer to the dashed equal pay line; New York's, Gini 0.308, bows farther below it. The lowest-paid half of workers get 34.2% of wages in Maine and 28.2% in New York. Built by Data 4 The People from BLS data.
 meta_title:
 description:
 keywords:

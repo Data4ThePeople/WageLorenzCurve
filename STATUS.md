@@ -6,7 +6,7 @@ Process: ~/.claude/d4tp-process/PROCESS.md
 ## Current
 
 Post: five-takeaways-wage-inequality (Day 2; proposed slug)
-Step: 2d (waiting to start)
+Step: 2d
 Since: 2026-09-28
 
 ## Steps
@@ -116,3 +116,4 @@ None. (2a-2d were stale after /step back 1 on 2026-09-27; re-run the same day at
 - 2026-09-28 Step 2b re-confirmed by Eric (with the New York vs. Maine chart).
 - 2026-09-28 2c: convert-only run, 37 blocks; explicit spacers added above the four headings that follow a chart.
 - 2026-09-28 Step 2c confirmed by Eric.
+- 2026-09-28 2d: hero from Eric's New York vs. Maine Lorenz chart, re-rendered at hero size (scripts/13), padded 3%; alt text written.
