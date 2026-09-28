@@ -33,6 +33,10 @@ The same three measures for metro areas. San Jose, New York and San Francisco ra
 
 ![Three panels of bar charts titled Most and least unequal metro areas, May 2025, for 387 metro areas outside Puerto Rico. By the Gini, San Jose is most unequal at 0.332 and Grants Pass, OR least at 0.200. By the lowest-paid half's share, San Jose is lowest at 25.0% and Grants Pass highest at 37.5%. By the top 10% pay line vs. the median, San Francisco leads at 174% and Grand Island, NE is lowest at 75%.](images/02a-metros-three-measures.png)
 
+The least unequal places are all small metro areas. The chart below keeps only the 50 with 500,000 or more jobs. The most equal of them is Riverside, CA.
+
+![Three panels of bar charts titled Most and least unequal large metros, May 2025, for the 50 metro areas with 500,000 or more jobs. By the Gini, San Jose is most unequal at 0.332, followed by New York, San Francisco, Atlanta and Houston, and Riverside, CA is least unequal at 0.241, followed by Grand Rapids, Louisville, Buffalo and Portland.](images/02b-large-metros-three-measures.png)
+
 ## 3. In dollars, the high end pulls away
 
 The chart below shows the gap on a paycheck: how much more registered nurses, software developers and lawyers earn than home health and personal care aides in the same metro area.

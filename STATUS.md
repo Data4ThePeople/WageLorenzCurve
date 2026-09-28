@@ -14,7 +14,7 @@ Since: 2026-09-28
 | Step | What | Confirmed | Notes |
 |---|---|---|---|
 | 1  | Exploration and analysis | 2026-09-28 | Five takeaways set by Eric; 8 charts, text enlarged; tie-out PASS |
-| 2a | Draft with brackets resolved | 2026-09-28 | Claude-drafted at Eric's request, minimal text; chart 02b dropped |
+| 2a | Draft with brackets resolved | 2026-09-28 | Claude-drafted at Eric's request, minimal text; chart 02b kept |
 | 2b | Eric's edit, Claude's look-over | | |
 | 2c | Slice markup | | |
 | 2d | Hero 1680x1080 + alt text | | |
@@ -108,4 +108,4 @@ None. (2a-2d were stale after /step back 1 on 2026-09-27; re-run the same day at
 - 2026-09-28 Day 2 Step 1: five takeaways agreed with Eric (states three ways; metros three ways plus 500k+ jobs; dollar gaps vs home health aides and fast food workers with NY aides; change since 2016 vs 2022; income on 2023 tax returns by county, IRS county file). Numbers in data/build/day2_numbers.json (scripts/12), nine charts in analysis/day2_charts (scripts/13); tie-out PASS.
 - 2026-09-28 Day 2: 03c (New York aides chart) dropped at Eric's request; 05b now shows Collier County, FL (Naples) instead of Los Angeles County.
 - 2026-09-28 Day 2 Step 1 confirmed by Eric (chart text enlarged 35%). Step 2a opened, slug five-takeaways-wage-inequality (proposed); Claude drafts at Eric's request, minimal words, charts carry the story.
-- 2026-09-28 Step 2a confirmed by Eric; large-metro chart (02b) dropped. 2b: Eric edits POST.md, then asks for the look-over.
+- 2026-09-28 Step 2a confirmed by Eric; large-metro chart (02b) dropped, then restored at Eric's request. 2b: Eric edits POST.md, then asks for the look-over.
