@@ -18,7 +18,7 @@
         "html_content": [
           {
             "type": "preformatted",
-            "text": "<style>html,body{margin:0;padding:0;overflow:hidden}iframe{display:block}</style><iframe src=\"https://data4thepeople.github.io/WageLorenzCurve/?v=20260927#embed=1\" width=\"100%\" height=\"780\" loading=\"lazy\" style=\"border:0\" title=\"Occupational Pay Gaps by Place: interactive Lorenz curve of payroll wages by occupation\"></iframe>",
+            "text": "<style>html,body{margin:0;padding:0;overflow:hidden}iframe{display:block}</style><iframe src=\"https://data4thepeople.github.io/WageLorenzCurve/?v=20260927c#embed=1\" width=\"100%\" height=\"780\" loading=\"lazy\" style=\"border:0\" title=\"Occupational Pay Gaps by Place: interactive Lorenz curve of payroll wages by occupation\"></iframe>",
             "spans": [],
             "direction": "ltr"
           }
@@ -1117,6 +1117,12 @@
           },
           {
             "type": "paragraph",
+            "text": "We did our best to make the years comparable, but these year-to-year changes in how BLS lists occupations complicate any comparison over time. Where BLS split or merged occupations, we combine them into one group, so every year counts the same jobs. Each combined bubble is labeled with the occupation in the group that has the most U.S. jobs, and the tooltip lists the others.",
+            "spans": [],
+            "direction": "ltr"
+          },
+          {
+            "type": "paragraph",
             "text": "Home health and personal care aides are an example of a merge. Through May 2018, BLS published them as two separate occupations in two different major groups: Home Health Aides (31-1011), under Healthcare Support, and Personal Care Aides (39-9021), under Personal Care and Service. Starting with May 2019, OEWS publishes one combined occupation, Home Health and Personal Care Aides (31-1120), under Healthcare Support. This was not just a name change. Two occupations became one.",
             "spans": [],
             "direction": "ltr"
@@ -1141,7 +1147,13 @@
           },
           {
             "type": "paragraph",
-            "text": "Combining codes lowers the U.S. Gini by 0.0007 to 0.0015, by about the same amount each year. That is why the Gini in the change-over-time view can differ slightly from the May 2025 view.",
+            "text": "Catch-all codes can chain several occupations together. When BLS split its old \"all other\" codes in 2018, parts of them went to new occupations such as Project Management Specialists and Software Quality Assurance Analysts. Because those links connect to software developers, the largest group joins Software Developers with 13 other codes, including Project Management Specialists and Managers, All Other.",
+            "spans": [],
+            "direction": "ltr"
+          },
+          {
+            "type": "paragraph",
+            "text": "Combining codes lowers the Gini by 0.0015 for the U.S. in May 2025 and by about 0.001 for a typical metro area. In a few places with many software, management and business jobs it lowers it more, up to 0.0065 in Morgantown, WV and 0.0055 in San Jose. Because the same groups are used in every year, most of this cancels out when comparing years: for a typical place, combining codes moves the change between two years by about 0.0003, and by at most 0.0059 (Morgantown, WV). If combining would change the direction of a change, the chart says \"No clear change\" (Step 6). The change-over-time view states each place's own difference, which is why the Gini there can differ from the May 2025 view.",
             "spans": [],
             "direction": "ltr"
           }

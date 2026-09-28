@@ -57,7 +57,7 @@ ax.text(0.02, half + 0.025, f"Lowest-paid half: {half*100:.1f}% of wages", color
 fig.text(0.065, 0.935, "Share of total payroll wages vs. share of workers, U.S., May 2025", fontsize=28, fontweight="bold", color=INK)
 
 tx = 0.62
-fig.text(tx, 0.74, "Occupational\nPay Gaps\nby Place", fontsize=52, fontweight="bold", color=INK, va="top", linespacing=1.05)
+fig.text(tx, 0.74, "Wage\nInequality by\nCity and State", fontsize=48, fontweight="bold", color=INK, va="top", linespacing=1.05)
 fig.text(tx, 0.43, f"{half*100:.1f}%", fontsize=64, fontweight="bold", color="#8FBFAF", va="top")
 fig.text(tx, 0.325, "of U.S. payroll wages go to\nthe lowest-paid half of workers", fontsize=22, color=INK, va="top", linespacing=1.25)
 fig.text(tx, 0.2, "Every state, metro and rural area\nPayroll (W-2) wages only", fontsize=17, color=MUTED, va="top", linespacing=1.35)

@@ -7,7 +7,7 @@ updated: 2026-09-28
 prismic_id: aYJX3BAAACIAbrYU
 section: Visualization
 hero: images/lorenz-chart-viz-hero-1680x1080.png
-hero_alt: A Lorenz curve of U.S. payroll wages by occupation, May 2025, on a dark background. Colored bubbles, one per occupation and sized by jobs, run from the lowest-paid job at bottom left to the highest-paid at top right, sagging below a dashed equal pay line. A marker shows the lowest-paid half of workers earn 30.2% of payroll wages. Beside it: Occupational Pay Gaps by Place, every state, metro and rural area, payroll (W-2) wages only. Built by Data 4 The People.
+hero_alt: A Lorenz curve of U.S. payroll wages by occupation, May 2025, on a dark background. Colored bubbles, one per occupation and sized by jobs, run from the lowest-paid job at bottom left to the highest-paid at top right, sagging below a dashed equal pay line. A marker shows the lowest-paid half of workers earn 30.2% of payroll wages. Beside it: Wage Inequality by City and State, every state, metro and rural area, payroll (W-2) wages only. Built by Data 4 The People.
 meta_title: "Wage Inequality by City and State: Interactive Chart"
 description: "Free interactive chart of wage inequality in every U.S. city and state: how pay splits between high- and low-paid jobs, and how it changed since 2013."
 keywords: wage inequality by state, wage inequality by city, wage gap between high and low earners, most unequal cities for pay, wage inequality chart, interactive wage inequality map, wage inequality over time
@@ -35,7 +35,7 @@ dividers: false
 
 # Wage Inequality by City and State: An Interactive Chart of Who Gets the Pay
 
-<iframe src="https://data4thepeople.github.io/WageLorenzCurve/?v=20260927#embed=1" width="100%" height="780" loading="lazy" style="border:0" title="Occupational Pay Gaps by Place: interactive Lorenz curve of payroll wages by occupation"></iframe>
+<iframe src="https://data4thepeople.github.io/WageLorenzCurve/?v=20260927c#embed=1" width="100%" height="780" loading="lazy" style="border:0" title="Occupational Pay Gaps by Place: interactive Lorenz curve of payroll wages by occupation"></iframe>
 
 ::: spacer 40px
 

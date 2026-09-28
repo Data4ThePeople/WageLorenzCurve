@@ -6,7 +6,7 @@ Process: ~/.claude/d4tp-process/PROCESS.md
 ## Current
 
 Post: lorenz-chart-viz (Day 1; replaces the February 4, 2026 post in place)
-Step: 2a (re-run)
+Step: 2d (re-run)
 Since: 2026-09-27
 
 ## Steps
@@ -82,3 +82,5 @@ Since: 2026-09-27
 - 2026-09-27 Step 1 rework done: top 10% vs. median readout live (tie-out 1,712 place-years, 0 mismatches). Post retargeted: new H1 and title, meta, keywords, rankings section, three new common questions. Waiting for Eric to re-confirm Step 1, then 2a-2d re-run in order.
 - 2026-09-27 Combined occupation groups now named after their largest member (the 14-code Software Developers group was labeled Entertainment and Recreation Managers); earlier-year codes shown in the tooltip; grouping-effect statements corrected in the viz, post Step 3 and DATASETS.md; Eric's paragraph on historical comparison added to Step 3.
 - 2026-09-27 Step 1 re-confirmed by Eric. Eric asked to move through 2a-2f to the Prismic Migration Release.
+- 2026-09-27 2a and 2b re-run: changes since last confirmation are the approved SEO items (1-7) and Eric's Step 3 paragraph; every new number checked against the data (rankings, Gini values, top-10% vs median, U.S. line, Puerto Rico range). No issues.
+- 2026-09-27 2c re-run: 165 blocks, no back-to-back blurbs; embed cache tag updated to v=20260927c.
