@@ -3,6 +3,9 @@
   "page_subtitle": "Where the pay gap is widest, what it looks like in dollars, how it has changed since 2016, and the income wage data cannot see.",
   "published_date": "2026-09-28",
   "updated_date": "2026-09-28",
+  "meta_title": "Wage Inequality by State and City: 5 Takeaways",
+  "meta_description": "The most and least unequal states and metros, the pay gap in dollars, where it narrowed since 2016, and the income wage data misses.",
+  "meta_keywords": "most unequal states, wage inequality by state, wage inequality by city, is wage inequality getting worse, pay gap between high and low earners, wage gap in dollars, capital gains by county",
   "make_this_main_post": false,
   "slices": [
     {
@@ -538,5 +541,5 @@
       }
     }
   ],
-  "schema": "{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Article\",\n  \"headline\": \"Five takeaways from our wage inequality chart\",\n  \"description\": \"\",\n  \"datePublished\": \"2026-09-28T21:00:00-04:00\",\n  \"dateModified\": \"2026-09-28T21:00:00-04:00\",\n  \"articleSection\": \"Data 4 Thought\",\n  \"license\": \"https://www.data4thepeople.com/terms-of-use\",\n  \"inLanguage\": \"en-US\",\n  \"isAccessibleForFree\": true,\n  \"author\": {\n    \"@type\": \"Person\",\n    \"name\": \"Eric Pachman\",\n    \"url\": \"https://www.data4thepeople.com/authors/eric-pachman\"\n  },\n  \"publisher\": {\n    \"@type\": \"Organization\",\n    \"name\": \"Data 4 The People\",\n    \"url\": \"https://data4thepeople.com\"\n  },\n  \"mainEntityOfPage\": {\n    \"@type\": \"WebPage\",\n    \"@id\": \"https://www.data4thepeople.com/p/five-takeaways-wage-inequality\"\n  }\n}"
+  "schema": "{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Article\",\n  \"headline\": \"Five takeaways from our wage inequality chart\",\n  \"description\": \"The most and least unequal states and metros, the pay gap in dollars, where it narrowed since 2016, and the income wage data misses.\",\n  \"datePublished\": \"2026-09-28T21:00:00-04:00\",\n  \"dateModified\": \"2026-09-28T21:00:00-04:00\",\n  \"articleSection\": \"Data 4 Thought\",\n  \"license\": \"https://www.data4thepeople.com/terms-of-use\",\n  \"inLanguage\": \"en-US\",\n  \"isAccessibleForFree\": true,\n  \"keywords\": [\n    \"most unequal states\",\n    \"wage inequality by state\",\n    \"wage inequality by city\",\n    \"is wage inequality getting worse\",\n    \"pay gap between high and low earners\",\n    \"wage gap in dollars\",\n    \"capital gains by county\"\n  ],\n  \"author\": {\n    \"@type\": \"Person\",\n    \"name\": \"Eric Pachman\",\n    \"url\": \"https://www.data4thepeople.com/authors/eric-pachman\"\n  },\n  \"publisher\": {\n    \"@type\": \"Organization\",\n    \"name\": \"Data 4 The People\",\n    \"url\": \"https://data4thepeople.com\"\n  },\n  \"mainEntityOfPage\": {\n    \"@type\": \"WebPage\",\n    \"@id\": \"https://www.data4thepeople.com/p/five-takeaways-wage-inequality\"\n  }\n}"
 }
