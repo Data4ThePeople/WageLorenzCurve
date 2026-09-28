@@ -6,7 +6,7 @@ Process: ~/.claude/d4tp-process/PROCESS.md
 ## Current
 
 Post: five-takeaways-wage-inequality (Day 2; proposed slug)
-Step: 2c
+Step: 2d (waiting to start)
 Since: 2026-09-28
 
 ## Steps
@@ -16,7 +16,7 @@ Since: 2026-09-28
 | 1  | Exploration and analysis | 2026-09-28 | Five takeaways set by Eric; 8 charts, text enlarged; tie-out PASS |
 | 2a | Draft with brackets resolved | 2026-09-28 | Claude-drafted at Eric's request, minimal text; chart 02b kept |
 | 2b | Eric's edit, Claude's look-over | 2026-09-28 | Eric's two additions (#4 reaction, #5 caution); New York vs. Maine chart added; re-confirmed 2026-09-28 |
-| 2c | Slice markup | | |
+| 2c | Slice markup | 2026-09-28 | 37 blocks; spacers above headings that follow charts |
 | 2d | Hero 1680x1080 + alt text | | |
 | 2e | SEO | | |
 | 2f | Pushed to Prismic (draft) | | |
@@ -115,3 +115,4 @@ None. (2a-2d were stale after /step back 1 on 2026-09-27; re-run the same day at
 - 2026-09-28 Takeaway 1: New York vs. Maine Lorenz chart (01b) added before the three-measure chart, with one introducing sentence.
 - 2026-09-28 Step 2b re-confirmed by Eric (with the New York vs. Maine chart).
 - 2026-09-28 2c: convert-only run, 37 blocks; explicit spacers added above the four headings that follow a chart.
+- 2026-09-28 Step 2c confirmed by Eric.
