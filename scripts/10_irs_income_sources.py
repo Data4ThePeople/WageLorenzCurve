@@ -17,7 +17,11 @@ import matplotlib.pyplot as plt
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SRC = os.path.join(ROOT, "data/raw/irs/23in14ar.xls")
-OUT_PNG = os.path.join(ROOT, "posts/lorenz-chart-viz/images/01-income-sources-by-income.png")
+import argparse
+_ap = argparse.ArgumentParser(); _ap.add_argument("--scale", type=float, default=1.0); _ap.add_argument("--out", default=None)
+_args = _ap.parse_args()
+FS = _args.scale      # text scale; 1.0 for the Day 1 image, larger for Day 2
+OUT_PNG = _args.out or os.path.join(ROOT, "posts/lorenz-chart-viz/images/01-income-sources-by-income.png")
 OUT_CSV = os.path.join(ROOT, "data/build/irs_income_sources_2023.csv")
 
 x = pd.read_excel(SRC, header=None, dtype=str)
@@ -80,7 +84,7 @@ BG, INK, MUTED, GRID = "#181A1B", "#BBBDC0", "#8C9094", "#2A2E31"
 COLORS = ["#3987e5", "#d95926", "#199e70", "#c98500", "#9085e9", "#7a7f85"]   # dark categorical slots 1-4 and 7 (validated, CVD pass); neutral grey = everything else
 plt.rcParams.update({"text.parse_math": False, "font.family": "DejaVu Sans", "text.color": INK, "axes.labelcolor": INK, "xtick.color": MUTED, "ytick.color": INK})
 fig = plt.figure(figsize=(8, 5.4), dpi=200, facecolor=BG)
-ax = fig.add_axes([0.25, 0.12, 0.63, 0.64], facecolor=BG)
+ax = fig.add_axes([0.25 + 0.04 * (FS > 1), 0.12, 0.63 - 0.04 * (FS > 1), 0.64], facecolor=BG)
 labels = [r[0] for r in rows][::-1]
 data = df.iloc[::-1].reset_index(drop=True)
 y = np.arange(len(labels)); y = y + np.where(np.array(labels) == "All returns", 0.35, 0)   # small gap above the brackets
@@ -90,28 +94,28 @@ for (k, lab), col in zip(SOURCES, COLORS):
     ax.barh(y, w, left=left, height=0.68, color=col, edgecolor=BG, linewidth=1.2)
     for yi, l0, wi in zip(y, left, w):
         if wi >= 0.075:
-            ax.text(l0 + wi / 2, yi, f"{wi*100:.0f}%", ha="center", va="center", fontsize=7.6, color="#FFFFFF" if col != "#c98500" else "#181A1B", fontweight="bold")
+            ax.text(l0 + wi / 2, yi, f"{wi*100:.0f}%", ha="center", va="center", fontsize=7.6 * FS, color="#FFFFFF" if col != "#c98500" else "#181A1B", fontweight="bold")
     left += w
-ax.set_yticks(y); ax.set_yticklabels(labels, fontsize=8.4)
+ax.set_yticks(y); ax.set_yticklabels(labels, fontsize=8.4 * FS)
 for t, lab in zip(ax.get_yticklabels(), labels):
     if lab == "All returns": t.set_fontweight("bold")
-ax.set_xlim(0, 1); ax.set_xticks([0, .25, .5, .75, 1]); ax.set_xticklabels(["0%", "25%", "50%", "75%", "100%"], fontsize=7.6)
+ax.set_xlim(0, 1); ax.set_xticks([0, .25, .5, .75, 1]); ax.set_xticklabels(["0%", "25%", "50%", "75%", "100%"], fontsize=7.6 * FS)
 ax.tick_params(length=0)
 for s in ax.spines.values(): s.set_visible(False)
 ax.xaxis.grid(True, color=GRID, linewidth=0.6); ax.set_axisbelow(True)
 for yi, n in zip(y, data.returns.values):
-    ax.text(1.015, yi, f"{n/1e6:.1f}M" if n >= 1e6 else f"{n/1e3:,.0f}K" if n >= 1e3 else f"{n:,.0f}", va="center", fontsize=7.2, color=MUTED, transform=ax.get_yaxis_transform())
-ax.text(1.015, y.max() + 0.75, "Returns", fontsize=7.2, color=MUTED, transform=ax.get_yaxis_transform(), va="center")
-fig.text(0.04, 0.945, "Where income comes from, by size of income", fontsize=13.5, fontweight="bold", color=INK)
-fig.text(0.04, 0.9, "Share of total income on 2023 federal tax returns, by adjusted gross income", fontsize=9, color=MUTED)
+    ax.text(1.015, yi, f"{n/1e6:.1f}M" if n >= 1e6 else f"{n/1e3:,.0f}K" if n >= 1e3 else f"{n:,.0f}", va="center", fontsize=7.2 * FS, color=MUTED, transform=ax.get_yaxis_transform())
+ax.text(1.015, y.max() + 0.75, "Returns", fontsize=7.2 * FS, color=MUTED, transform=ax.get_yaxis_transform(), va="center")
+fig.text(0.04, 0.945, "Where income comes from, by size of income", fontsize=13.5 * FS, fontweight="bold", color=INK)
+fig.text(0.04, 0.9, "Share of total income on 2023 federal tax returns, by adjusted gross income", fontsize=9 * FS, color=MUTED)
 # legend as colored words
 for i, ((k, lab), col) in enumerate(zip(SOURCES, COLORS)):
     if i in (0, 3): xpos, ypos = 0.04, (0.848 if i == 0 else 0.812)
-    t = fig.text(xpos, ypos, lab, fontsize=8.4, color=col if col != "#7a7f85" else "#9AA0A6", fontweight="bold")
+    t = fig.text(xpos, ypos, lab, fontsize=8.4 * FS, color=col if col != "#7a7f85" else "#9AA0A6", fontweight="bold")
     fig.canvas.draw(); xpos += t.get_window_extent().width / fig.bbox.width + 0.028
-fig.text(0.04, 0.045, "Everything else: pensions, retirement accounts, Social Security, rent and other income, net of losses.", fontsize=6.4, color=MUTED)
-fig.text(0.04, 0.02, "Source: IRS Statistics of Income, Table 1.4, tax year 2023, all returns.", fontsize=6.4, color=MUTED)
-fig.text(0.96, 0.02, "Built by Data 4 The People", fontsize=6.4, color=MUTED, ha="right")
+fig.text(0.04, 0.045, "Everything else: pensions, retirement accounts, Social Security, rent and other income, net of losses.", fontsize=6.4 * FS, color=MUTED)
+fig.text(0.04, 0.02, "Source: IRS Statistics of Income, Table 1.4, tax year 2023, all returns.", fontsize=6.4 * FS, color=MUTED)
+fig.text(0.96, 0.02, "Built by Data 4 The People", fontsize=6.4 * FS, color=MUTED, ha="right")
 os.makedirs(os.path.dirname(OUT_PNG), exist_ok=True)
 fig.savefig(OUT_PNG, facecolor=BG)
 print("wrote", OUT_PNG)
