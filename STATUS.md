@@ -6,7 +6,7 @@ Process: ~/.claude/d4tp-process/PROCESS.md
 ## Current
 
 Post: five-takeaways-wage-inequality (Day 2; proposed slug)
-Step: 2f
+Step: 2g (waiting to start)
 Since: 2026-09-28
 
 ## Steps
@@ -124,3 +124,4 @@ None. (2a-2d were stale after /step back 1 on 2026-09-27; re-run the same day at
 - 2026-09-28 2f: dry run, then published. Created draft arpsqREAAC4AOVhk (slug five-takeaways-wage-inequality) in the Migration Release; 10 images uploaded. Before publishing in Prismic: set author and tag.
 - 2026-09-28 Eric's edits (takeaway 4 paragraph order; takeaway 5 wording) committed; draft arpsqREAAC4AOVhk re-pushed.
 - 2026-09-28 Takeaway 4 heading (Eric's wording, grammar fix accepted) and 'viz' to 'visualization' in #5; draft re-pushed.
+- 2026-09-28 Step 2f confirmed by Eric (draft arpsqREAAC4AOVhk in the Migration Release).
