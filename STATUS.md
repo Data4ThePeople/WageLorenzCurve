@@ -6,7 +6,7 @@ Process: ~/.claude/d4tp-process/PROCESS.md
 ## Current
 
 Post: five-takeaways-wage-inequality (Day 2; proposed slug)
-Step: 2g
+Step: complete (five-takeaways-wage-inequality)
 Since: 2026-09-28
 
 ## Steps
@@ -20,7 +20,7 @@ Since: 2026-09-28
 | 2d | Hero 1680x1080 + alt text | 2026-09-28 | Eric's New York vs. Maine curves, re-rendered at hero size; alt 380 characters |
 | 2e | SEO | 2026-09-28 | New title; meta, keywords; article + FAQ schema (3 questions) |
 | 2f | Pushed to Prismic (draft) | 2026-09-28 | Created draft arpsqREAAC4AOVhk in the Migration Release; 39 slices; 10 images uploaded |
-| 2g | Mailchimp teaser | | |
+| 2g | Mailchimp teaser | 2026-09-29 | No chart; five takeaways explained in plain language; Eric's '9 pictures' click-through |
 
 ## Completed posts
 
@@ -127,3 +127,4 @@ None. (2a-2d were stale after /step back 1 on 2026-09-27; re-run the same day at
 - 2026-09-28 Step 2f confirmed by Eric (draft arpsqREAAC4AOVhk in the Migration Release).
 - 2026-09-28 2g: EMAIL.md drafted from the post (subject, preview, hero JPG 101 KB, dollar-gap chart); waiting for approve or reject.
 - 2026-09-29 2g: email redrafted at Eric's request (no chart; numbered takeaways; his picture line, 9 charts).
+- 2026-09-29 Step 2g confirmed by Eric. five-takeaways-wage-inequality complete (steps 1 through 2g confirmed). In Prismic: set author and tag, then publish draft arpsqREAAC4AOVhk.
