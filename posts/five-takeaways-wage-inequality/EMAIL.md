@@ -26,11 +26,15 @@ Wage inequality by state and city: five takeaways
 ```
 Yesterday we rebuilt our chart of wage inequality by city and state. Here are five things it shows:
 
-1. By our main measure, New York has the widest pay gap of any state, and Maine has the narrowest.
-2. Among cities, San Jose, New York and San Francisco have the widest gaps.
-3. In San Jose, lawyers earn $249,620 a year more than home health aides. In Joplin, Missouri, the difference is $81,360.
-4. Since 2016, the gap between high-paid and low-paid jobs has shrunk in most places. Since 2022, it has grown in some places and shrunk in others.
-5. Wage data misses most of the money at the top. On tax returns of $10 million or more, wages were only 17% of income.
+1. We started with states. To compare them, we used a score called the Gini. It runs from 0 to 1. A score of 0 would mean every job pays the same, and the higher the score, the bigger the gap between high-paid and low-paid jobs. New York scored the highest, 0.308, and Maine the lowest, 0.231. Another way to see it: the lowest-paid half of workers get 28.2% of all wages in New York, compared with 34.2% in Maine.
+
+2. Next, we did the same analysis for cities. The gap is widest in San Jose, New York and San Francisco. All three rank in the top five on every measure we used. In San Jose, the lowest-paid half of workers get just 25.0% of all wages.
+
+3. Then we looked at what the gap means in dollars. We compared well-paid jobs, like lawyers, software developers and nurses, with lower-paid jobs, like home health aides. In San Jose, lawyers earn $249,620 a year more than home health aides. In Joplin, Missouri, one of the most equal places, the difference is $81,360. Home health aides earn about the same in both places, $39,360 in San Jose and $36,610 in Joplin. What changes is how much more the top jobs pay.
+
+4. We also checked how the gap has changed over time. Since 2016, it has shrunk in most places, including 47 of 51 states. Since 2022, the picture is mixed: the gap grew in 11 states and shrank in 15.
+
+5. Finally, a big caution. Our chart only counts wages from paychecks. The richest Americans make most of their money another way, from investments and business profits. On 2023 tax returns of $10 million or more, wages were only 17% of income. So a smaller wage gap does not mean overall inequality is falling.
 ```
 
 ## 4. Chart
