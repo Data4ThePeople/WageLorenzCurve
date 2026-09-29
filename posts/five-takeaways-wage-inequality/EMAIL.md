@@ -26,11 +26,11 @@ Wage inequality by state and city: five takeaways
 ```
 Yesterday we rebuilt our chart of wage inequality by city and state. Here are five things it shows:
 
-1. New York is the most unequal state on two of three measures
-2. San Jose, New York and San Francisco lead the metro areas
-3. In dollars, the high end pulls away
-4. Overall, the wage gap has gotten narrower since 2016, but it is mixed since 2022
-5. Wage data misses where the money is
+1. By our main measure, New York has the widest pay gap of any state, and Maine has the narrowest.
+2. Among cities, San Jose, New York and San Francisco have the widest gaps.
+3. In San Jose, lawyers earn $249,620 a year more than home health aides. In Joplin, Missouri, the difference is $81,360.
+4. Since 2016, the gap between high-paid and low-paid jobs has shrunk in most places. Since 2022, it has grown in some places and shrunk in others.
+5. Wage data misses most of the money at the top. On tax returns of $10 million or more, wages were only 17% of income.
 ```
 
 ## 4. Chart
