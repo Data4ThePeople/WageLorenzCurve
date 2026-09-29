@@ -3,18 +3,38 @@
 Drawn from the email (`EMAIL.md`). Every number is in the post.
 Post URL: https://www.data4thepeople.com/p/five-takeaways-wage-inequality
 
-## X (Eric's choice: single post; 277 of 280 characters, X counts the link as 23)
+## X (Eric's choice: thread, 6 posts, one chart each)
 
-Image: `images/five-takeaways-wage-inequality-hero-1680x1080.png`
-
+1/6 (110 characters). Image: hero.
 ```
-Five takeaways from our wage inequality chart:
+We rebuilt our wage inequality chart for every U.S. state and metro area. Here are five things it shows. (1/6)
+```
 
-1. New York has the widest pay gap of any state. Maine has the narrowest.
-2. San Jose, New York and San Francisco lead the cities.
-3. In San Jose, lawyers earn $249,620 more a year than home health aides.
+2/6 (174 characters). Image: `images/01-states-three-measures.png`
+```
+1. States: New York has the widest pay gap (Gini 0.308), Maine the narrowest (0.231). The lowest-paid half of workers get 28.2% of wages in New York and 34.2% in Maine. (2/6)
+```
 
-https://www.data4thepeople.com/p/five-takeaways-wage-inequality
+3/6 (149 characters). Image: `images/02a-metros-three-measures.png`
+```
+2. Cities: the gap is widest in San Jose, New York and San Francisco. In San Jose, the lowest-paid half of workers get just 25.0% of all wages. (3/6)
+```
+
+4/6 (189 characters). Image: `images/03a-gap-vs-home-health-aides.png`
+```
+3. In dollars: lawyers earn $249,620 a year more than home health aides in San Jose, and $81,360 more in Joplin, Missouri. Aide pay is about the same in both. The top is what changes. (4/6)
+```
+
+5/6 (128 characters). Image: `images/04-change-since-2016-and-2022.png`
+```
+4. Over time: the gap shrank in 47 of 51 states since 2016. Since 2022 it is mixed: it grew in 11 states and shrank in 15. (5/6)
+```
+
+6/6 (187 characters). Image: `images/05a-income-sources-by-income.png`
+```
+5. A big caution: wage data misses most of the money at the top. On 2023 tax returns of $10 million or more, wages were only 17% of income.
+
+All nine charts: https://www.data4thepeople.com/p/five-takeaways-wage-inequality (6/6)
 ```
 
 ## LinkedIn
