@@ -126,3 +126,4 @@ None. (2a-2d were stale after /step back 1 on 2026-09-27; re-run the same day at
 - 2026-09-28 Takeaway 4 heading (Eric's wording, grammar fix accepted) and 'viz' to 'visualization' in #5; draft re-pushed.
 - 2026-09-28 Step 2f confirmed by Eric (draft arpsqREAAC4AOVhk in the Migration Release).
 - 2026-09-28 2g: EMAIL.md drafted from the post (subject, preview, hero JPG 101 KB, dollar-gap chart); waiting for approve or reject.
+- 2026-09-29 2g: email redrafted at Eric's request (no chart; numbered takeaways; his picture line, 9 charts).

@@ -2,7 +2,7 @@
 
 Post URL: https://www.data4thepeople.com/p/five-takeaways-wage-inequality
 
-Drafted by Claude from the post text (2g).
+Redrafted at Eric's request (2g): no chart, the five takeaways as a numbered list, and Eric's picture line as the click-through. XX = 9, the number of charts in the post.
 
 ```
 Subject:  Five takeaways on the wage gap
@@ -24,27 +24,23 @@ Wage inequality by state and city: five takeaways
 ## 3. Body, part one
 
 ```
-Yesterday we rebuilt our chart of wage inequality by city and state, which shows how payroll wages are split across occupations in every U.S. state and metro area. Here are five things it shows.
+Yesterday we rebuilt our chart of wage inequality by city and state. Here are five things it shows:
 
-New York is the most unequal state on two of three measures, and San Jose, New York and San Francisco lead the metro areas. The lowest-paid half of workers get 34.2% of wages in Maine and 28.2% in New York.
+1. New York is the most unequal state on two of three measures
+2. San Jose, New York and San Francisco lead the metro areas
+3. In dollars, the high end pulls away
+4. Overall, the wage gap has gotten narrower since 2016, but it is mixed since 2022
+5. Wage data misses where the money is
 ```
 
 ## 4. Chart
 
-`images/03a-gap-vs-home-health-aides.png`
-Alt:
-```
-Grouped bar chart titled The pay gap in dollars vs. home health aides, May 2025. In San Jose, lawyers earn $249,620 more a year than aides, software developers $182,350 more and registered nurses $155,590 more. In Joplin, MO-KS the same gaps are $81,360, $71,080 and $40,210. Aide pay is $39,360 in San Jose and $36,610 in Joplin.
-```
+None, at Eric's request.
 
 ## 5. Body, part two
 
 ```
-In dollars, the high end pulls away. Lawyers earn $249,620 more a year than home health aides in San Jose, and $81,360 more in Joplin, MO-KS.
-
-Overall, the wage gap has gotten narrower since 2016, but it is mixed since 2022.
-
-And wage data misses where the money is. On 2023 tax returns of $10 million or more, wages were 17% of income. In Collier County, FL, home to Naples, wages were 30% of income on tax returns. The post shows where the rest comes from.
+But words don't do the story justice. A picture is worth a thousand words. There are 9 pictures that tell the story of the takeaways in today's D4T. You do the math.
 ```
 
 ## 6. Call to action
